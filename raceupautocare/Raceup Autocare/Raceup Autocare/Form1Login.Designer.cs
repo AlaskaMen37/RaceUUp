@@ -58,7 +58,7 @@
             this.UserTxt.Tag = "USER NAME";
             this.UserTxt.Text = "USER NAME";
             this.UserTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.UserTxt.TextChanged += new System.EventHandler(this.UserTxt_TextChanged);
+          //  this.UserTxt.TextChanged += new System.EventHandler(this.UserTxt_TextChanged);
             this.UserTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UserTxt_KeyPress);
             // 
             // PassTxt
@@ -175,7 +175,7 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Raceup Autocare Login";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            //this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

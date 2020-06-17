@@ -13,11 +13,17 @@ namespace Raceup_Autocare
 {
     public partial class LoginForm : Form
     {
-        public static string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\D A N\Dropbox\Dropbox\raceup autocare\raceup_db.accdb";
+        DBConnection dbcon = null;
+        String expiredPasswordMsg = "Account has been expired, Please reset password.";
+        String warningTitle = "Warning";
+        String remainingNumberOfDaysMsg = "Your account will be expired after ";
 
         public LoginForm()
         {
             InitializeComponent();
+           dbcon = new DBConnection();
+     
+
         }
         private void UserTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -37,34 +43,48 @@ namespace Raceup_Autocare
         private void LoginBtn_Click(object sender, EventArgs e)
         {
             Boolean found = false;
-
-            OleDbConnection thisConnection = new OleDbConnection(connectionString);
-            string userSql = "SELECT * FROM UserTable";
-            thisConnection.Open();
-
-            OleDbCommand userCommand = new OleDbCommand(userSql, thisConnection);
-            OleDbDataReader userReader = userCommand.ExecuteReader();
+            string userSql = "SELECT * FROM Employee";
+            OleDbDataReader userReader = dbcon.ConnectToOleDB(userSql);
+            DateTime dateTimeToday = DateTime.Today;
+            DateTime dateCreated;
+            MenuForm menu = new MenuForm();
 
             while (userReader.Read())
-            {
-                if (userReader["UserName"].ToString() == UserTxt.Text.ToString().Trim() && userReader["Password"].ToString() == PassTxt.Text.ToString().Trim())
+            {              
+                // Check if user exist in DB.
+                if (userReader["Username"].ToString() == UserTxt.Text.ToString().Trim() && userReader["Password"].ToString() == PassTxt.Text.ToString().Trim())
                 {
                     found = true;
+                    dateCreated = Convert.ToDateTime(userReader["Date_Created"].ToString());                               
+                    double totalActiveDays = (dateTimeToday - dateCreated).TotalDays;
                     
-                    MenuForm menu = new MenuForm();
-                    menu.ShowDialog();
+                    // Check if user account is expired.
+                    // If expired set active to false.
+                    if (totalActiveDays > 60){                      
+                        MessageBox.Show(expiredPasswordMsg, warningTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                         userSql = "UPDATE Employee SET Active=False WHERE Username='"+ UserTxt.Text.ToString().Trim()  + "'";
+                         userReader = dbcon.ConnectToOleDB(userSql);
 
-                    break;
+                    // Display number of days remaining after being active for 30 days or more. eg 30 days, 25 days, 20 days.
+                    } else if(totalActiveDays > 30 && (totalActiveDays % 5) == 0) {
+                        double expirationDay = 60 - totalActiveDays;
+                        MessageBox.Show(remainingNumberOfDaysMsg + expirationDay + " days.", warningTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        menu.ShowDialog();
+                        break;
+                    }
+                    else{                      
+                        menu.ShowDialog();
+                        break;
+                    }     
                 }
                 continue;
            }
-            if (found == false)
-            {
+            if (found == false){
                 userReader.Close();
-                thisConnection.Close();
+                dbcon.CloseConnection();
                 MessageBox.Show("User not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }else{
-                this.Close();
+                this.Close();                
             }
             
         }
