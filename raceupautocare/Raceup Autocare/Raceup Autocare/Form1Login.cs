@@ -40,6 +40,9 @@ namespace Raceup_Autocare
             }
         }
 
+        public static String roles = "";
+        public static String fname = "";
+        public static String lname = "";
         private void LoginBtn_Click(object sender, EventArgs e)
         {
             Boolean found = false;
@@ -47,17 +50,21 @@ namespace Raceup_Autocare
             OleDbDataReader userReader = dbcon.ConnectToOleDB(userSql);
             DateTime dateTimeToday = DateTime.Today;
             DateTime dateCreated;
-            MenuForm menu = new MenuForm();
+           
 
             while (userReader.Read())
-            {              
+            {
                 // Check if user exist in DB.
+                
                 if (userReader["Username"].ToString() == UserTxt.Text.ToString().Trim() && userReader["Password"].ToString() == PassTxt.Text.ToString().Trim())
                 {
                     found = true;
                     dateCreated = Convert.ToDateTime(userReader["Date_Created"].ToString());                               
                     double totalActiveDays = (dateTimeToday - dateCreated).TotalDays;
-                    
+                    roles = userReader["Role"].ToString();
+                    fname = userReader["First_Name"].ToString();
+                    lname = userReader["Last_Name"].ToString();
+                    MenuForm menu = new MenuForm();
                     // Check if user account is expired.
                     // If expired set active to false.
                     if (totalActiveDays > 60){                      
@@ -72,8 +79,8 @@ namespace Raceup_Autocare
                         menu.ShowDialog();
                         break;
                     }
-                    else{                      
-                        menu.ShowDialog();
+                    else{
+                        menu.ShowDialog();                       
                         break;
                     }     
                 }

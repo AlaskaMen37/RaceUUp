@@ -62,6 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBConnection.cs" />
+    <Compile Include="reset Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reset Form.Designer.cs">
+      <DependentUpon>reset Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form4CreateRO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="reset Form.resx">
+      <DependentUpon>reset Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form4CreateRO.resx">
       <DependentUpon>Form4CreateRO.cs</DependentUpon>
     </EmbeddedResource>

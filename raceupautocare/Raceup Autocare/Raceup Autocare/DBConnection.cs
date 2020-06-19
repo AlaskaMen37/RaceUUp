@@ -10,7 +10,7 @@ namespace Raceup_Autocare
     class DBConnection
     {
      
-        public static string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Documents\Work Related\SIDE HUSTLE\Repository\RaceUUp\raceupautocare\raceup_db_new.accdb";
+        public static string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\database\raceup_db_new2.accdb";
         public static OleDbConnection thisConnection = null;
 
         public OleDbDataReader ConnectToOleDB(String sqlQuery) {
