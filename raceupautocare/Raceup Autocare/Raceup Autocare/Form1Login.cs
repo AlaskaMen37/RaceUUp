@@ -11,7 +11,7 @@ using System.Data.OleDb;
 
 namespace Raceup_Autocare
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : Form 
     {
         DBConnection dbcon = null;
         String expiredPasswordMsg = "Account has been expired, Please reset password.";
@@ -41,8 +41,9 @@ namespace Raceup_Autocare
         }
 
         public static String roles = "";
-        public static String fname = "";
+        public static String id = "";
         public static String lname = "";
+        public static String password = "";
         private void LoginBtn_Click(object sender, EventArgs e)
         {
             Boolean found = false;
@@ -61,9 +62,14 @@ namespace Raceup_Autocare
                     found = true;
                     dateCreated = Convert.ToDateTime(userReader["Date_Created"].ToString());                               
                     double totalActiveDays = (dateTimeToday - dateCreated).TotalDays;
+
+                    //To pass data from forms
                     roles = userReader["Role"].ToString();
-                    fname = userReader["First_Name"].ToString();
+                    id = userReader["Employee_ID"].ToString();
                     lname = userReader["Last_Name"].ToString();
+                    password = userReader["Password"].ToString();
+
+
                     MenuForm menu = new MenuForm();
                     // Check if user account is expired.
                     // If expired set active to false.
@@ -76,11 +82,11 @@ namespace Raceup_Autocare
                     } else if(totalActiveDays > 30 && (totalActiveDays % 5) == 0) {
                         double expirationDay = 60 - totalActiveDays;
                         MessageBox.Show(remainingNumberOfDaysMsg + expirationDay + " days.", warningTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        menu.ShowDialog();
+                        menu.Show();
                         break;
                     }
                     else{
-                        menu.ShowDialog();                       
+                        menu.Show();                       
                         break;
                     }     
                 }
@@ -91,7 +97,7 @@ namespace Raceup_Autocare
                 dbcon.CloseConnection();
                 MessageBox.Show("User not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }else{
-                this.Close();                
+                this.Hide();               
             }
             
         }

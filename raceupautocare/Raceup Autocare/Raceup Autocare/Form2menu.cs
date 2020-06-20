@@ -14,7 +14,7 @@ namespace Raceup_Autocare
    
     public partial class MenuForm : Form
     {
-
+        Employee emp = new Employee();
         String warningTitle = "Warning";
         String role = "";
         public MenuForm()
@@ -22,7 +22,8 @@ namespace Raceup_Autocare
             InitializeComponent();
 
             role = LoginForm.roles;
-            
+
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -52,7 +53,9 @@ namespace Raceup_Autocare
 
 		private void logout_Click(object sender, EventArgs e)
 		{
-            this.Close();
+            this.Hide();
+            LoginForm login = new LoginForm();
+            login.Show();
 		}
 	}
 }
