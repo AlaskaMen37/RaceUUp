@@ -32,7 +32,7 @@ namespace Raceup_Autocare
 				if (userReader["Employee_ID"].ToString().Equals(LoginForm.id)) {
 
 					found = true;
-					 emp = new Employee(userReader["Username"].ToString(), userReader["Password"].ToString(), userReader["Employee_ID"].ToString(),
+					 emp = new Employee(userReader["Username"].ToString(), userReader["emp_pass"].ToString(), userReader["Employee_ID"].ToString(),
                         (bool)userReader["Active"],userReader["First_Name"].ToString(), userReader["Last_Name"].ToString(), userReader["Empoyee_Email"].ToString(), 
 						userReader["Role"].ToString(), (DateTime)userReader["Date_Updated"], userReader["Updated_By"].ToString(), (DateTime)userReader["Date_Created"], userReader["Created_By"].ToString());
 					break;
@@ -40,10 +40,10 @@ namespace Raceup_Autocare
 
 			}
 
-			if (!found) {
+			
 				userReader.Close();
 				dbcon.CloseConnection();
-			}		
+				
 		}
 
 		private void resetForm_Load(object sender, EventArgs e)
@@ -54,7 +54,13 @@ namespace Raceup_Autocare
         private void resetBtn_Click(object sender, EventArgs e)
         {
 			Boolean confirm = false;
-			
+
+			dbcon = new DBConnection();
+			string userSql = "";
+			OleDbDataReader userReader;
+
+
+
 			if (currentPassword.Text.Equals(""))
 			{
 				label4.Text = "Current Password is Empty";
@@ -116,6 +122,13 @@ namespace Raceup_Autocare
 
 
 			if (confirm) {
+				//userSql = "UPDATE Employee SET Password= '1234' WHERE Username='" + emp.Username.ToString().Trim() + "'";
+				userSql = "UPDATE Employee SET emp_pass='"+newPassword.Text.ToString().Trim() + "' WHERE Username='" + emp.Username.ToString().Trim() + "'";
+				//userSql = "UPDATE Employee SET Password ='1234' WHERE Username='" + emp.Username.ToString().Trim() + "'";
+				//userSql = "UPDATE Employee SET emp_pass='test12' WHERE Username='test1'";
+				userReader = dbcon.ConnectToOleDB(userSql);
+				userReader.Close();
+				dbcon.CloseConnection();
 				this.Close();
 			}
 

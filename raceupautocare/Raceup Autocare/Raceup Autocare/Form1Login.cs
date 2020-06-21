@@ -61,20 +61,18 @@ namespace Raceup_Autocare
 
             while (userReader.Read())
             {               
-                if (userReader["Username"].ToString() == UserTxt.Text.ToString().Trim() && userReader["Password"].ToString() == PassTxt.Text.ToString().Trim())
+                if (userReader["Username"].ToString() == UserTxt.Text.ToString().Trim() && userReader["emp_pass"].ToString() == PassTxt.Text.ToString().Trim())
                 {
                     userExist = true;
-                    emp = new Employee(userReader["Username"].ToString(), userReader["Password"].ToString(), userReader["Employee_ID"].ToString(),
+                    emp = new Employee(userReader["Username"].ToString(), userReader["emp_pass"].ToString(), userReader["Employee_ID"].ToString(),
                        (bool)userReader["Active"], userReader["First_Name"].ToString(), userReader["Last_Name"].ToString(), userReader["Empoyee_Email"].ToString(),
                        userReader["Role"].ToString(), (DateTime)userReader["Date_Updated"], userReader["Updated_By"].ToString(), (DateTime)userReader["Date_Created"], userReader["Created_By"].ToString());
                     break;
                 }
 
-                if (!userExist)
-                {
-                    userReader.Close();
-                    dbcon.CloseConnection();
-                }
+               
+                    
+                
             }
 
             // Check if user exist in DB.
@@ -85,8 +83,9 @@ namespace Raceup_Autocare
 
                 //To pass data from forms
                 id = emp.Id;
-  
 
+
+                
                 MenuForm menu = new MenuForm();
                 // Check if user account is expired.
                 // If expired set active to false.
@@ -109,6 +108,9 @@ namespace Raceup_Autocare
                 {
                     menu.Show();
                 }
+
+                userReader.Close();
+                dbcon.CloseConnection();
             }
         }
 
