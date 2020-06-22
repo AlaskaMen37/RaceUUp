@@ -69,10 +69,7 @@ namespace Raceup_Autocare
                        userReader["Role"].ToString(), (DateTime)userReader["Date_Updated"], userReader["Updated_By"].ToString(), (DateTime)userReader["Date_Created"], userReader["Created_By"].ToString());
                     break;
                 }
-
-               
-                    
-                
+    
             }
 
             // Check if user exist in DB.
@@ -84,8 +81,6 @@ namespace Raceup_Autocare
                 //To pass data from forms
                 id = emp.Id;
 
-
-                
                 MenuForm menu = new MenuForm();
                 // Check if user account is expired.
                 // If expired set active to false.
@@ -106,7 +101,7 @@ namespace Raceup_Autocare
                 }
                 else
                 {
-                   
+
                     this.Hide();
                     MenuForm sistema = new MenuForm();
                     sistema.ShowDialog();
@@ -118,6 +113,9 @@ namespace Raceup_Autocare
 
                 userReader.Close();
                 dbcon.CloseConnection();
+            }
+            else {
+                MessageBox.Show("User does not exists! Please check username field if it's correct.",  "", MessageBoxButtons.OK, MessageBoxIcon.Error);       
             }
         }
 
