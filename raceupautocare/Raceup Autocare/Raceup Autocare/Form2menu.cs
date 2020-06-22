@@ -23,6 +23,8 @@ namespace Raceup_Autocare
         {
             InitializeComponent();
 
+            SidePanel.Height = button1.Height;
+
             dbcon = new DBConnection();
             Boolean found = false;
             string userSql = "SELECT * FROM Employee";
@@ -52,6 +54,8 @@ namespace Raceup_Autocare
 
         private void button1_Click(object sender, EventArgs e)
         {
+            SidePanel.Height = OrderBtn.Height;
+
             OrderForm order = new OrderForm();
 
             if (emp.Role.Equals("Receptionist") || emp.Role.Equals("Manager"))
@@ -65,6 +69,9 @@ namespace Raceup_Autocare
 
         private void PartsBtn_Click(object sender, EventArgs e)
         {
+            SidePanel.Height = PartsBtn.Height;
+            SidePanel.Top = PartsBtn.Top;
+
             if (emp.Role.Equals("Parts") || emp.Role.Equals("Manager"))
             {
                 MessageBox.Show("Undermaintenance", warningTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -93,5 +100,16 @@ namespace Raceup_Autocare
             LoginForm login = new LoginForm();
             login.Show();
 		}
-	}
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            SidePanel.Height = button1.Height;
+            SidePanel.Top = button1.Top;
+        }
+    }
 }

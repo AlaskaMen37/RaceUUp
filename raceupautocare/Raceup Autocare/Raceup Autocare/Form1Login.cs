@@ -106,6 +106,13 @@ namespace Raceup_Autocare
                 }
                 else
                 {
+                   
+                    this.Hide();
+                    MenuForm sistema = new MenuForm();
+                    sistema.ShowDialog();
+                    this.Close();
+                    //Open a new form and close the current form - K
+
                     menu.Show();
                 }
 
@@ -134,6 +141,21 @@ namespace Raceup_Autocare
         {
             PassTxt.SelectionStart = 0;
             PassTxt.SelectionLength = UserTxt.Text.Length;
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox5_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void UserTxt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
