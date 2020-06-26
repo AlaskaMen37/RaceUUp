@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4CreateRO));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.PrintBtn = new System.Windows.Forms.Button();
             this.label00 = new System.Windows.Forms.Label();
@@ -49,22 +52,31 @@
             this.label4 = new System.Windows.Forms.Label();
             this.UnitPriceTxt = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.PartsBtn = new System.Windows.Forms.Button();
+            this.CreateROBtn = new System.Windows.Forms.Button();
+            this.CreateProfileBtn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.OrderBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.PartsBtn = new System.Windows.Forms.Button();
-            this.CreateROBtn = new System.Windows.Forms.Button();
-            this.CreateProfileBtn = new System.Windows.Forms.Button();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -76,13 +88,30 @@
             this.UnitPrice});
             this.dataGridView1.Location = new System.Drawing.Point(206, 246);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(632, 190);
+            this.dataGridView1.Size = new System.Drawing.Size(632, 104);
             this.dataGridView1.TabIndex = 7;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.Width = 350;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "Unit Price";
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.Width = 150;
             // 
             // SaveBtn
             // 
             this.SaveBtn.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.SaveBtn.Location = new System.Drawing.Point(206, 439);
+            this.SaveBtn.Location = new System.Drawing.Point(203, 558);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(142, 62);
             this.SaveBtn.TabIndex = 8;
@@ -93,7 +122,7 @@
             // 
             this.PrintBtn.BackColor = System.Drawing.Color.IndianRed;
             this.PrintBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.PrintBtn.Location = new System.Drawing.Point(354, 439);
+            this.PrintBtn.Location = new System.Drawing.Point(351, 558);
             this.PrintBtn.Name = "PrintBtn";
             this.PrintBtn.Size = new System.Drawing.Size(142, 62);
             this.PrintBtn.TabIndex = 9;
@@ -270,8 +299,46 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 54);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(204, 459);
+            this.panel2.Size = new System.Drawing.Size(204, 647);
             this.panel2.TabIndex = 39;
+            // 
+            // PartsBtn
+            // 
+            this.PartsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+            this.PartsBtn.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PartsBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.PartsBtn.Image = ((System.Drawing.Image)(resources.GetObject("PartsBtn.Image")));
+            this.PartsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PartsBtn.Location = new System.Drawing.Point(3, 325);
+            this.PartsBtn.Name = "PartsBtn";
+            this.PartsBtn.Size = new System.Drawing.Size(201, 32);
+            this.PartsBtn.TabIndex = 41;
+            this.PartsBtn.Text = "Parts";
+            this.PartsBtn.UseVisualStyleBackColor = false;
+            // 
+            // CreateROBtn
+            // 
+            this.CreateROBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+            this.CreateROBtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateROBtn.ForeColor = System.Drawing.Color.LightGray;
+            this.CreateROBtn.Location = new System.Drawing.Point(40, 228);
+            this.CreateROBtn.Name = "CreateROBtn";
+            this.CreateROBtn.Size = new System.Drawing.Size(124, 91);
+            this.CreateROBtn.TabIndex = 40;
+            this.CreateROBtn.Text = "Create Repair Order";
+            this.CreateROBtn.UseVisualStyleBackColor = false;
+            // 
+            // CreateProfileBtn
+            // 
+            this.CreateProfileBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+            this.CreateProfileBtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateProfileBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.CreateProfileBtn.Location = new System.Drawing.Point(40, 131);
+            this.CreateProfileBtn.Name = "CreateProfileBtn";
+            this.CreateProfileBtn.Size = new System.Drawing.Size(124, 91);
+            this.CreateProfileBtn.TabIndex = 39;
+            this.CreateProfileBtn.Text = "Create Customer Profile";
+            this.CreateProfileBtn.UseVisualStyleBackColor = false;
             // 
             // panel3
             // 
@@ -319,63 +386,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(850, 54);
+            this.panel1.Size = new System.Drawing.Size(888, 54);
             this.panel1.TabIndex = 38;
-            // 
-            // PartsBtn
-            // 
-            this.PartsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-            this.PartsBtn.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PartsBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.PartsBtn.Image = ((System.Drawing.Image)(resources.GetObject("PartsBtn.Image")));
-            this.PartsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PartsBtn.Location = new System.Drawing.Point(3, 325);
-            this.PartsBtn.Name = "PartsBtn";
-            this.PartsBtn.Size = new System.Drawing.Size(201, 32);
-            this.PartsBtn.TabIndex = 41;
-            this.PartsBtn.Text = "Parts";
-            this.PartsBtn.UseVisualStyleBackColor = false;
-            // 
-            // CreateROBtn
-            // 
-            this.CreateROBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-            this.CreateROBtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateROBtn.ForeColor = System.Drawing.Color.LightGray;
-            this.CreateROBtn.Location = new System.Drawing.Point(40, 228);
-            this.CreateROBtn.Name = "CreateROBtn";
-            this.CreateROBtn.Size = new System.Drawing.Size(124, 91);
-            this.CreateROBtn.TabIndex = 40;
-            this.CreateROBtn.Text = "Create Repair Order";
-            this.CreateROBtn.UseVisualStyleBackColor = false;
-            // 
-            // CreateProfileBtn
-            // 
-            this.CreateProfileBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-            this.CreateProfileBtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateProfileBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateProfileBtn.Location = new System.Drawing.Point(40, 131);
-            this.CreateProfileBtn.Name = "CreateProfileBtn";
-            this.CreateProfileBtn.Size = new System.Drawing.Size(124, 91);
-            this.CreateProfileBtn.TabIndex = 39;
-            this.CreateProfileBtn.Text = "Create Customer Profile";
-            this.CreateProfileBtn.UseVisualStyleBackColor = false;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.Width = 350;
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            // 
-            // UnitPrice
-            // 
-            this.UnitPrice.HeaderText = "Unit Price";
-            this.UnitPrice.Name = "UnitPrice";
-            this.UnitPrice.Width = 150;
             // 
             // label9
             // 
@@ -401,12 +413,113 @@
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.dataGridView2.Location = new System.Drawing.Point(210, 399);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(632, 104);
+            this.dataGridView2.TabIndex = 40;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 350;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Quantity";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Unit Price";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 150;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(209, 373);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 17);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "Description";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(738, 370);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(131, 23);
+            this.textBox1.TabIndex = 47;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(675, 371);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 17);
+            this.label5.TabIndex = 46;
+            this.label5.Text = "Unit Price";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(634, 368);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(45, 23);
+            this.textBox2.TabIndex = 45;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(565, 371);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 17);
+            this.label6.TabIndex = 44;
+            this.label6.Text = "Quantity";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(377, 370);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(182, 23);
+            this.textBox3.TabIndex = 43;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(295, 374);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 17);
+            this.label7.TabIndex = 42;
+            this.label7.Text = "Description";
+            // 
             // Form4CreateRO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.ClientSize = new System.Drawing.Size(850, 513);
+            this.ClientSize = new System.Drawing.Size(888, 701);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.UnitPriceTxt);
@@ -436,6 +549,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,5 +589,16 @@
         private System.Windows.Forms.Button CreateProfileBtn;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label7;
     }
 }

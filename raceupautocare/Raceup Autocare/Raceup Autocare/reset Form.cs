@@ -53,6 +53,8 @@ namespace Raceup_Autocare
 
         private void resetBtn_Click(object sender, EventArgs e)
         {
+			Message_Reset msg = new Message_Reset();
+
 			Boolean confirm = false;
 
 			dbcon = new DBConnection();
@@ -130,6 +132,8 @@ namespace Raceup_Autocare
 				userReader.Close();
 				dbcon.CloseConnection();
 				this.Close();
+				msg.TopMost = true;
+				msg.Show();
 			}
 
 		}

@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,11 +20,17 @@ namespace Raceup_Autocare
         String warningTitle = "Warning";
         String role = "";
         DBConnection dbcon = null;
+        private Form currentChildForm;
         public MenuForm()
         {
             InitializeComponent();
+            customizeDesign();
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            this.DoubleBuffered = true;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
-            SidePanel.Height = button1.Height;
+
 
             dbcon = new DBConnection();
             Boolean found = false;
@@ -51,37 +58,137 @@ namespace Raceup_Autocare
 
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void OpenChildForm(Form childForm)
         {
-            SidePanel.Height = OrderBtn.Height;
-
-            OrderForm order = new OrderForm();
-
-            if (emp.Role.Equals("Receptionist") || emp.Role.Equals("Manager"))
+            //open only form
+            if (currentChildForm != null)
             {
-                order.ShowDialog();
+                currentChildForm.Close();
             }
-            else
-                OrderBtn.Enabled = false;
-           
+            currentChildForm = childForm;
+            //End
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelDesktop.Controls.Add(childForm);
+            panelDesktop.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
         }
 
-        private void PartsBtn_Click(object sender, EventArgs e)
-        {
-            SidePanel.Height = PartsBtn.Height;
-            SidePanel.Top = PartsBtn.Top;
 
-            if (emp.Role.Equals("Parts") || emp.Role.Equals("Manager"))
-            {
-                MessageBox.Show("Undermaintenance", warningTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-                OrderBtn.Enabled = false;
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            //Suggest rako ani para naai user identification after sa login otherwise if naai button para view profile sa employee disregard nalng 
         }
 
-		private void resetPassword_Click(object sender, EventArgs e)
-		{
+        private void MenuForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new OrderProcessingForm());
+
+
+            //SidePanel.Height = OrderBtn.Height;
+            //  SidePanel.Top = OrderBtn.Top;
+            // SidePanel.Visible = true;
+            //orderProcessingForm1.Show();
+            // orderProcessingForm1.BringToFront();
+            showSubMenu(SubMenuORPanel);
+
+            //OrderForm order = new OrderForm();
+
+            //if (emp.Role.Equals("Receptionist") || emp.Role.Equals("Manager"))
+            //{
+            //    order.ShowDialog();
+            //}
+            //else
+            //    OrderBtn.Enabled = false;
+        }
+
+        private void CreateROBtn_Click(object sender, EventArgs e)
+        {
+            // createRO1.Show();
+            // createRO1.BringToFront();
+            OpenChildForm(new CreateROform());
+
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        //Draging Form using Title Bar
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private void PanelTitleBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+
+        private void guna2ImageButton2_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+        }
+
+        private void customizeDesign()
+        {
+            SubMenuORPanel.Visible = false;
+        }
+
+        private void hideSubMenu() 
+        {
+            if (SubMenuORPanel.Visible == true)
+                SubMenuORPanel.Visible = false;
+
+        }
+        private void showSubMenu(Panel subMenu)
+        {
+            if (subMenu.Visible == false)
+            {
+                hideSubMenu();
+                subMenu.Visible = true;
+            }
+            else
+                subMenu.Visible = false;
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void resetPassword_Click_1(object sender, EventArgs e)
+        {
             if (role.Equals("Admin1"))
             {
                 MessageBox.Show("You are an Admin no need to reset Password", warningTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -92,24 +199,37 @@ namespace Raceup_Autocare
 
                 reset.ShowDialog();
             }
-		}
+        }
 
-		private void logout_Click(object sender, EventArgs e)
-		{
-            this.Hide();
-            LoginForm login = new LoginForm();
-            login.Show();
-		}
-
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void logout_Click_1(object sender, EventArgs e)
         {
+            LoginForm login = new LoginForm();
+            this.Hide();
+            login.ShowDialog();
             this.Close();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void panel2_Paint_1(object sender, PaintEventArgs e)
         {
-            SidePanel.Height = button1.Height;
-            SidePanel.Top = button1.Top;
+
+        }
+
+        private void guna2Button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

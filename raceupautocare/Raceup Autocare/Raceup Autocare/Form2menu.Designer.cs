@@ -29,237 +29,329 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
-            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.OrderBtn = new System.Windows.Forms.Button();
-            this.PartsBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.logout = new System.Windows.Forms.Button();
-            this.resetPassword = new System.Windows.Forms.Button();
+            this.PanelTitleBar = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.btnMaximize = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnMinimize = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnExit = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.OrderBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.CreateROBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.logout = new Guna.UI2.WinForms.Guna2Button();
+            this.resetPassword = new Guna.UI2.WinForms.Guna2Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.SubMenuORPanel = new System.Windows.Forms.Panel();
+            this.CreateCustProfileBtn = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.SidePanel = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelDesktop = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.PanelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.panelMenu.SuspendLayout();
+            this.SubMenuORPanel.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panelDesktop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
-            // fileSystemWatcher1
+            // PanelTitleBar
             // 
-            this.fileSystemWatcher1.EnableRaisingEvents = true;
-            this.fileSystemWatcher1.SynchronizingObject = this;
+            this.PanelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(86)))), ((int)(((byte)(87)))));
+            this.PanelTitleBar.Controls.Add(this.label2);
+            this.PanelTitleBar.Controls.Add(this.btnMaximize);
+            this.PanelTitleBar.Controls.Add(this.btnMinimize);
+            this.PanelTitleBar.Controls.Add(this.btnExit);
+            resources.ApplyResources(this.PanelTitleBar, "PanelTitleBar");
+            this.PanelTitleBar.Name = "PanelTitleBar";
+            this.PanelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelTitleBar_MouseDown);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Name = "label2";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // btnMaximize
+            // 
+            resources.ApplyResources(this.btnMaximize, "btnMaximize");
+            this.btnMaximize.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnMaximize.CheckedState.Parent = this.btnMaximize;
+            this.btnMaximize.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnMaximize.HoverState.Parent = this.btnMaximize;
+            this.btnMaximize.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximize.Image")));
+            this.btnMaximize.ImageRotate = 0F;
+            this.btnMaximize.Name = "btnMaximize";
+            this.btnMaximize.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnMaximize.PressedState.Parent = this.btnMaximize;
+            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
+            // 
+            // btnMinimize
+            // 
+            resources.ApplyResources(this.btnMinimize, "btnMinimize");
+            this.btnMinimize.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnMinimize.CheckedState.Parent = this.btnMinimize;
+            this.btnMinimize.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnMinimize.HoverState.Parent = this.btnMinimize;
+            this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
+            this.btnMinimize.ImageRotate = 0F;
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnMinimize.PressedState.Parent = this.btnMinimize;
+            this.btnMinimize.Click += new System.EventHandler(this.guna2ImageButton2_Click);
+            // 
+            // btnExit
+            // 
+            resources.ApplyResources(this.btnExit, "btnExit");
+            this.btnExit.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnExit.CheckedState.Parent = this.btnExit;
+            this.btnExit.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnExit.HoverState.Parent = this.btnExit;
+            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
+            this.btnExit.ImageRotate = 0F;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnExit.PressedState.Parent = this.btnExit;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(204, 158);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
             // OrderBtn
             // 
-            this.OrderBtn.AccessibleRole = System.Windows.Forms.AccessibleRole.Border;
-            this.OrderBtn.BackColor = System.Drawing.Color.Gainsboro;
-            this.OrderBtn.FlatAppearance.BorderSize = 0;
-            this.OrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OrderBtn.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.OrderBtn.CheckedState.Parent = this.OrderBtn;
+            this.OrderBtn.CustomImages.Parent = this.OrderBtn;
+            resources.ApplyResources(this.OrderBtn, "OrderBtn");
+            this.OrderBtn.FillColor = System.Drawing.SystemColors.ControlLight;
             this.OrderBtn.ForeColor = System.Drawing.Color.Black;
+            this.OrderBtn.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.OrderBtn.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("OrderBtn.HoverState.Image")));
+            this.OrderBtn.HoverState.Parent = this.OrderBtn;
             this.OrderBtn.Image = ((System.Drawing.Image)(resources.GetObject("OrderBtn.Image")));
-            this.OrderBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.OrderBtn.Location = new System.Drawing.Point(12, 231);
+            this.OrderBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.OrderBtn.ImageSize = new System.Drawing.Size(32, 32);
             this.OrderBtn.Name = "OrderBtn";
-            this.OrderBtn.Size = new System.Drawing.Size(189, 51);
-            this.OrderBtn.TabIndex = 0;
-            this.OrderBtn.Text = "   Order ";
-            this.OrderBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.OrderBtn.UseVisualStyleBackColor = false;
-            this.OrderBtn.Click += new System.EventHandler(this.button1_Click);
+            this.OrderBtn.PressedColor = System.Drawing.Color.Maroon;
+            this.OrderBtn.ShadowDecoration.Parent = this.OrderBtn;
+            this.OrderBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.OrderBtn.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
-            // PartsBtn
+            // CreateROBtn
             // 
-            this.PartsBtn.BackColor = System.Drawing.Color.Gainsboro;
-            this.PartsBtn.FlatAppearance.BorderSize = 0;
-            this.PartsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PartsBtn.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PartsBtn.ForeColor = System.Drawing.Color.Black;
-            this.PartsBtn.Image = ((System.Drawing.Image)(resources.GetObject("PartsBtn.Image")));
-            this.PartsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PartsBtn.Location = new System.Drawing.Point(12, 300);
-            this.PartsBtn.Name = "PartsBtn";
-            this.PartsBtn.Size = new System.Drawing.Size(192, 51);
-            this.PartsBtn.TabIndex = 1;
-            this.PartsBtn.Text = "   Parts";
-            this.PartsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.PartsBtn.UseVisualStyleBackColor = false;
-            this.PartsBtn.Click += new System.EventHandler(this.PartsBtn_Click);
+            this.CreateROBtn.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.CreateROBtn.CheckedState.Parent = this.CreateROBtn;
+            this.CreateROBtn.CustomImages.Parent = this.CreateROBtn;
+            resources.ApplyResources(this.CreateROBtn, "CreateROBtn");
+            this.CreateROBtn.FillColor = System.Drawing.SystemColors.ScrollBar;
+            this.CreateROBtn.ForeColor = System.Drawing.Color.Black;
+            this.CreateROBtn.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.CreateROBtn.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("CreateROBtn.HoverState.Image")));
+            this.CreateROBtn.HoverState.Parent = this.CreateROBtn;
+            this.CreateROBtn.Image = ((System.Drawing.Image)(resources.GetObject("CreateROBtn.Image")));
+            this.CreateROBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.CreateROBtn.ImageOffset = new System.Drawing.Point(11, 0);
+            this.CreateROBtn.ImageSize = new System.Drawing.Size(32, 32);
+            this.CreateROBtn.Name = "CreateROBtn";
+            this.CreateROBtn.PressedColor = System.Drawing.Color.Maroon;
+            this.CreateROBtn.ShadowDecoration.Parent = this.CreateROBtn;
+            this.CreateROBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.CreateROBtn.Click += new System.EventHandler(this.CreateROBtn_Click);
             // 
-            // button1
+            // panelMenu
             // 
-            this.button1.BackColor = System.Drawing.Color.Gainsboro;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(12, 168);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(192, 51);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "   Dashboard";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel2.Controls.Add(this.SidePanel);
-            this.panel2.Controls.Add(this.logout);
-            this.panel2.Controls.Add(this.resetPassword);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.PartsBtn);
-            this.panel2.Controls.Add(this.OrderBtn);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(204, 513);
-            this.panel2.TabIndex = 37;
+            resources.ApplyResources(this.panelMenu, "panelMenu");
+            this.panelMenu.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panelMenu.Controls.Add(this.logout);
+            this.panelMenu.Controls.Add(this.resetPassword);
+            this.panelMenu.Controls.Add(this.panel2);
+            this.panelMenu.Controls.Add(this.guna2Button2);
+            this.panelMenu.Controls.Add(this.SubMenuORPanel);
+            this.panelMenu.Controls.Add(this.OrderBtn);
+            this.panelMenu.Controls.Add(this.panel1);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // logout
             // 
-            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-            this.logout.FlatAppearance.BorderSize = 0;
-            this.logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logout.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logout.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.logout.CheckedState.Parent = this.logout;
+            this.logout.CustomImages.Parent = this.logout;
+            resources.ApplyResources(this.logout, "logout");
+            this.logout.FillColor = System.Drawing.SystemColors.ControlLight;
+            this.logout.ForeColor = System.Drawing.Color.Black;
+            this.logout.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.logout.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("logout.HoverState.Image")));
+            this.logout.HoverState.Parent = this.logout;
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
-            this.logout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.logout.Location = new System.Drawing.Point(12, 457);
+            this.logout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.logout.ImageSize = new System.Drawing.Size(32, 32);
             this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(192, 44);
-            this.logout.TabIndex = 40;
-            this.logout.Text = "Logout";
-            this.logout.UseVisualStyleBackColor = false;
-            this.logout.Click += new System.EventHandler(this.logout_Click);
+            this.logout.PressedColor = System.Drawing.Color.Maroon;
+            this.logout.ShadowDecoration.Parent = this.logout;
+            this.logout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.logout.Click += new System.EventHandler(this.logout_Click_1);
             // 
             // resetPassword
             // 
-            this.resetPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-            this.resetPassword.FlatAppearance.BorderSize = 0;
-            this.resetPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.resetPassword.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetPassword.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.resetPassword.CheckedState.Parent = this.resetPassword;
+            this.resetPassword.CustomImages.Parent = this.resetPassword;
+            resources.ApplyResources(this.resetPassword, "resetPassword");
+            this.resetPassword.FillColor = System.Drawing.SystemColors.ControlLight;
+            this.resetPassword.ForeColor = System.Drawing.Color.Black;
+            this.resetPassword.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.resetPassword.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resetPassword.HoverState.Image")));
+            this.resetPassword.HoverState.Parent = this.resetPassword;
             this.resetPassword.Image = ((System.Drawing.Image)(resources.GetObject("resetPassword.Image")));
-            this.resetPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.resetPassword.Location = new System.Drawing.Point(12, 407);
+            this.resetPassword.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.resetPassword.ImageSize = new System.Drawing.Size(23, 23);
             this.resetPassword.Name = "resetPassword";
-            this.resetPassword.Size = new System.Drawing.Size(192, 44);
-            this.resetPassword.TabIndex = 39;
-            this.resetPassword.Text = "Reset Password";
-            this.resetPassword.UseVisualStyleBackColor = false;
-            this.resetPassword.Click += new System.EventHandler(this.resetPassword_Click);
+            this.resetPassword.PressedColor = System.Drawing.Color.Maroon;
+            this.resetPassword.ShadowDecoration.Parent = this.resetPassword;
+            this.resetPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.resetPassword.Click += new System.EventHandler(this.resetPassword_Click_1);
             // 
-            // label2
+            // panel2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Copperplate Gothic Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(96, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(396, 35);
-            this.label2.TabIndex = 41;
-            this.label2.Text = "RACE UP AUTO CARE";
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
             // 
-            // pictureBox2
+            // guna2Button2
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(24, 12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(67, 53);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 42;
-            this.pictureBox2.TabStop = false;
+            this.guna2Button2.CheckedState.Parent = this.guna2Button2;
+            this.guna2Button2.CustomImages.Parent = this.guna2Button2;
+            resources.ApplyResources(this.guna2Button2, "guna2Button2");
+            this.guna2Button2.FillColor = System.Drawing.SystemColors.ControlLight;
+            this.guna2Button2.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button2.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.guna2Button2.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.HoverState.Image")));
+            this.guna2Button2.HoverState.Parent = this.guna2Button2;
+            this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
+            this.guna2Button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button2.ImageSize = new System.Drawing.Size(32, 32);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.PressedColor = System.Drawing.Color.Maroon;
+            this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
+            this.guna2Button2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // pictureBox5
+            // SubMenuORPanel
             // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(586, 0);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(60, 58);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox5.TabIndex = 43;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            this.SubMenuORPanel.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.SubMenuORPanel.Controls.Add(this.CreateCustProfileBtn);
+            this.SubMenuORPanel.Controls.Add(this.CreateROBtn);
+            resources.ApplyResources(this.SubMenuORPanel, "SubMenuORPanel");
+            this.SubMenuORPanel.Name = "SubMenuORPanel";
+            this.SubMenuORPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // CreateCustProfileBtn
+            // 
+            this.CreateCustProfileBtn.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.CreateCustProfileBtn.CheckedState.Parent = this.CreateCustProfileBtn;
+            this.CreateCustProfileBtn.CustomImages.Parent = this.CreateCustProfileBtn;
+            resources.ApplyResources(this.CreateCustProfileBtn, "CreateCustProfileBtn");
+            this.CreateCustProfileBtn.FillColor = System.Drawing.SystemColors.ScrollBar;
+            this.CreateCustProfileBtn.ForeColor = System.Drawing.Color.Black;
+            this.CreateCustProfileBtn.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.CreateCustProfileBtn.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.HoverState.Image")));
+            this.CreateCustProfileBtn.HoverState.Parent = this.CreateCustProfileBtn;
+            this.CreateCustProfileBtn.Image = ((System.Drawing.Image)(resources.GetObject("CreateCustProfileBtn.Image")));
+            this.CreateCustProfileBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.CreateCustProfileBtn.ImageOffset = new System.Drawing.Point(11, 0);
+            this.CreateCustProfileBtn.ImageSize = new System.Drawing.Size(32, 32);
+            this.CreateCustProfileBtn.Name = "CreateCustProfileBtn";
+            this.CreateCustProfileBtn.PressedColor = System.Drawing.Color.Maroon;
+            this.CreateCustProfileBtn.ShadowDecoration.Parent = this.CreateCustProfileBtn;
+            this.CreateCustProfileBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.CreateCustProfileBtn.Click += new System.EventHandler(this.guna2Button1_Click_1);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(86)))), ((int)(((byte)(87)))));
-            this.panel1.Controls.Add(this.pictureBox5);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(204, 0);
+            this.panel1.Controls.Add(this.pictureBox1);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(646, 86);
-            this.panel1.TabIndex = 44;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // SidePanel
+            // pictureBox2
             // 
-            this.SidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(86)))), ((int)(((byte)(87)))));
-            this.SidePanel.Location = new System.Drawing.Point(0, 168);
-            this.SidePanel.Name = "SidePanel";
-            this.SidePanel.Size = new System.Drawing.Size(10, 51);
-            this.SidePanel.TabIndex = 45;
+            this.pictureBox2.BackColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.pictureBox2, "pictureBox2");
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.DimGray;
+            resources.ApplyResources(this.panel3, "panel3");
+            this.panel3.Name = "panel3";
+            // 
+            // panelDesktop
+            // 
+            resources.ApplyResources(this.panelDesktop, "panelDesktop");
+            this.panelDesktop.Controls.Add(this.pictureBox3);
+            this.panelDesktop.Name = "panelDesktop";
+            // 
+            // pictureBox3
+            // 
+            resources.ApplyResources(this.pictureBox3, "pictureBox3");
+            this.pictureBox3.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // MenuForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(850, 513);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.BackColor = System.Drawing.Color.Gray;
+            this.Controls.Add(this.panelDesktop);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.PanelTitleBar);
+            this.Controls.Add(this.panelMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "MenuForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form2";
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
+            this.Load += new System.EventHandler(this.MenuForm_Load);
+            this.PanelTitleBar.ResumeLayout(false);
+            this.PanelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.panelMenu.ResumeLayout(false);
+            this.SubMenuORPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panelDesktop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.Windows.Forms.Panel PanelTitleBar;
+        private Guna.UI2.WinForms.Guna2Button OrderBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button PartsBtn;
-        private System.Windows.Forms.Button OrderBtn;
-		private System.Windows.Forms.Button logout;
-		private System.Windows.Forms.Button resetPassword;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private Guna.UI2.WinForms.Guna2Button CreateROBtn;
         private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2ImageButton btnMaximize;
+        private Guna.UI2.WinForms.Guna2ImageButton btnMinimize;
+        private Guna.UI2.WinForms.Guna2ImageButton btnExit;
+        private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.Panel SubMenuORPanel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel SidePanel;
+        private Guna.UI2.WinForms.Guna2Button CreateCustProfileBtn;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button logout;
+        private Guna.UI2.WinForms.Guna2Button resetPassword;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panelDesktop;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

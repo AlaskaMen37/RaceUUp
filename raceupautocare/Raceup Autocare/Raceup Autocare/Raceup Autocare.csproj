@@ -49,8 +49,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\..\..\..\..\..\Downloads\Guna.UI-Framework-Lib-master\Guna.UI2.WinForms_v2.0.0.6\.net 4.0\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,8 +67,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateROform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateROform.Designer.cs">
+      <DependentUpon>CreateROform.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBConnection.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="Message Reset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Message Reset.Designer.cs">
+      <DependentUpon>Message Reset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderProcessingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderProcessingForm.Designer.cs">
+      <DependentUpon>OrderProcessingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderProcessingForm2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OrderProcessingForm2.Designer.cs">
+      <DependentUpon>OrderProcessingForm2.cs</DependentUpon>
+    </Compile>
     <Compile Include="reset Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +125,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CreateROform.resx">
+      <DependentUpon>CreateROform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2menu.aa-DJ.resx">
+      <DependentUpon>Form2menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2menu.aa.resx">
+      <DependentUpon>Form2menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Message Reset.resx">
+      <DependentUpon>Message Reset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderProcessingForm.resx">
+      <DependentUpon>OrderProcessingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderProcessingForm2.resx">
+      <DependentUpon>OrderProcessingForm2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="reset Form.resx">
       <DependentUpon>reset Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +167,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -148,6 +202,11 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
