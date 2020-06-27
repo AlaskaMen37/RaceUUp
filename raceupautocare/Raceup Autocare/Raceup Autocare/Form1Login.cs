@@ -30,12 +30,6 @@ namespace Raceup_Autocare
         public LoginForm()
         {
             InitializeComponent();
-            dbcon = new DBConnection();
-
-            userSql = "SELECT * FROM Employee";
-            userReader = dbcon.ConnectToOleDB(userSql);
-                 
-
         }
 
         private void UserTxt_KeyPress(object sender, KeyPressEventArgs e)
@@ -58,65 +52,66 @@ namespace Raceup_Autocare
         {
             DateTime dateTimeToday = DateTime.Today;
             DateTime dateCreated;
+            dbcon = new DBConnection();
+
+            userSql = "SELECT * FROM Employee";
+            userReader = dbcon.ConnectToOleDB(userSql);
 
             while (userReader.Read())
-            {               
+            {
                 if (userReader["Username"].ToString() == UserTxt.Text.ToString().Trim() && userReader["emp_pass"].ToString() == PassTxt.Text.ToString().Trim())
                 {
                     userExist = true;
                     emp = new Employee(userReader["Username"].ToString(), userReader["emp_pass"].ToString(), userReader["Employee_ID"].ToString(),
                        (bool)userReader["Active"], userReader["First_Name"].ToString(), userReader["Last_Name"].ToString(), userReader["Empoyee_Email"].ToString(),
                        userReader["Role"].ToString(), (DateTime)userReader["Date_Updated"], userReader["Updated_By"].ToString(), (DateTime)userReader["Date_Created"], userReader["Created_By"].ToString());
-                    break;
-                }
-    
-            }
+                    dateCreated = Convert.ToDateTime(emp.Created);
+                    double totalActiveDays = (dateTimeToday - dateCreated).TotalDays;
 
-            // Check if user exist in DB.
-            if (userExist)
+                    //To pass data from forms
+                    id = emp.Id;
+                    lname = emp.Lname;
+                    MenuForm menu = new MenuForm();
+
+                    // Check if user account is expired.
+                    // If expired set active to false.
+                    if (totalActiveDays > 60)
+                    {
+                        MessageBox.Show(expiredPasswordMsg, warningTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        userSql = "UPDATE Employee SET Active=False WHERE Username='" + UserTxt.Text.ToString().Trim() + "'";
+                        userReader = dbcon.ConnectToOleDB(userSql);
+                        break;
+
+                    }
+                    // Display number of days remaining after being active for 30 days or more. eg 30 days, 25 days, 20 days remaining.
+                    else if (totalActiveDays > 30 && (totalActiveDays % 5) == 0)
+                    {
+                        double expirationDay = 60 - totalActiveDays;
+                        MessageBox.Show(remainingNumberOfDaysMsg + expirationDay + " days.", warningTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        menu.Show();
+                        break;
+                    }
+                    else
+                    {
+                        this.Hide();
+                        MenuForm system = new MenuForm();
+                        system.ShowDialog();
+                        this.Close();
+                        //Open a new form and close the current form - K
+                        menu.Show();
+                        break;
+                    }
+                }
+                continue;
+            }
+            if (!userExist)
             {
-                dateCreated = Convert.ToDateTime(emp.Created);
-                double totalActiveDays = (dateTimeToday - dateCreated).TotalDays;
-
-                //To pass data from forms
-                id = emp.Id;
-
-                MenuForm menu = new MenuForm();
-                // Check if user account is expired.
-                // If expired set active to false.
-                if (totalActiveDays > 60)
-                {
-                    MessageBox.Show(expiredPasswordMsg, warningTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    userSql = "UPDATE Employee SET Active=False WHERE Username='" + UserTxt.Text.ToString().Trim() + "'";
-                    userReader = dbcon.ConnectToOleDB(userSql);
-
-                    // Display number of days remaining after being active for 30 days or more. eg 30 days, 25 days, 20 days.
-                }
-                else if (totalActiveDays > 30 && (totalActiveDays % 5) == 0)
-                {
-                    double expirationDay = 60 - totalActiveDays;
-                    MessageBox.Show(remainingNumberOfDaysMsg + expirationDay + " days.", warningTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    menu.Show();
-
-                }
-                else
-                {
-
-                    this.Hide();
-                    MenuForm sistema = new MenuForm();
-                    sistema.ShowDialog();
-                    this.Close();
-                    //Open a new form and close the current form - K
-
-                    menu.Show();
-                }
-
-                userReader.Close();
-                dbcon.CloseConnection();
+                MessageBox.Show("User not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else {
-                MessageBox.Show("User does not exists! Please check username field if it's correct.",  "", MessageBoxButtons.OK, MessageBoxIcon.Error);       
-            }
+
+            userReader.Close();
+            dbcon.CloseConnection();
+
         }
 
         private void Minimize_Click(object sender, EventArgs e)
