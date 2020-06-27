@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Raceup_Autocare
 {
-    public partial class OrderProcessingForm : Form
+    public partial class CreateCustProfForm : Form
     {
-        public OrderProcessingForm()
+        public CreateCustProfForm()
         {
             InitializeComponent();
-        }
-
-        private void OrderProcessingForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

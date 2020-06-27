@@ -89,10 +89,7 @@ namespace Raceup_Autocare
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new OrderProcessingForm());
-
-
+        { 
             //SidePanel.Height = OrderBtn.Height;
             //  SidePanel.Top = OrderBtn.Top;
             // SidePanel.Visible = true;
@@ -216,7 +213,7 @@ namespace Raceup_Autocare
 
         private void guna2Button1_Click_1(object sender, EventArgs e)
         {
-
+            OpenChildForm(new CreateCustProfForm());
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

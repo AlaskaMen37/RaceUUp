@@ -67,6 +67,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateCustProfForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCustProfForm.Designer.cs">
+      <DependentUpon>CreateCustProfForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateROform.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,18 +86,6 @@
     </Compile>
     <Compile Include="Message Reset.Designer.cs">
       <DependentUpon>Message Reset.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OrderProcessingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OrderProcessingForm.Designer.cs">
-      <DependentUpon>OrderProcessingForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OrderProcessingForm2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="OrderProcessingForm2.Designer.cs">
-      <DependentUpon>OrderProcessingForm2.cs</DependentUpon>
     </Compile>
     <Compile Include="reset Form.cs">
       <SubType>Form</SubType>
@@ -125,6 +119,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CreateCustProfForm.resx">
+      <DependentUpon>CreateCustProfForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateROform.resx">
       <DependentUpon>CreateROform.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,12 +133,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Message Reset.resx">
       <DependentUpon>Message Reset.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OrderProcessingForm.resx">
-      <DependentUpon>OrderProcessingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OrderProcessingForm2.resx">
-      <DependentUpon>OrderProcessingForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="reset Form.resx">
       <DependentUpon>reset Form.cs</DependentUpon>

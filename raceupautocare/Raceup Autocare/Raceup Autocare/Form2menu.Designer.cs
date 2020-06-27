@@ -259,7 +259,7 @@
             this.CreateCustProfileBtn.FillColor = System.Drawing.SystemColors.ScrollBar;
             this.CreateCustProfileBtn.ForeColor = System.Drawing.Color.Black;
             this.CreateCustProfileBtn.HoverState.FillColor = System.Drawing.Color.Silver;
-            this.CreateCustProfileBtn.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.HoverState.Image")));
+            this.CreateCustProfileBtn.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("CreateCustProfileBtn.HoverState.Image")));
             this.CreateCustProfileBtn.HoverState.Parent = this.CreateCustProfileBtn;
             this.CreateCustProfileBtn.Image = ((System.Drawing.Image)(resources.GetObject("CreateCustProfileBtn.Image")));
             this.CreateCustProfileBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
