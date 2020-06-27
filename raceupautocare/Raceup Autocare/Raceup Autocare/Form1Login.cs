@@ -133,7 +133,7 @@ namespace Raceup_Autocare
         private void Password_Click(object sender, EventArgs e)
         {
             PassTxt.SelectionStart = 0;
-            PassTxt.SelectionLength = UserTxt.Text.Length;
+            PassTxt.SelectionLength = PassTxt.Text.Length;
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
