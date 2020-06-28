@@ -44,6 +44,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(476, 20);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
@@ -64,6 +65,7 @@
             this.label1.Size = new System.Drawing.Size(300, 19);
             this.label1.TabIndex = 2;
             this.label1.Text = "Your password has been reset successfully!";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 

@@ -87,6 +87,12 @@
     <Compile Include="Message Reset.Designer.cs">
       <DependentUpon>Message Reset.cs</DependentUpon>
     </Compile>
+    <Compile Include="PleaseCreateNewCustProf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PleaseCreateNewCustProf.Designer.cs">
+      <DependentUpon>PleaseCreateNewCustProf.cs</DependentUpon>
+    </Compile>
     <Compile Include="reset Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Message Reset.resx">
       <DependentUpon>Message Reset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PleaseCreateNewCustProf.resx">
+      <DependentUpon>PleaseCreateNewCustProf.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="reset Form.resx">
       <DependentUpon>reset Form.cs</DependentUpon>

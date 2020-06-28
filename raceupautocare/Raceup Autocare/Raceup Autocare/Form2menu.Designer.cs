@@ -34,7 +34,6 @@
             this.btnMaximize = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnMinimize = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnExit = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.OrderBtn = new Guna.UI2.WinForms.Guna2Button();
             this.CreateROBtn = new Guna.UI2.WinForms.Guna2Button();
             this.panelMenu = new System.Windows.Forms.Panel();
@@ -50,7 +49,6 @@
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.PanelTitleBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelMenu.SuspendLayout();
             this.SubMenuORPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -118,12 +116,6 @@
             this.btnExit.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.btnExit.PressedState.Parent = this.btnExit;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // pictureBox1
-            // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
             // 
             // OrderBtn
             // 
@@ -274,7 +266,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.pictureBox1);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
@@ -321,7 +312,6 @@
             this.Load += new System.EventHandler(this.MenuForm_Load);
             this.PanelTitleBar.ResumeLayout(false);
             this.PanelTitleBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelMenu.ResumeLayout(false);
             this.SubMenuORPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -335,7 +325,6 @@
         #endregion
         private System.Windows.Forms.Panel PanelTitleBar;
         private Guna.UI2.WinForms.Guna2Button OrderBtn;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2Button CreateROBtn;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2ImageButton btnMaximize;
