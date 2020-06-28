@@ -153,7 +153,7 @@ namespace Raceup_Autocare
                 control.Clear();
             }
 
-            customerCarBrand.Items.Clear();
+            customerCarBrand.Text = "";
         }
     }
 

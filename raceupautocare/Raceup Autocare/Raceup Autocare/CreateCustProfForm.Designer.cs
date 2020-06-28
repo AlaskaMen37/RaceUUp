@@ -372,6 +372,7 @@
             this.customerCarBrand.HoverState.Parent = this.customerCarBrand;
             this.customerCarBrand.ItemHeight = 30;
             this.customerCarBrand.Items.AddRange(new object[] {
+            "",
             "Toyota",
             "Honda",
             "Mitzubishi",
