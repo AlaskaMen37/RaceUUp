@@ -32,8 +32,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2TextBox8 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.searchButton = new Guna.UI2.WinForms.Guna2Button();
+            this.searchPlateNoTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.customerChasisNoTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.customerEngineNumberTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
@@ -51,7 +51,7 @@
             this.customerTelephoneNumTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.customerAddressTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.customerNameTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.updateButton = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.nameErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.AddressErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
@@ -107,46 +107,48 @@
             this.guna2HtmlLabel9.TabIndex = 117;
             this.guna2HtmlLabel9.Text = "Search Plate no.:";
             // 
-            // guna2Button1
+            // searchButton
             // 
-            this.guna2Button1.BorderRadius = 5;
-            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
-            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
-            this.guna2Button1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Location = new System.Drawing.Point(597, 138);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(157, 49);
-            this.guna2Button1.TabIndex = 116;
-            this.guna2Button1.Text = "Search";
+            this.searchButton.BorderRadius = 5;
+            this.searchButton.CheckedState.Parent = this.searchButton;
+            this.searchButton.CustomImages.Parent = this.searchButton;
+            this.searchButton.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchButton.ForeColor = System.Drawing.Color.White;
+            this.searchButton.HoverState.Parent = this.searchButton;
+            this.searchButton.Location = new System.Drawing.Point(597, 138);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(4);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.ShadowDecoration.Parent = this.searchButton;
+            this.searchButton.Size = new System.Drawing.Size(157, 49);
+            this.searchButton.TabIndex = 116;
+            this.searchButton.Text = "Search";
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // guna2TextBox8
+            // searchPlateNoTxtbox
             // 
-            this.guna2TextBox8.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox8.DefaultText = "";
-            this.guna2TextBox8.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox8.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox8.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox8.DisabledState.Parent = this.guna2TextBox8;
-            this.guna2TextBox8.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(86)))), ((int)(((byte)(87)))));
-            this.guna2TextBox8.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox8.FocusedState.Parent = this.guna2TextBox8;
-            this.guna2TextBox8.ForeColor = System.Drawing.Color.White;
-            this.guna2TextBox8.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox8.HoverState.Parent = this.guna2TextBox8;
-            this.guna2TextBox8.Location = new System.Drawing.Point(329, 146);
-            this.guna2TextBox8.Margin = new System.Windows.Forms.Padding(5);
-            this.guna2TextBox8.Name = "guna2TextBox8";
-            this.guna2TextBox8.PasswordChar = '\0';
-            this.guna2TextBox8.PlaceholderText = "";
-            this.guna2TextBox8.SelectedText = "";
-            this.guna2TextBox8.ShadowDecoration.Parent = this.guna2TextBox8;
-            this.guna2TextBox8.Size = new System.Drawing.Size(239, 36);
-            this.guna2TextBox8.TabIndex = 115;
+            this.searchPlateNoTxtbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchPlateNoTxtbox.DefaultText = "";
+            this.searchPlateNoTxtbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.searchPlateNoTxtbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.searchPlateNoTxtbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.searchPlateNoTxtbox.DisabledState.Parent = this.searchPlateNoTxtbox;
+            this.searchPlateNoTxtbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.searchPlateNoTxtbox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(86)))), ((int)(((byte)(87)))));
+            this.searchPlateNoTxtbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.searchPlateNoTxtbox.FocusedState.Parent = this.searchPlateNoTxtbox;
+            this.searchPlateNoTxtbox.ForeColor = System.Drawing.Color.White;
+            this.searchPlateNoTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.searchPlateNoTxtbox.HoverState.Parent = this.searchPlateNoTxtbox;
+            this.searchPlateNoTxtbox.Location = new System.Drawing.Point(329, 146);
+            this.searchPlateNoTxtbox.Margin = new System.Windows.Forms.Padding(5);
+            this.searchPlateNoTxtbox.Name = "searchPlateNoTxtbox";
+            this.searchPlateNoTxtbox.PasswordChar = '\0';
+            this.searchPlateNoTxtbox.PlaceholderText = "";
+            this.searchPlateNoTxtbox.SelectedText = "";
+            this.searchPlateNoTxtbox.ShadowDecoration.Parent = this.searchPlateNoTxtbox;
+            this.searchPlateNoTxtbox.Size = new System.Drawing.Size(239, 36);
+            this.searchPlateNoTxtbox.TabIndex = 115;
+            this.searchPlateNoTxtbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchPlateNoTxtbox_KeyPress);
             // 
             // guna2GroupBox1
             // 
@@ -454,23 +456,25 @@
             this.customerNameTxtbox.Size = new System.Drawing.Size(265, 44);
             this.customerNameTxtbox.TabIndex = 0;
             // 
-            // guna2Button3
+            // updateButton
             // 
-            this.guna2Button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2Button3.BorderRadius = 13;
-            this.guna2Button3.CheckedState.Parent = this.guna2Button3;
-            this.guna2Button3.CustomImages.Parent = this.guna2Button3;
-            this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.guna2Button3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button3.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button3.HoverState.Parent = this.guna2Button3;
-            this.guna2Button3.Location = new System.Drawing.Point(795, 564);
-            this.guna2Button3.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.ShadowDecoration.Parent = this.guna2Button3;
-            this.guna2Button3.Size = new System.Drawing.Size(281, 98);
-            this.guna2Button3.TabIndex = 118;
-            this.guna2Button3.Text = "Update";
+            this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.updateButton.BorderRadius = 13;
+            this.updateButton.CheckedState.Parent = this.updateButton;
+            this.updateButton.CustomImages.Parent = this.updateButton;
+            this.updateButton.Enabled = false;
+            this.updateButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.updateButton.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateButton.ForeColor = System.Drawing.Color.Black;
+            this.updateButton.HoverState.Parent = this.updateButton;
+            this.updateButton.Location = new System.Drawing.Point(795, 564);
+            this.updateButton.Margin = new System.Windows.Forms.Padding(4);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.ShadowDecoration.Parent = this.updateButton;
+            this.updateButton.Size = new System.Drawing.Size(281, 98);
+            this.updateButton.TabIndex = 118;
+            this.updateButton.Text = "Update";
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // guna2Button4
             // 
@@ -530,10 +534,10 @@
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1316, 742);
             this.Controls.Add(this.guna2Button4);
-            this.Controls.Add(this.guna2Button3);
+            this.Controls.Add(this.updateButton);
             this.Controls.Add(this.guna2HtmlLabel9);
-            this.Controls.Add(this.guna2Button1);
-            this.Controls.Add(this.guna2TextBox8);
+            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.searchPlateNoTxtbox);
             this.Controls.Add(this.guna2GroupBox1);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -561,8 +565,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel9;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox8;
+        private Guna.UI2.WinForms.Guna2Button searchButton;
+        private Guna.UI2.WinForms.Guna2TextBox searchPlateNoTxtbox;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2TextBox customerChasisNoTxtbox;
         private Guna.UI2.WinForms.Guna2TextBox customerEngineNumberTxtbox;
@@ -580,7 +584,7 @@
         private Guna.UI2.WinForms.Guna2TextBox customerTelephoneNumTxtbox;
         private Guna.UI2.WinForms.Guna2TextBox customerAddressTxtbox;
         private Guna.UI2.WinForms.Guna2TextBox customerNameTxtbox;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        private Guna.UI2.WinForms.Guna2Button updateButton;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private System.Windows.Forms.ErrorProvider nameErrorProvider;
         private System.Windows.Forms.ErrorProvider AddressErrorProvider;
