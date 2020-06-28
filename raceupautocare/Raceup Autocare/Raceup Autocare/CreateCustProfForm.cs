@@ -35,13 +35,17 @@ namespace Raceup_Autocare
             sqlQuery = "INSERT INTO CustomerProfile (first_name, last_name, Address, contact_number, Plate_Number, created_by, date_created, updated_by, date_updated, car_brand, car_model, chasis_number, engine_number)" +
                         "VALUES('" + customerFirstNameTxtbox.Text + "','" + customerLastNameTxtbox.Text + "', '" + customerAddressTxtbox.Text + "', '" + customerTelephoneNumTxtbox.Text + "', '" + customerPlateNoTxtbox.Text + "', '" + LoginForm.lname + "', '" + dateTimeToday + "', '" + LoginForm.lname + "', '" + dateTimeToday + "' , '" + customerCarBrand.Text + "' , '" + customerCarModelTxtbox.Text + "' , '" + customerChasisNoTxtbox.Text + "' , '" + customerEngineNumberTxtbox.Text + "'); ";
 
-            if (ValidateFields())
+            if (!isPlateNumberExist())
             {
-                customerReader = dbcon.ConnectToOleDB(sqlQuery);
-                MessageBox.Show("Customer information is successfullyy saved.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearTextBoxes(this.Controls);
-                customerCarBrand.SelectedItem = "";
-                updateButton.Enabled = false;
+                if (ValidateFields())
+                {
+                    customerReader = dbcon.ConnectToOleDB(sqlQuery);
+                    MessageBox.Show("Customer information is successfullyy saved.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Plate number already exists.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -206,6 +210,24 @@ namespace Raceup_Autocare
         private void customerCarModelTxtbox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public Boolean isPlateNumberExist()
+        {
+            dbcon = new DBConnection();
+            Boolean plateNoExist = false;
+            sqlQuery = "SELECT * FROM CustomerProfile";
+            customerReader = dbcon.ConnectToOleDB(sqlQuery);
+
+            while (customerReader.Read())
+            {
+                if (customerReader["Plate_Number"].ToString().Equals(customerPlateNoTxtbox.Text.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    plateNoExist = true;
+                }
+            }
+
+            return plateNoExist;
         }
     }
 
