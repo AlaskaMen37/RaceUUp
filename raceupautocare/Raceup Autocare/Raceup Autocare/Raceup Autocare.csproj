@@ -125,6 +125,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Resources\logo255.png" />
+    <None Include="Resources\paaaaaawe.png" />
+    <None Include="Resources\pawer1.png" />
+    <None Include="Resources\rsz_1rsz_pawer.png" />
+    <None Include="Resources\rsz_pawer.png" />
+    <None Include="Resources\pawer.png" />
+    <None Include="Resources\rsz_1logo2.png" />
+    <None Include="Resources\logo21.png" />
+    <None Include="Resources\logo2.png" />
+    <None Include="Resources\logo1 - Copy1.png" />
+    <None Include="Resources\logo1 - Copy.png" />
     <EmbeddedResource Include="CreateCustProfForm.resx">
       <DependentUpon>CreateCustProfForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,6 +177,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />

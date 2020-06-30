@@ -228,5 +228,85 @@ namespace Raceup_Autocare
         {
 
         }
+
+        private void OrderBtn_MouseHover(object sender, EventArgs e)
+        {
+            orderProsHoverButton.Visible = true;
+        }
+
+        private void OrderBtn_MouseLeave(object sender, EventArgs e)
+        {
+            orderProsHoverButton.Visible = false;
+        }
+
+        private void CreateROBtn_MouseHover(object sender, EventArgs e)
+        {
+            createRepairOrderHoverButton.Visible = true;
+        }
+
+        private void CreateROBtn_MouseLeave(object sender, EventArgs e)
+        {
+            createRepairOrderHoverButton.Visible = false;
+        }
+
+        private void createCustomerProfileHoverButton_MouseHover(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void createCustomerProfileHoverButton_MouseLeave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void CreateCustProfileBtn_MouseHover(object sender, EventArgs e)
+        {
+            createCustomerProfileHoverButton.Visible = true;
+        }
+
+        private void CreateCustProfileBtn_MouseLeave(object sender, EventArgs e)
+        {
+            createCustomerProfileHoverButton.Visible = false;
+        }
+
+        private void partsHoverButton_MouseHover(object sender, EventArgs e)
+        {
+            partsHoverButton.Visible = true;
+        }
+
+        private void partsHoverButton_MouseLeave(object sender, EventArgs e)
+        {
+            partsHoverButton.Visible = false;
+        }
+
+        private void resetPassword_MouseHover(object sender, EventArgs e)
+        {
+            resetPassHoverButton.Visible = true;
+        }
+
+        private void resetPassword_MouseLeave(object sender, EventArgs e)
+        {
+            resetPassHoverButton.Visible = false;
+        }
+
+        private void logout_MouseHover(object sender, EventArgs e)
+        {
+            logoutHoverButton.Visible = true;
+        }
+
+        private void logout_MouseLeave(object sender, EventArgs e)
+        {
+            logoutHoverButton.Visible = false;
+        }
+
+        private void guna2Button2_MouseHover(object sender, EventArgs e)
+        {
+            partsHoverButton.Visible = true;
+        }
+
+        private void guna2Button2_MouseLeave(object sender, EventArgs e)
+        {
+            partsHoverButton.Visible = false;
+        }
     }
 }
