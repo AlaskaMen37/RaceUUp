@@ -66,14 +66,14 @@ namespace Raceup_Autocare
 			if (currentPassword.Text.Equals(""))
 			{
 				label4.Text = "Current Password is Empty";
-				label4.ForeColor = System.Drawing.Color.Red;
+				label4.ForeColor = System.Drawing.Color.Lime;
 				label4.Visible = true;
 				confirm = false;
 			}
 			else if (currentPassword.Text.Equals(emp.Password) == false)
 			{
 				label4.Text = "Current Password is Incorrect";
-				label4.ForeColor = System.Drawing.Color.Red;
+				label4.ForeColor = System.Drawing.Color.Lime;
 				label4.Visible = true;
 				confirm = false;
 			}
@@ -87,13 +87,13 @@ namespace Raceup_Autocare
 
 			if (newPassword.Text.Equals("")) {
 				label5.Text = "New Password is Empty";
-				label5.ForeColor = System.Drawing.Color.Red;
+				label5.ForeColor = System.Drawing.Color.Lime;
 				label5.Visible = true;
 				confirm = false;
 			}
 			else if (newPassword.Text.Equals(emp.Password)) {
 				label5.Text = "Old password and New must not match";
-				label5.ForeColor = System.Drawing.Color.Red;
+				label5.ForeColor = System.Drawing.Color.Lime;
 				label5.Visible = true;
 				confirm = false;
 			}
@@ -106,14 +106,14 @@ namespace Raceup_Autocare
 			if (confirmPassword.Text.Equals(""))
 			{
 				label6.Text = "Confirm Password is Empty";
-				label6.ForeColor = System.Drawing.Color.Red;
+				label6.ForeColor = System.Drawing.Color.Lime;
 				label6.Visible = true;
 				confirm = false;
 			}
 			else if (confirmPassword.Text.Equals(newPassword.Text) == false)
 			{
 				label6.Text = "Passwords does not match";
-				label6.ForeColor = System.Drawing.Color.Red;
+				label6.ForeColor = System.Drawing.Color.Lime;
 				label6.Visible = true;
 				confirm = false;
 			}
@@ -146,6 +146,11 @@ namespace Raceup_Autocare
         private void pictureBox5_Click(object sender, EventArgs e)
         {
 			this.Close();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

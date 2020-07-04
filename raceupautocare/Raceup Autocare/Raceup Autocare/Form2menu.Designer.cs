@@ -30,44 +30,122 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
             this.PanelTitleBar = new System.Windows.Forms.Panel();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.SubMenuORPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelDesktop = new System.Windows.Forms.Panel();
+            this.SidePanel = new System.Windows.Forms.Panel();
+            this.SidePanel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btnMaximize = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnMinimize = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnExit = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.panelMenu = new System.Windows.Forms.Panel();
-            this.orderProsHoverButton = new System.Windows.Forms.Button();
             this.logout = new Guna.UI2.WinForms.Guna2Button();
             this.resetPassword = new Guna.UI2.WinForms.Guna2Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.SubMenuORPanel = new System.Windows.Forms.Panel();
-            this.createCustomerProfileHoverButton = new System.Windows.Forms.Button();
-            this.createRepairOrderHoverButton = new System.Windows.Forms.Button();
-            this.CreateCustProfileBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.CreateROBtn = new Guna.UI2.WinForms.Guna2Button();
             this.OrderBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panelDesktop = new System.Windows.Forms.Panel();
-            this.partsHoverButton = new System.Windows.Forms.Button();
-            this.resetPassHoverButton = new System.Windows.Forms.Button();
-            this.logoutHoverButton = new System.Windows.Forms.Button();
+            this.PartsBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.CreateROBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.CreateCustProfileBtn = new Guna.UI2.WinForms.Guna2Button();
             this.PanelTitleBar.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.SubMenuORPanel.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panelDesktop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelTitleBar
             // 
-            this.PanelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.PanelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(53)))), ((int)(((byte)(45)))));
             this.PanelTitleBar.Controls.Add(this.btnMaximize);
             this.PanelTitleBar.Controls.Add(this.btnMinimize);
             this.PanelTitleBar.Controls.Add(this.btnExit);
             resources.ApplyResources(this.PanelTitleBar, "PanelTitleBar");
             this.PanelTitleBar.Name = "PanelTitleBar";
             this.PanelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelTitleBar_MouseDown);
+            // 
+            // panelMenu
+            // 
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.panelMenu.Controls.Add(this.panel2);
+            this.panelMenu.Controls.Add(this.SidePanel);
+            this.panelMenu.Controls.Add(this.logout);
+            this.panelMenu.Controls.Add(this.resetPassword);
+            this.panelMenu.Controls.Add(this.PartsBtn);
+            this.panelMenu.Controls.Add(this.SubMenuORPanel);
+            this.panelMenu.Controls.Add(this.OrderBtn);
+            this.panelMenu.Controls.Add(this.panel1);
+            resources.ApplyResources(this.panelMenu, "panelMenu");
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // SubMenuORPanel
+            // 
+            this.SubMenuORPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.SubMenuORPanel.Controls.Add(this.CreateCustProfileBtn);
+            this.SubMenuORPanel.Controls.Add(this.SidePanel2);
+            this.SubMenuORPanel.Controls.Add(this.CreateROBtn);
+            resources.ApplyResources(this.SubMenuORPanel, "SubMenuORPanel");
+            this.SubMenuORPanel.Name = "SubMenuORPanel";
+            this.SubMenuORPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.panel1.Controls.Add(this.pictureBox2);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.panel3.Controls.Add(this.panel4);
+            resources.ApplyResources(this.panel3, "panel3");
+            this.panel3.Name = "panel3";
+            // 
+            // panelDesktop
+            // 
+            this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.panelDesktop.Controls.Add(this.panel5);
+            resources.ApplyResources(this.panelDesktop, "panelDesktop");
+            this.panelDesktop.Name = "panelDesktop";
+            this.panelDesktop.MouseLeave += new System.EventHandler(this.panelDesktop_MouseLeave);
+            // 
+            // SidePanel
+            // 
+            this.SidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(53)))), ((int)(((byte)(45)))));
+            resources.ApplyResources(this.SidePanel, "SidePanel");
+            this.SidePanel.Name = "SidePanel";
+            // 
+            // SidePanel2
+            // 
+            this.SidePanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            resources.ApplyResources(this.SidePanel2, "SidePanel2");
+            this.SidePanel2.Name = "SidePanel2";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            resources.ApplyResources(this.panel4, "panel4");
+            this.panel4.Name = "panel4";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            resources.ApplyResources(this.panel5, "panel5");
+            this.panel5.Name = "panel5";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
             // 
             // btnMaximize
             // 
@@ -78,9 +156,9 @@
             this.btnMaximize.HoverState.Parent = this.btnMaximize;
             this.btnMaximize.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximize.Image")));
             this.btnMaximize.ImageRotate = 0F;
-            this.btnMaximize.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnMaximize.ImageSize = new System.Drawing.Size(32, 32);
             this.btnMaximize.Name = "btnMaximize";
-            this.btnMaximize.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnMaximize.PressedState.ImageSize = new System.Drawing.Size(40, 40);
             this.btnMaximize.PressedState.Parent = this.btnMaximize;
             this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
             // 
@@ -93,9 +171,9 @@
             this.btnMinimize.HoverState.Parent = this.btnMinimize;
             this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
             this.btnMinimize.ImageRotate = 0F;
-            this.btnMinimize.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnMinimize.ImageSize = new System.Drawing.Size(32, 32);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnMinimize.PressedState.ImageSize = new System.Drawing.Size(40, 40);
             this.btnMinimize.PressedState.Parent = this.btnMinimize;
             this.btnMinimize.Click += new System.EventHandler(this.guna2ImageButton2_Click);
             // 
@@ -108,55 +186,29 @@
             this.btnExit.HoverState.Parent = this.btnExit;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageRotate = 0F;
-            this.btnExit.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnExit.ImageSize = new System.Drawing.Size(32, 32);
             this.btnExit.Name = "btnExit";
-            this.btnExit.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnExit.PressedState.ImageSize = new System.Drawing.Size(40, 40);
             this.btnExit.PressedState.Parent = this.btnExit;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // panelMenu
-            // 
-            resources.ApplyResources(this.panelMenu, "panelMenu");
-            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
-            this.panelMenu.Controls.Add(this.logoutHoverButton);
-            this.panelMenu.Controls.Add(this.resetPassHoverButton);
-            this.panelMenu.Controls.Add(this.partsHoverButton);
-            this.panelMenu.Controls.Add(this.orderProsHoverButton);
-            this.panelMenu.Controls.Add(this.logout);
-            this.panelMenu.Controls.Add(this.resetPassword);
-            this.panelMenu.Controls.Add(this.panel2);
-            this.panelMenu.Controls.Add(this.guna2Button2);
-            this.panelMenu.Controls.Add(this.SubMenuORPanel);
-            this.panelMenu.Controls.Add(this.OrderBtn);
-            this.panelMenu.Controls.Add(this.panel1);
-            this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // orderProsHoverButton
-            // 
-            this.orderProsHoverButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.orderProsHoverButton.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.orderProsHoverButton, "orderProsHoverButton");
-            this.orderProsHoverButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.orderProsHoverButton.Name = "orderProsHoverButton";
-            this.orderProsHoverButton.UseVisualStyleBackColor = false;
-            // 
             // logout
             // 
-            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            resources.ApplyResources(this.logout, "logout");
+            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.logout.CheckedState.Parent = this.logout;
             this.logout.CustomImages.Parent = this.logout;
-            resources.ApplyResources(this.logout, "logout");
-            this.logout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
-            this.logout.ForeColor = System.Drawing.Color.LightGray;
+            this.logout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.logout.ForeColor = System.Drawing.Color.Gray;
             this.logout.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.logout.HoverState.ForeColor = System.Drawing.Color.LightGray;
             this.logout.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("logout.HoverState.Image")));
             this.logout.HoverState.Parent = this.logout;
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
             this.logout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.logout.ImageSize = new System.Drawing.Size(32, 32);
             this.logout.Name = "logout";
-            this.logout.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.logout.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.logout.ShadowDecoration.Parent = this.logout;
             this.logout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.logout.Click += new System.EventHandler(this.logout_Click_1);
@@ -165,210 +217,128 @@
             // 
             // resetPassword
             // 
-            this.resetPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            resources.ApplyResources(this.resetPassword, "resetPassword");
+            this.resetPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.resetPassword.CheckedState.Parent = this.resetPassword;
             this.resetPassword.CustomImages.Parent = this.resetPassword;
-            resources.ApplyResources(this.resetPassword, "resetPassword");
-            this.resetPassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
-            this.resetPassword.ForeColor = System.Drawing.Color.LightGray;
+            this.resetPassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.resetPassword.ForeColor = System.Drawing.Color.Gray;
             this.resetPassword.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.resetPassword.HoverState.ForeColor = System.Drawing.Color.LightGray;
             this.resetPassword.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resetPassword.HoverState.Image")));
             this.resetPassword.HoverState.Parent = this.resetPassword;
             this.resetPassword.Image = ((System.Drawing.Image)(resources.GetObject("resetPassword.Image")));
             this.resetPassword.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.resetPassword.ImageOffset = new System.Drawing.Point(3, 0);
             this.resetPassword.ImageSize = new System.Drawing.Size(23, 23);
             this.resetPassword.Name = "resetPassword";
-            this.resetPassword.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.resetPassword.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.resetPassword.ShadowDecoration.Parent = this.resetPassword;
             this.resetPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.resetPassword.Click += new System.EventHandler(this.resetPassword_Click_1);
             this.resetPassword.MouseLeave += new System.EventHandler(this.resetPassword_MouseLeave);
             this.resetPassword.MouseHover += new System.EventHandler(this.resetPassword_MouseHover);
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
-            // 
-            // guna2Button2
-            // 
-            this.guna2Button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
-            this.guna2Button2.CheckedState.Parent = this.guna2Button2;
-            this.guna2Button2.CustomImages.Parent = this.guna2Button2;
-            resources.ApplyResources(this.guna2Button2, "guna2Button2");
-            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
-            this.guna2Button2.ForeColor = System.Drawing.Color.LightGray;
-            this.guna2Button2.HoverState.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.HoverState.Image")));
-            this.guna2Button2.HoverState.Parent = this.guna2Button2;
-            this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
-            this.guna2Button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button2.ImageSize = new System.Drawing.Size(32, 32);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
-            this.guna2Button2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button2.MouseLeave += new System.EventHandler(this.guna2Button2_MouseLeave);
-            this.guna2Button2.MouseHover += new System.EventHandler(this.guna2Button2_MouseHover);
-            // 
-            // SubMenuORPanel
-            // 
-            this.SubMenuORPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
-            this.SubMenuORPanel.Controls.Add(this.createCustomerProfileHoverButton);
-            this.SubMenuORPanel.Controls.Add(this.createRepairOrderHoverButton);
-            this.SubMenuORPanel.Controls.Add(this.CreateCustProfileBtn);
-            this.SubMenuORPanel.Controls.Add(this.CreateROBtn);
-            resources.ApplyResources(this.SubMenuORPanel, "SubMenuORPanel");
-            this.SubMenuORPanel.Name = "SubMenuORPanel";
-            this.SubMenuORPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-            // 
-            // createCustomerProfileHoverButton
-            // 
-            this.createCustomerProfileHoverButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.createCustomerProfileHoverButton.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.createCustomerProfileHoverButton, "createCustomerProfileHoverButton");
-            this.createCustomerProfileHoverButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.createCustomerProfileHoverButton.Name = "createCustomerProfileHoverButton";
-            this.createCustomerProfileHoverButton.UseVisualStyleBackColor = false;
-            this.createCustomerProfileHoverButton.MouseLeave += new System.EventHandler(this.createCustomerProfileHoverButton_MouseLeave);
-            this.createCustomerProfileHoverButton.MouseHover += new System.EventHandler(this.createCustomerProfileHoverButton_MouseHover);
-            // 
-            // createRepairOrderHoverButton
-            // 
-            this.createRepairOrderHoverButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.createRepairOrderHoverButton.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.createRepairOrderHoverButton, "createRepairOrderHoverButton");
-            this.createRepairOrderHoverButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.createRepairOrderHoverButton.Name = "createRepairOrderHoverButton";
-            this.createRepairOrderHoverButton.UseVisualStyleBackColor = false;
-            // 
-            // CreateCustProfileBtn
-            // 
-            this.CreateCustProfileBtn.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.CreateCustProfileBtn.CheckedState.Parent = this.CreateCustProfileBtn;
-            this.CreateCustProfileBtn.CustomImages.Parent = this.CreateCustProfileBtn;
-            resources.ApplyResources(this.CreateCustProfileBtn, "CreateCustProfileBtn");
-            this.CreateCustProfileBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
-            this.CreateCustProfileBtn.ForeColor = System.Drawing.Color.LightGray;
-            this.CreateCustProfileBtn.HoverState.FillColor = System.Drawing.Color.Transparent;
-            this.CreateCustProfileBtn.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("CreateCustProfileBtn.HoverState.Image")));
-            this.CreateCustProfileBtn.HoverState.Parent = this.CreateCustProfileBtn;
-            this.CreateCustProfileBtn.Image = ((System.Drawing.Image)(resources.GetObject("CreateCustProfileBtn.Image")));
-            this.CreateCustProfileBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.CreateCustProfileBtn.ImageOffset = new System.Drawing.Point(11, 0);
-            this.CreateCustProfileBtn.ImageSize = new System.Drawing.Size(32, 32);
-            this.CreateCustProfileBtn.Name = "CreateCustProfileBtn";
-            this.CreateCustProfileBtn.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.CreateCustProfileBtn.ShadowDecoration.Parent = this.CreateCustProfileBtn;
-            this.CreateCustProfileBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.CreateCustProfileBtn.Click += new System.EventHandler(this.guna2Button1_Click_1);
-            this.CreateCustProfileBtn.MouseLeave += new System.EventHandler(this.CreateCustProfileBtn_MouseLeave);
-            this.CreateCustProfileBtn.MouseHover += new System.EventHandler(this.CreateCustProfileBtn_MouseHover);
-            // 
-            // CreateROBtn
-            // 
-            this.CreateROBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(61)))));
-            this.CreateROBtn.CheckedState.Parent = this.CreateROBtn;
-            this.CreateROBtn.CustomImages.Parent = this.CreateROBtn;
-            resources.ApplyResources(this.CreateROBtn, "CreateROBtn");
-            this.CreateROBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
-            this.CreateROBtn.ForeColor = System.Drawing.Color.LightGray;
-            this.CreateROBtn.HoverState.FillColor = System.Drawing.Color.Transparent;
-            this.CreateROBtn.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("CreateROBtn.HoverState.Image")));
-            this.CreateROBtn.HoverState.Parent = this.CreateROBtn;
-            this.CreateROBtn.Image = ((System.Drawing.Image)(resources.GetObject("CreateROBtn.Image")));
-            this.CreateROBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.CreateROBtn.ImageOffset = new System.Drawing.Point(11, 0);
-            this.CreateROBtn.ImageSize = new System.Drawing.Size(32, 32);
-            this.CreateROBtn.Name = "CreateROBtn";
-            this.CreateROBtn.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.CreateROBtn.ShadowDecoration.Parent = this.CreateROBtn;
-            this.CreateROBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.CreateROBtn.Click += new System.EventHandler(this.CreateROBtn_Click);
-            this.CreateROBtn.MouseLeave += new System.EventHandler(this.CreateROBtn_MouseLeave);
-            this.CreateROBtn.MouseHover += new System.EventHandler(this.CreateROBtn_MouseHover);
-            // 
             // OrderBtn
             // 
-            this.OrderBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(61)))));
+            this.OrderBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.OrderBtn.CheckedState.Parent = this.OrderBtn;
             this.OrderBtn.CustomImages.Parent = this.OrderBtn;
             resources.ApplyResources(this.OrderBtn, "OrderBtn");
-            this.OrderBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
-            this.OrderBtn.ForeColor = System.Drawing.Color.LightGray;
+            this.OrderBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.OrderBtn.ForeColor = System.Drawing.Color.Gray;
             this.OrderBtn.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.OrderBtn.HoverState.ForeColor = System.Drawing.Color.LightGray;
             this.OrderBtn.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("OrderBtn.HoverState.Image")));
             this.OrderBtn.HoverState.Parent = this.OrderBtn;
             this.OrderBtn.Image = ((System.Drawing.Image)(resources.GetObject("OrderBtn.Image")));
             this.OrderBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.OrderBtn.ImageSize = new System.Drawing.Size(32, 32);
             this.OrderBtn.Name = "OrderBtn";
-            this.OrderBtn.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.OrderBtn.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.OrderBtn.ShadowDecoration.Parent = this.OrderBtn;
             this.OrderBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.OrderBtn.Click += new System.EventHandler(this.guna2Button1_Click);
             this.OrderBtn.MouseLeave += new System.EventHandler(this.OrderBtn_MouseLeave);
             this.OrderBtn.MouseHover += new System.EventHandler(this.OrderBtn_MouseHover);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
-            this.panel1.Controls.Add(this.pictureBox2);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.pictureBox2.Image = global::Raceup_Autocare.Properties.Resources.logo1___Copy1;
             resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // panel3
+            // PartsBtn
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
-            resources.ApplyResources(this.panel3, "panel3");
-            this.panel3.Name = "panel3";
+            this.PartsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.PartsBtn.CheckedState.Parent = this.PartsBtn;
+            this.PartsBtn.CustomImages.Parent = this.PartsBtn;
+            resources.ApplyResources(this.PartsBtn, "PartsBtn");
+            this.PartsBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.PartsBtn.ForeColor = System.Drawing.Color.Gray;
+            this.PartsBtn.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.PartsBtn.HoverState.ForeColor = System.Drawing.Color.LightGray;
+            this.PartsBtn.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("PartsBtn.HoverState.Image")));
+            this.PartsBtn.HoverState.Parent = this.PartsBtn;
+            this.PartsBtn.Image = ((System.Drawing.Image)(resources.GetObject("PartsBtn.Image")));
+            this.PartsBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.PartsBtn.ImageSize = new System.Drawing.Size(32, 32);
+            this.PartsBtn.Name = "PartsBtn";
+            this.PartsBtn.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.PartsBtn.ShadowDecoration.Parent = this.PartsBtn;
+            this.PartsBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.PartsBtn.Click += new System.EventHandler(this.guna2Button2_Click);
+            this.PartsBtn.MouseLeave += new System.EventHandler(this.guna2Button2_MouseLeave);
+            this.PartsBtn.MouseHover += new System.EventHandler(this.guna2Button2_MouseHover);
             // 
-            // panelDesktop
+            // CreateROBtn
             // 
-            this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
-            resources.ApplyResources(this.panelDesktop, "panelDesktop");
-            this.panelDesktop.Name = "panelDesktop";
+            this.CreateROBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.CreateROBtn.CheckedState.Parent = this.CreateROBtn;
+            this.CreateROBtn.CustomImages.Parent = this.CreateROBtn;
+            resources.ApplyResources(this.CreateROBtn, "CreateROBtn");
+            this.CreateROBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.CreateROBtn.ForeColor = System.Drawing.Color.Gray;
+            this.CreateROBtn.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.CreateROBtn.HoverState.ForeColor = System.Drawing.Color.LightGray;
+            this.CreateROBtn.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.HoverState.Image1")));
+            this.CreateROBtn.HoverState.Parent = this.CreateROBtn;
+            this.CreateROBtn.Image = ((System.Drawing.Image)(resources.GetObject("CreateROBtn.Image")));
+            this.CreateROBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.CreateROBtn.ImageOffset = new System.Drawing.Point(11, 0);
+            this.CreateROBtn.ImageSize = new System.Drawing.Size(32, 32);
+            this.CreateROBtn.Name = "CreateROBtn";
+            this.CreateROBtn.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.CreateROBtn.ShadowDecoration.Parent = this.CreateROBtn;
+            this.CreateROBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.CreateROBtn.Click += new System.EventHandler(this.CreateROBtn_Click_1);
+            this.CreateROBtn.MouseLeave += new System.EventHandler(this.CreateROBtn_MouseLeave_1);
             // 
-            // partsHoverButton
+            // CreateCustProfileBtn
             // 
-            this.partsHoverButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.partsHoverButton.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.partsHoverButton, "partsHoverButton");
-            this.partsHoverButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.partsHoverButton.Name = "partsHoverButton";
-            this.partsHoverButton.UseVisualStyleBackColor = false;
-            this.partsHoverButton.MouseLeave += new System.EventHandler(this.partsHoverButton_MouseLeave);
-            this.partsHoverButton.MouseHover += new System.EventHandler(this.partsHoverButton_MouseHover);
-            // 
-            // resetPassHoverButton
-            // 
-            this.resetPassHoverButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.resetPassHoverButton.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.resetPassHoverButton, "resetPassHoverButton");
-            this.resetPassHoverButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.resetPassHoverButton.Name = "resetPassHoverButton";
-            this.resetPassHoverButton.UseVisualStyleBackColor = false;
-            // 
-            // logoutHoverButton
-            // 
-            this.logoutHoverButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.logoutHoverButton.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.logoutHoverButton, "logoutHoverButton");
-            this.logoutHoverButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.logoutHoverButton.Name = "logoutHoverButton";
-            this.logoutHoverButton.UseVisualStyleBackColor = false;
+            this.CreateCustProfileBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.CreateCustProfileBtn.CheckedState.Parent = this.CreateCustProfileBtn;
+            this.CreateCustProfileBtn.CustomImages.Parent = this.CreateCustProfileBtn;
+            resources.ApplyResources(this.CreateCustProfileBtn, "CreateCustProfileBtn");
+            this.CreateCustProfileBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.CreateCustProfileBtn.ForeColor = System.Drawing.Color.Gray;
+            this.CreateCustProfileBtn.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.CreateCustProfileBtn.HoverState.ForeColor = System.Drawing.Color.LightGray;
+            this.CreateCustProfileBtn.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.HoverState.Image")));
+            this.CreateCustProfileBtn.HoverState.Parent = this.CreateCustProfileBtn;
+            this.CreateCustProfileBtn.Image = ((System.Drawing.Image)(resources.GetObject("CreateCustProfileBtn.Image")));
+            this.CreateCustProfileBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.CreateCustProfileBtn.ImageOffset = new System.Drawing.Point(9, 0);
+            this.CreateCustProfileBtn.ImageSize = new System.Drawing.Size(32, 32);
+            this.CreateCustProfileBtn.Name = "CreateCustProfileBtn";
+            this.CreateCustProfileBtn.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.CreateCustProfileBtn.ShadowDecoration.Parent = this.CreateCustProfileBtn;
+            this.CreateCustProfileBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.CreateCustProfileBtn.Click += new System.EventHandler(this.CreateCustProfileBtn_Click);
+            this.CreateCustProfileBtn.MouseLeave += new System.EventHandler(this.CreateCustProfileBtn_MouseLeave_1);
             // 
             // MenuForm
             // 
@@ -379,13 +349,15 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.PanelTitleBar);
             this.Controls.Add(this.panelMenu);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "MenuForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MenuForm_Load);
             this.PanelTitleBar.ResumeLayout(false);
             this.panelMenu.ResumeLayout(false);
             this.SubMenuORPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panelDesktop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
@@ -394,26 +366,24 @@
         #endregion
         private System.Windows.Forms.Panel PanelTitleBar;
         private Guna.UI2.WinForms.Guna2Button OrderBtn;
-        private Guna.UI2.WinForms.Guna2Button CreateROBtn;
         private Guna.UI2.WinForms.Guna2ImageButton btnMaximize;
         private Guna.UI2.WinForms.Guna2ImageButton btnMinimize;
         private Guna.UI2.WinForms.Guna2ImageButton btnExit;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel SubMenuORPanel;
         private System.Windows.Forms.Panel panel1;
-        private Guna.UI2.WinForms.Guna2Button CreateCustProfileBtn;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Button logout;
         private Guna.UI2.WinForms.Guna2Button resetPassword;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panelDesktop;
-        private System.Windows.Forms.Button orderProsHoverButton;
-        private System.Windows.Forms.Button createCustomerProfileHoverButton;
-        private System.Windows.Forms.Button createRepairOrderHoverButton;
-        private System.Windows.Forms.Button logoutHoverButton;
-        private System.Windows.Forms.Button resetPassHoverButton;
-        private System.Windows.Forms.Button partsHoverButton;
+        private System.Windows.Forms.Panel SidePanel;
+        private System.Windows.Forms.Panel SidePanel2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel2;
+        private Guna.UI2.WinForms.Guna2Button PartsBtn;
+        private Guna.UI2.WinForms.Guna2Button CreateROBtn;
+        private Guna.UI2.WinForms.Guna2Button CreateCustProfileBtn;
     }
 }

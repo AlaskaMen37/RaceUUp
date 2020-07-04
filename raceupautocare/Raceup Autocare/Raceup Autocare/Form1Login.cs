@@ -148,6 +148,48 @@ namespace Raceup_Autocare
 
         private void UserTxt_TextChanged(object sender, EventArgs e)
         {
+            
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            //Form formBackground = new Form();
+            //try
+            //{
+            //    using (Inquiry uu = new Inquiry())
+            //    {
+            //        uu.Opacity = .5;
+            //        formBackground.ShowInTaskbar = false;
+            //        formBackground.Show();
+
+            //        uu.ShowDialog();
+
+            //        formBackground.Dispose();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            //finally
+            //{
+            //    formBackground.Dispose();
+            //}
+        }
+
+        private void UserTxt_Enter(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void UserTxt_Leave(object sender, EventArgs e)
+        {
 
         }
     }

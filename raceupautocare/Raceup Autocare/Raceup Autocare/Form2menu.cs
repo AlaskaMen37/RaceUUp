@@ -25,6 +25,8 @@ namespace Raceup_Autocare
         {
             InitializeComponent();
             customizeDesign();
+            SidePanel.Visible = false;
+            SidePanel2.Visible = false;
             this.Text = string.Empty;
             this.ControlBox = false;
             this.DoubleBuffered = true;
@@ -90,9 +92,9 @@ namespace Raceup_Autocare
 
         private void guna2Button1_Click(object sender, EventArgs e)
         { 
-            //SidePanel.Height = OrderBtn.Height;
-            //  SidePanel.Top = OrderBtn.Top;
-            // SidePanel.Visible = true;
+            SidePanel.Height = OrderBtn.Height;
+            SidePanel.Top = OrderBtn.Top;
+            SidePanel.Visible = true;
             //orderProcessingForm1.Show();
             // orderProcessingForm1.BringToFront();
             showSubMenu(SubMenuORPanel);
@@ -105,15 +107,6 @@ namespace Raceup_Autocare
             //}
             //else
             //    OrderBtn.Enabled = false;
-        }
-
-        private void CreateROBtn_Click(object sender, EventArgs e)
-        {
-            // createRO1.Show();
-            // createRO1.BringToFront();
-            OpenChildForm(new CreateROform());
-
-
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -186,6 +179,9 @@ namespace Raceup_Autocare
 
         private void resetPassword_Click_1(object sender, EventArgs e)
         {
+            SidePanel.Height = resetPassword.Height;
+            SidePanel.Top = resetPassword.Top;
+            SidePanel.Visible = true;
             if (role.Equals("Admin1"))
             {
                 MessageBox.Show("You are an Admin no need to reset Password", warningTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -200,20 +196,13 @@ namespace Raceup_Autocare
 
         private void logout_Click_1(object sender, EventArgs e)
         {
+            SidePanel.Height = logout.Height;
+            SidePanel.Top = logout.Top;
+            SidePanel.Visible = true;
             LoginForm login = new LoginForm();
             this.Hide();
             login.ShowDialog();
             this.Close();
-        }
-
-        private void panel2_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void guna2Button1_Click_1(object sender, EventArgs e)
-        {
-            OpenChildForm(new CreateCustProfForm());
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -222,6 +211,7 @@ namespace Raceup_Autocare
             {
                 currentChildForm.Close();
             }
+            SidePanel.Visible = false;
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -231,82 +221,106 @@ namespace Raceup_Autocare
 
         private void OrderBtn_MouseHover(object sender, EventArgs e)
         {
-            orderProsHoverButton.Visible = true;
+            //orderProsHoverButton.Visible = true;
         }
 
         private void OrderBtn_MouseLeave(object sender, EventArgs e)
         {
-            orderProsHoverButton.Visible = false;
+            OrderBtn.ForeColor = Color.LightGray;
         }
 
         private void CreateROBtn_MouseHover(object sender, EventArgs e)
         {
-            createRepairOrderHoverButton.Visible = true;
+           /// createRepairOrderHoverButton.Visible = true;
         }
 
         private void CreateROBtn_MouseLeave(object sender, EventArgs e)
         {
-            createRepairOrderHoverButton.Visible = false;
-        }
-
-        private void createCustomerProfileHoverButton_MouseHover(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void createCustomerProfileHoverButton_MouseLeave(object sender, EventArgs e)
-        {
-            
+           // createRepairOrderHoverButton.Visible = false;
         }
 
         private void CreateCustProfileBtn_MouseHover(object sender, EventArgs e)
         {
-            createCustomerProfileHoverButton.Visible = true;
+           // createCustomerProfileHoverButton.Visible = true;
         }
 
         private void CreateCustProfileBtn_MouseLeave(object sender, EventArgs e)
         {
-            createCustomerProfileHoverButton.Visible = false;
-        }
-
-        private void partsHoverButton_MouseHover(object sender, EventArgs e)
-        {
-            partsHoverButton.Visible = true;
-        }
-
-        private void partsHoverButton_MouseLeave(object sender, EventArgs e)
-        {
-            partsHoverButton.Visible = false;
+           // createCustomerProfileHoverButton.Visible = false;
         }
 
         private void resetPassword_MouseHover(object sender, EventArgs e)
         {
-            resetPassHoverButton.Visible = true;
+            //resetPassHoverButton.Visible = true;
         }
 
         private void resetPassword_MouseLeave(object sender, EventArgs e)
         {
-            resetPassHoverButton.Visible = false;
+           // resetPassHoverButton.Visible = false;
         }
 
         private void logout_MouseHover(object sender, EventArgs e)
         {
-            logoutHoverButton.Visible = true;
+           // logoutHoverButton.Visible = true;
         }
 
         private void logout_MouseLeave(object sender, EventArgs e)
         {
-            logoutHoverButton.Visible = false;
+           // logoutHoverButton.Visible = false;
         }
 
         private void guna2Button2_MouseHover(object sender, EventArgs e)
         {
-            partsHoverButton.Visible = true;
+           // partsHoverButton.Visible = true;
         }
 
         private void guna2Button2_MouseLeave(object sender, EventArgs e)
         {
-            partsHoverButton.Visible = false;
+          //  partsHoverButton.Visible = false;
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            SidePanel.Height = PartsBtn.Height;
+            SidePanel.Top = PartsBtn.Top;
+            SidePanel.Visible = true;
+            SidePanel2.Visible = false;
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
+        }
+
+        private void CreateROBtn_Click_1(object sender, EventArgs e)
+        {
+            SidePanel2.Height = CreateROBtn.Height;
+            SidePanel2.Top = CreateROBtn.Top;
+            SidePanel2.Visible = true;
+            OpenChildForm(new CreateROform());
+        }
+
+        private void CreateCustProfileBtn_Click(object sender, EventArgs e)
+        {
+            SidePanel2.Height = CreateCustProfileBtn.Height;
+            SidePanel2.Top = CreateCustProfileBtn.Top;
+            SidePanel2.Visible = true;
+            SidePanel2.BringToFront();
+            OpenChildForm(new CreateCustProfForm());
+        }
+
+        private void panelDesktop_MouseLeave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void CreateROBtn_MouseLeave_1(object sender, EventArgs e)
+        {
+            //CreateROBtn.ForeColor = Color.LightGray;
+        }
+
+        private void CreateCustProfileBtn_MouseLeave_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

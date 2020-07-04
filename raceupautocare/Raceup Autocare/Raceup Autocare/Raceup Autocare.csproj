@@ -81,6 +81,12 @@
     </Compile>
     <Compile Include="DBConnection.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="Inquiry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inquiry.Designer.cs">
+      <DependentUpon>Inquiry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Message Reset.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2menu.aa.resx">
       <DependentUpon>Form2menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inquiry.resx">
+      <DependentUpon>Inquiry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Message Reset.resx">
       <DependentUpon>Message Reset.cs</DependentUpon>
