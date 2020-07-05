@@ -24,6 +24,12 @@ namespace Raceup_Autocare
             return userReader;
         }
 
+        public OleDbConnection openConnection() {
+            thisConnection = new OleDbConnection(connectionString);
+            thisConnection.Open();
+            return thisConnection;
+        }
+
         public void CloseConnection() {
             thisConnection.Close();
         }
