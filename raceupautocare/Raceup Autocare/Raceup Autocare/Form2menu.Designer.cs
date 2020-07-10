@@ -61,7 +61,7 @@
             // 
             // PanelTitleBar
             // 
-            this.PanelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.PanelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(53)))), ((int)(((byte)(45)))));
             this.PanelTitleBar.Controls.Add(this.btnMaximize);
             this.PanelTitleBar.Controls.Add(this.btnMinimize);
             this.PanelTitleBar.Controls.Add(this.btnExit);
@@ -116,7 +116,7 @@
             // 
             // panelMenu
             // 
-            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.panelMenu.Controls.Add(this.panel2);
             this.panelMenu.Controls.Add(this.SidePanel);
             this.panelMenu.Controls.Add(this.logout);
@@ -131,24 +131,24 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // SidePanel
             // 
-            this.SidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.SidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(53)))), ((int)(((byte)(45)))));
             resources.ApplyResources(this.SidePanel, "SidePanel");
             this.SidePanel.Name = "SidePanel";
             // 
             // logout
             // 
             resources.ApplyResources(this.logout, "logout");
-            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.logout.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
             this.logout.CheckedState.Parent = this.logout;
             this.logout.CustomImages.Parent = this.logout;
-            this.logout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.logout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.logout.ForeColor = System.Drawing.Color.Gray;
             this.logout.HoverState.FillColor = System.Drawing.Color.Transparent;
             this.logout.HoverState.ForeColor = System.Drawing.Color.LightGray;
@@ -168,11 +168,11 @@
             // resetPassword
             // 
             resources.ApplyResources(this.resetPassword, "resetPassword");
-            this.resetPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.resetPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.resetPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
             this.resetPassword.CheckedState.Parent = this.resetPassword;
             this.resetPassword.CustomImages.Parent = this.resetPassword;
-            this.resetPassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.resetPassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.resetPassword.ForeColor = System.Drawing.Color.Gray;
             this.resetPassword.HoverState.FillColor = System.Drawing.Color.Transparent;
             this.resetPassword.HoverState.ForeColor = System.Drawing.Color.LightGray;
@@ -192,12 +192,12 @@
             // 
             // PartsBtn
             // 
-            this.PartsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.PartsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.PartsBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
             this.PartsBtn.CheckedState.Parent = this.PartsBtn;
             this.PartsBtn.CustomImages.Parent = this.PartsBtn;
             resources.ApplyResources(this.PartsBtn, "PartsBtn");
-            this.PartsBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.PartsBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.PartsBtn.ForeColor = System.Drawing.Color.Gray;
             this.PartsBtn.HoverState.FillColor = System.Drawing.Color.Transparent;
             this.PartsBtn.HoverState.ForeColor = System.Drawing.Color.LightGray;
@@ -216,7 +216,7 @@
             // 
             // SubMenuORPanel
             // 
-            this.SubMenuORPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.SubMenuORPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.SubMenuORPanel.Controls.Add(this.CreateCustProfileBtn);
             this.SubMenuORPanel.Controls.Add(this.SidePanel2);
             this.SubMenuORPanel.Controls.Add(this.CreateROBtn);
@@ -230,7 +230,7 @@
             this.CreateCustProfileBtn.CheckedState.Parent = this.CreateCustProfileBtn;
             this.CreateCustProfileBtn.CustomImages.Parent = this.CreateCustProfileBtn;
             resources.ApplyResources(this.CreateCustProfileBtn, "CreateCustProfileBtn");
-            this.CreateCustProfileBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.CreateCustProfileBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.CreateCustProfileBtn.ForeColor = System.Drawing.Color.Gray;
             this.CreateCustProfileBtn.HoverState.FillColor = System.Drawing.Color.Transparent;
             this.CreateCustProfileBtn.HoverState.ForeColor = System.Drawing.Color.LightGray;
@@ -260,7 +260,7 @@
             this.CreateROBtn.CheckedState.Parent = this.CreateROBtn;
             this.CreateROBtn.CustomImages.Parent = this.CreateROBtn;
             resources.ApplyResources(this.CreateROBtn, "CreateROBtn");
-            this.CreateROBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.CreateROBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.CreateROBtn.ForeColor = System.Drawing.Color.Gray;
             this.CreateROBtn.HoverState.FillColor = System.Drawing.Color.Transparent;
             this.CreateROBtn.HoverState.ForeColor = System.Drawing.Color.LightGray;
@@ -283,7 +283,7 @@
             this.OrderBtn.CheckedState.Parent = this.OrderBtn;
             this.OrderBtn.CustomImages.Parent = this.OrderBtn;
             resources.ApplyResources(this.OrderBtn, "OrderBtn");
-            this.OrderBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.OrderBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.OrderBtn.ForeColor = System.Drawing.Color.Gray;
             this.OrderBtn.HoverState.FillColor = System.Drawing.Color.Transparent;
             this.OrderBtn.HoverState.ForeColor = System.Drawing.Color.LightGray;
@@ -302,7 +302,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.panel1.Controls.Add(this.pictureBox2);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
@@ -310,8 +310,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
-            this.pictureBox2.Image = global::Raceup_Autocare.Properties.Resources.logo1___Copy1;
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
@@ -326,21 +325,22 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
             // 
             // panelDesktop
             // 
-            this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
+            this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.panelDesktop.Controls.Add(this.panel5);
             resources.ApplyResources(this.panelDesktop, "panelDesktop");
             this.panelDesktop.Name = "panelDesktop";
+            this.panelDesktop.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDesktop_Paint);
             this.panelDesktop.MouseLeave += new System.EventHandler(this.panelDesktop_MouseLeave);
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             resources.ApplyResources(this.panel5, "panel5");
             this.panel5.Name = "panel5";
             // 

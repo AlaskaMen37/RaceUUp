@@ -27,6 +27,7 @@ namespace Raceup_Autocare
             customizeDesign();
             SidePanel.Visible = false;
             SidePanel2.Visible = false;
+            pictureBox2.BringToFront();
             this.Text = string.Empty;
             this.ControlBox = false;
             this.DoubleBuffered = true;
@@ -212,6 +213,7 @@ namespace Raceup_Autocare
                 currentChildForm.Close();
             }
             SidePanel.Visible = false;
+            SidePanel2.Visible = false;
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -319,6 +321,11 @@ namespace Raceup_Autocare
         }
 
         private void CreateCustProfileBtn_MouseLeave_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelDesktop_Paint(object sender, PaintEventArgs e)
         {
 
         }

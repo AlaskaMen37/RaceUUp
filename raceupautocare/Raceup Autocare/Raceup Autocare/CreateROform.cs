@@ -86,6 +86,7 @@ namespace Raceup_Autocare
         private void AddServiceBuutton_Click(object sender, EventArgs e)
         {          
             FillServiceGrid();
+            ClearTextBoxes(this.Controls);
         }
 
         private void croServicePrice_KeyPress(object sender, KeyPressEventArgs e)
@@ -171,6 +172,7 @@ namespace Raceup_Autocare
         private void partsAddButton_Click(object sender, EventArgs e)
         {
             FillPartsGrid();
+            ClearTextBoxes(this.Controls);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -344,6 +346,66 @@ namespace Raceup_Autocare
             }
 
             return isValid;
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void ClearTextBoxes(Control.ControlCollection ctrlCollection)
+        {
+            foreach (Control ctrl in ctrlCollection)
+            {
+                if (ctrl is TextBoxBase)
+                {
+                    ctrl.Text = String.Empty;
+                }
+                else
+                {
+                    ClearTextBoxes(ctrl.Controls);
+                }
+            }
+        }
+        private void ClearBtn_Click(object sender, EventArgs e)
+        {
+            ClearTextBoxes(this.Controls);
+            serviceDataGridView.Rows.Clear();
+            PartsDataGrid.Rows.Clear();
+        }
+
+        private void removeBTN_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove this selected item?", "Remove Item", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            ClearTextBoxes(this.Controls);
+            if (dialogResult == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in PartsDataGrid.SelectedRows)
+                    if (!row.IsNewRow) PartsDataGrid.Rows.Remove(row);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //Won't remove any item if cancel
+            }
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove this selected item?", "Remove Item", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            ClearTextBoxes(this.Controls);
+            if (dialogResult == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in serviceDataGridView.SelectedRows)
+                    if (!row.IsNewRow) serviceDataGridView.Rows.Remove(row);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //Won't remove any item if cancel
+            }
+        }
+
+        private void croPartsNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

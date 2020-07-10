@@ -78,13 +78,12 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.panel1.Controls.Add(this.label7);
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(22)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(483, 73);
+            this.panel1.Size = new System.Drawing.Size(386, 58);
             this.panel1.TabIndex = 112;
             // 
             // label7
@@ -92,10 +91,9 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label7.Location = new System.Drawing.Point(4, 12);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(3, 10);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(445, 44);
+            this.label7.Size = new System.Drawing.Size(356, 36);
             this.label7.TabIndex = 0;
             this.label7.Text = "Create Customer Profile";
             // 
@@ -105,10 +103,9 @@
             this.guna2HtmlLabel9.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel9.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel9.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.guna2HtmlLabel9.Location = new System.Drawing.Point(112, 149);
-            this.guna2HtmlLabel9.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2HtmlLabel9.Location = new System.Drawing.Point(90, 119);
             this.guna2HtmlLabel9.Name = "guna2HtmlLabel9";
-            this.guna2HtmlLabel9.Size = new System.Drawing.Size(197, 30);
+            this.guna2HtmlLabel9.Size = new System.Drawing.Size(157, 25);
             this.guna2HtmlLabel9.TabIndex = 117;
             this.guna2HtmlLabel9.Text = "Search Plate no.:";
             // 
@@ -122,11 +119,10 @@
             this.searchButton.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchButton.ForeColor = System.Drawing.Color.White;
             this.searchButton.HoverState.Parent = this.searchButton;
-            this.searchButton.Location = new System.Drawing.Point(597, 146);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(4);
+            this.searchButton.Location = new System.Drawing.Point(478, 117);
             this.searchButton.Name = "searchButton";
             this.searchButton.ShadowDecoration.Parent = this.searchButton;
-            this.searchButton.Size = new System.Drawing.Size(145, 36);
+            this.searchButton.Size = new System.Drawing.Size(116, 29);
             this.searchButton.TabIndex = 116;
             this.searchButton.Text = "Search";
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
@@ -148,21 +144,21 @@
             this.searchPlateNoTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
             this.searchPlateNoTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.searchPlateNoTxtbox.HoverState.Parent = this.searchPlateNoTxtbox;
-            this.searchPlateNoTxtbox.Location = new System.Drawing.Point(329, 146);
-            this.searchPlateNoTxtbox.Margin = new System.Windows.Forms.Padding(5);
+            this.searchPlateNoTxtbox.Location = new System.Drawing.Point(263, 117);
+            this.searchPlateNoTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.searchPlateNoTxtbox.Name = "searchPlateNoTxtbox";
             this.searchPlateNoTxtbox.PasswordChar = '\0';
             this.searchPlateNoTxtbox.PlaceholderText = "";
             this.searchPlateNoTxtbox.SelectedText = "";
             this.searchPlateNoTxtbox.ShadowDecoration.Parent = this.searchPlateNoTxtbox;
-            this.searchPlateNoTxtbox.Size = new System.Drawing.Size(239, 36);
+            this.searchPlateNoTxtbox.Size = new System.Drawing.Size(191, 29);
             this.searchPlateNoTxtbox.TabIndex = 1;
             this.searchPlateNoTxtbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchPlateNoTxtbox_KeyPress);
             // 
             // guna2GroupBox1
             // 
             this.guna2GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2GroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.guna2GroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.guna2GroupBox1.BorderThickness = 2;
             this.guna2GroupBox1.Controls.Add(this.guna2HtmlLabel10);
             this.guna2GroupBox1.Controls.Add(this.customerLastNameTxtbox);
@@ -182,15 +178,14 @@
             this.guna2GroupBox1.Controls.Add(this.customerTelephoneNumTxtbox);
             this.guna2GroupBox1.Controls.Add(this.customerAddressTxtbox);
             this.guna2GroupBox1.Controls.Add(this.customerFirstNameTxtbox);
-            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
-            this.guna2GroupBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
+            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.guna2GroupBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.guna2GroupBox1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(109, 213);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(87, 170);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.ShadowDecoration.Parent = this.guna2GroupBox1;
-            this.guna2GroupBox1.Size = new System.Drawing.Size(1096, 394);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(877, 315);
             this.guna2GroupBox1.TabIndex = 113;
             this.guna2GroupBox1.Text = "Customer\'s Profile";
             this.guna2GroupBox1.Click += new System.EventHandler(this.guna2GroupBox1_Click);
@@ -201,10 +196,9 @@
             this.guna2HtmlLabel10.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel10.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel10.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel10.Location = new System.Drawing.Point(31, 140);
-            this.guna2HtmlLabel10.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2HtmlLabel10.Location = new System.Drawing.Point(25, 112);
             this.guna2HtmlLabel10.Name = "guna2HtmlLabel10";
-            this.guna2HtmlLabel10.Size = new System.Drawing.Size(134, 30);
+            this.guna2HtmlLabel10.Size = new System.Drawing.Size(105, 25);
             this.guna2HtmlLabel10.TabIndex = 14;
             this.guna2HtmlLabel10.Text = "Last Name:";
             // 
@@ -223,14 +217,14 @@
             this.customerLastNameTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
             this.customerLastNameTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.customerLastNameTxtbox.HoverState.Parent = this.customerLastNameTxtbox;
-            this.customerLastNameTxtbox.Location = new System.Drawing.Point(215, 127);
-            this.customerLastNameTxtbox.Margin = new System.Windows.Forms.Padding(12, 9, 12, 9);
+            this.customerLastNameTxtbox.Location = new System.Drawing.Point(172, 102);
+            this.customerLastNameTxtbox.Margin = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.customerLastNameTxtbox.Name = "customerLastNameTxtbox";
             this.customerLastNameTxtbox.PasswordChar = '\0';
             this.customerLastNameTxtbox.PlaceholderText = "";
             this.customerLastNameTxtbox.SelectedText = "";
             this.customerLastNameTxtbox.ShadowDecoration.Parent = this.customerLastNameTxtbox;
-            this.customerLastNameTxtbox.Size = new System.Drawing.Size(265, 44);
+            this.customerLastNameTxtbox.Size = new System.Drawing.Size(212, 35);
             this.customerLastNameTxtbox.TabIndex = 3;
             // 
             // customerChasisNoTxtbox
@@ -248,14 +242,14 @@
             this.customerChasisNoTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
             this.customerChasisNoTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.customerChasisNoTxtbox.HoverState.Parent = this.customerChasisNoTxtbox;
-            this.customerChasisNoTxtbox.Location = new System.Drawing.Point(785, 194);
-            this.customerChasisNoTxtbox.Margin = new System.Windows.Forms.Padding(5);
+            this.customerChasisNoTxtbox.Location = new System.Drawing.Point(628, 155);
+            this.customerChasisNoTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.customerChasisNoTxtbox.Name = "customerChasisNoTxtbox";
             this.customerChasisNoTxtbox.PasswordChar = '\0';
             this.customerChasisNoTxtbox.PlaceholderText = "";
             this.customerChasisNoTxtbox.SelectedText = "";
             this.customerChasisNoTxtbox.ShadowDecoration.Parent = this.customerChasisNoTxtbox;
-            this.customerChasisNoTxtbox.Size = new System.Drawing.Size(265, 44);
+            this.customerChasisNoTxtbox.Size = new System.Drawing.Size(212, 35);
             this.customerChasisNoTxtbox.TabIndex = 9;
             // 
             // customerEngineNumberTxtbox
@@ -273,14 +267,14 @@
             this.customerEngineNumberTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
             this.customerEngineNumberTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.customerEngineNumberTxtbox.HoverState.Parent = this.customerEngineNumberTxtbox;
-            this.customerEngineNumberTxtbox.Location = new System.Drawing.Point(785, 262);
-            this.customerEngineNumberTxtbox.Margin = new System.Windows.Forms.Padding(5);
+            this.customerEngineNumberTxtbox.Location = new System.Drawing.Point(628, 210);
+            this.customerEngineNumberTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.customerEngineNumberTxtbox.Name = "customerEngineNumberTxtbox";
             this.customerEngineNumberTxtbox.PasswordChar = '\0';
             this.customerEngineNumberTxtbox.PlaceholderText = "";
             this.customerEngineNumberTxtbox.SelectedText = "";
             this.customerEngineNumberTxtbox.ShadowDecoration.Parent = this.customerEngineNumberTxtbox;
-            this.customerEngineNumberTxtbox.Size = new System.Drawing.Size(265, 44);
+            this.customerEngineNumberTxtbox.Size = new System.Drawing.Size(212, 35);
             this.customerEngineNumberTxtbox.TabIndex = 10;
             // 
             // customerPlateNoTxtbox
@@ -298,14 +292,14 @@
             this.customerPlateNoTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
             this.customerPlateNoTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.customerPlateNoTxtbox.HoverState.Parent = this.customerPlateNoTxtbox;
-            this.customerPlateNoTxtbox.Location = new System.Drawing.Point(785, 127);
-            this.customerPlateNoTxtbox.Margin = new System.Windows.Forms.Padding(5);
+            this.customerPlateNoTxtbox.Location = new System.Drawing.Point(628, 102);
+            this.customerPlateNoTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.customerPlateNoTxtbox.Name = "customerPlateNoTxtbox";
             this.customerPlateNoTxtbox.PasswordChar = '\0';
             this.customerPlateNoTxtbox.PlaceholderText = "";
             this.customerPlateNoTxtbox.SelectedText = "";
             this.customerPlateNoTxtbox.ShadowDecoration.Parent = this.customerPlateNoTxtbox;
-            this.customerPlateNoTxtbox.Size = new System.Drawing.Size(265, 44);
+            this.customerPlateNoTxtbox.Size = new System.Drawing.Size(212, 35);
             this.customerPlateNoTxtbox.TabIndex = 8;
             // 
             // guna2HtmlLabel5
@@ -314,10 +308,9 @@
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel5.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(600, 140);
-            this.guna2HtmlLabel5.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(480, 112);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(114, 30);
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(91, 25);
             this.guna2HtmlLabel5.TabIndex = 12;
             this.guna2HtmlLabel5.Text = "Plate No.:";
             // 
@@ -327,10 +320,9 @@
             this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel6.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(600, 208);
-            this.guna2HtmlLabel6.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2HtmlLabel6.Location = new System.Drawing.Point(480, 166);
             this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(134, 30);
+            this.guna2HtmlLabel6.Size = new System.Drawing.Size(104, 25);
             this.guna2HtmlLabel6.TabIndex = 11;
             this.guna2HtmlLabel6.Text = "Chasis No.:";
             // 
@@ -340,10 +332,9 @@
             this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel7.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(600, 276);
-            this.guna2HtmlLabel7.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2HtmlLabel7.Location = new System.Drawing.Point(480, 221);
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(130, 30);
+            this.guna2HtmlLabel7.Size = new System.Drawing.Size(103, 25);
             this.guna2HtmlLabel7.TabIndex = 10;
             this.guna2HtmlLabel7.Text = "Engine no.:";
             // 
@@ -353,10 +344,9 @@
             this.guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel8.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel8.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel8.Location = new System.Drawing.Point(600, 73);
-            this.guna2HtmlLabel8.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2HtmlLabel8.Location = new System.Drawing.Point(480, 58);
             this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
-            this.guna2HtmlLabel8.Size = new System.Drawing.Size(134, 30);
+            this.guna2HtmlLabel8.Size = new System.Drawing.Size(106, 25);
             this.guna2HtmlLabel8.TabIndex = 9;
             this.guna2HtmlLabel8.Text = "Car Model:";
             // 
@@ -375,14 +365,14 @@
             this.customerCarModelTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
             this.customerCarModelTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.customerCarModelTxtbox.HoverState.Parent = this.customerCarModelTxtbox;
-            this.customerCarModelTxtbox.Location = new System.Drawing.Point(785, 59);
-            this.customerCarModelTxtbox.Margin = new System.Windows.Forms.Padding(5);
+            this.customerCarModelTxtbox.Location = new System.Drawing.Point(628, 47);
+            this.customerCarModelTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.customerCarModelTxtbox.Name = "customerCarModelTxtbox";
             this.customerCarModelTxtbox.PasswordChar = '\0';
             this.customerCarModelTxtbox.PlaceholderText = "";
             this.customerCarModelTxtbox.SelectedText = "";
             this.customerCarModelTxtbox.ShadowDecoration.Parent = this.customerCarModelTxtbox;
-            this.customerCarModelTxtbox.Size = new System.Drawing.Size(265, 44);
+            this.customerCarModelTxtbox.Size = new System.Drawing.Size(212, 35);
             this.customerCarModelTxtbox.TabIndex = 7;
             this.customerCarModelTxtbox.TextChanged += new System.EventHandler(this.customerCarModelTxtbox_TextChanged);
             // 
@@ -392,10 +382,9 @@
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel4.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(31, 208);
-            this.guna2HtmlLabel4.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(25, 166);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(105, 30);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(82, 25);
             this.guna2HtmlLabel4.TabIndex = 7;
             this.guna2HtmlLabel4.Text = "Address:";
             this.guna2HtmlLabel4.Click += new System.EventHandler(this.guna2HtmlLabel4_Click);
@@ -406,10 +395,9 @@
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(31, 276);
-            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(25, 221);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(173, 30);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(137, 25);
             this.guna2HtmlLabel3.TabIndex = 6;
             this.guna2HtmlLabel3.Text = "Telephone no.:";
             // 
@@ -419,10 +407,9 @@
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(31, 343);
-            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(25, 274);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(121, 30);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(96, 25);
             this.guna2HtmlLabel2.TabIndex = 5;
             this.guna2HtmlLabel2.Text = "Car Brand";
             // 
@@ -432,10 +419,9 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(31, 73);
-            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(25, 58);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(133, 30);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(104, 25);
             this.guna2HtmlLabel1.TabIndex = 4;
             this.guna2HtmlLabel1.Text = "First Name:";
             // 
@@ -461,11 +447,10 @@
             "Hyundai",
             "Jeep"});
             this.customerCarBrand.ItemsAppearance.Parent = this.customerCarBrand;
-            this.customerCarBrand.Location = new System.Drawing.Point(215, 330);
-            this.customerCarBrand.Margin = new System.Windows.Forms.Padding(4);
+            this.customerCarBrand.Location = new System.Drawing.Point(172, 264);
             this.customerCarBrand.Name = "customerCarBrand";
             this.customerCarBrand.ShadowDecoration.Parent = this.customerCarBrand;
-            this.customerCarBrand.Size = new System.Drawing.Size(265, 36);
+            this.customerCarBrand.Size = new System.Drawing.Size(213, 36);
             this.customerCarBrand.StartIndex = 0;
             this.customerCarBrand.TabIndex = 6;
             // 
@@ -484,14 +469,14 @@
             this.customerTelephoneNumTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
             this.customerTelephoneNumTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.customerTelephoneNumTxtbox.HoverState.Parent = this.customerTelephoneNumTxtbox;
-            this.customerTelephoneNumTxtbox.Location = new System.Drawing.Point(215, 262);
-            this.customerTelephoneNumTxtbox.Margin = new System.Windows.Forms.Padding(5);
+            this.customerTelephoneNumTxtbox.Location = new System.Drawing.Point(172, 210);
+            this.customerTelephoneNumTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.customerTelephoneNumTxtbox.Name = "customerTelephoneNumTxtbox";
             this.customerTelephoneNumTxtbox.PasswordChar = '\0';
             this.customerTelephoneNumTxtbox.PlaceholderText = "";
             this.customerTelephoneNumTxtbox.SelectedText = "";
             this.customerTelephoneNumTxtbox.ShadowDecoration.Parent = this.customerTelephoneNumTxtbox;
-            this.customerTelephoneNumTxtbox.Size = new System.Drawing.Size(265, 44);
+            this.customerTelephoneNumTxtbox.Size = new System.Drawing.Size(212, 35);
             this.customerTelephoneNumTxtbox.TabIndex = 5;
             // 
             // customerAddressTxtbox
@@ -509,14 +494,14 @@
             this.customerAddressTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
             this.customerAddressTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.customerAddressTxtbox.HoverState.Parent = this.customerAddressTxtbox;
-            this.customerAddressTxtbox.Location = new System.Drawing.Point(215, 194);
-            this.customerAddressTxtbox.Margin = new System.Windows.Forms.Padding(5);
+            this.customerAddressTxtbox.Location = new System.Drawing.Point(172, 155);
+            this.customerAddressTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.customerAddressTxtbox.Name = "customerAddressTxtbox";
             this.customerAddressTxtbox.PasswordChar = '\0';
             this.customerAddressTxtbox.PlaceholderText = "";
             this.customerAddressTxtbox.SelectedText = "";
             this.customerAddressTxtbox.ShadowDecoration.Parent = this.customerAddressTxtbox;
-            this.customerAddressTxtbox.Size = new System.Drawing.Size(265, 44);
+            this.customerAddressTxtbox.Size = new System.Drawing.Size(212, 35);
             this.customerAddressTxtbox.TabIndex = 4;
             // 
             // customerFirstNameTxtbox
@@ -534,14 +519,14 @@
             this.customerFirstNameTxtbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
             this.customerFirstNameTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.customerFirstNameTxtbox.HoverState.Parent = this.customerFirstNameTxtbox;
-            this.customerFirstNameTxtbox.Location = new System.Drawing.Point(215, 59);
-            this.customerFirstNameTxtbox.Margin = new System.Windows.Forms.Padding(5);
+            this.customerFirstNameTxtbox.Location = new System.Drawing.Point(172, 47);
+            this.customerFirstNameTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.customerFirstNameTxtbox.Name = "customerFirstNameTxtbox";
             this.customerFirstNameTxtbox.PasswordChar = '\0';
             this.customerFirstNameTxtbox.PlaceholderText = "";
             this.customerFirstNameTxtbox.SelectedText = "";
             this.customerFirstNameTxtbox.ShadowDecoration.Parent = this.customerFirstNameTxtbox;
-            this.customerFirstNameTxtbox.Size = new System.Drawing.Size(265, 44);
+            this.customerFirstNameTxtbox.Size = new System.Drawing.Size(212, 35);
             this.customerFirstNameTxtbox.TabIndex = 2;
             this.customerFirstNameTxtbox.TextChanged += new System.EventHandler(this.customerNameTxtbox_TextChanged);
             // 
@@ -556,11 +541,10 @@
             this.updateButton.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateButton.ForeColor = System.Drawing.Color.White;
             this.updateButton.HoverState.Parent = this.updateButton;
-            this.updateButton.Location = new System.Drawing.Point(253, 631);
-            this.updateButton.Margin = new System.Windows.Forms.Padding(4);
+            this.updateButton.Location = new System.Drawing.Point(630, 505);
             this.updateButton.Name = "updateButton";
             this.updateButton.ShadowDecoration.Parent = this.updateButton;
-            this.updateButton.Size = new System.Drawing.Size(130, 65);
+            this.updateButton.Size = new System.Drawing.Size(193, 52);
             this.updateButton.TabIndex = 11;
             this.updateButton.Text = "Update";
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
@@ -575,11 +559,10 @@
             this.saveButton.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.ForeColor = System.Drawing.Color.White;
             this.saveButton.HoverState.Parent = this.saveButton;
-            this.saveButton.Location = new System.Drawing.Point(112, 631);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4);
+            this.saveButton.Location = new System.Drawing.Point(247, 505);
             this.saveButton.Name = "saveButton";
             this.saveButton.ShadowDecoration.Parent = this.saveButton;
-            this.saveButton.Size = new System.Drawing.Size(130, 65);
+            this.saveButton.Size = new System.Drawing.Size(193, 52);
             this.saveButton.TabIndex = 11;
             this.saveButton.Text = "Save";
             this.saveButton.Click += new System.EventHandler(this.Click_SaveButton);
@@ -626,21 +609,20 @@
             this.ClearBtn.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearBtn.ForeColor = System.Drawing.Color.White;
             this.ClearBtn.HoverState.Parent = this.ClearBtn;
-            this.ClearBtn.Location = new System.Drawing.Point(749, 146);
-            this.ClearBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.ClearBtn.Location = new System.Drawing.Point(599, 117);
             this.ClearBtn.Name = "ClearBtn";
             this.ClearBtn.ShadowDecoration.Parent = this.ClearBtn;
-            this.ClearBtn.Size = new System.Drawing.Size(145, 36);
+            this.ClearBtn.Size = new System.Drawing.Size(116, 29);
             this.ClearBtn.TabIndex = 120;
             this.ClearBtn.Text = "Clear";
             this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
             // 
             // CreateCustProfForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
-            this.ClientSize = new System.Drawing.Size(1316, 742);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.ClientSize = new System.Drawing.Size(1053, 594);
             this.ControlBox = false;
             this.Controls.Add(this.ClearBtn);
             this.Controls.Add(this.saveButton);
@@ -651,7 +633,6 @@
             this.Controls.Add(this.guna2GroupBox1);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CreateCustProfForm";
             this.ShowIcon = false;
             this.Text = "CreateCustProfForm";
