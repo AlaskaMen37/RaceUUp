@@ -52,6 +52,10 @@
     <Reference Include="Guna.UI2">
       <HintPath>..\..\..\..\..\..\Downloads\Guna.UI-Framework-Lib-master\Guna.UI2.WinForms_v2.0.0.6\.net 4.0\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -79,6 +83,7 @@
     <Compile Include="CreateROform.Designer.cs">
       <DependentUpon>CreateROform.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateROProperties.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Inquiry.cs">

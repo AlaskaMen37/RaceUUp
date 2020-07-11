@@ -19,9 +19,9 @@ namespace Raceup_Autocare
         private string role;
         private DateTime updated;
         private string updateBy;
-        private DateTime created;
         private string createdBy;
 
+        private DateTime created;
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
         public string Id { get => id; set => id = value; }

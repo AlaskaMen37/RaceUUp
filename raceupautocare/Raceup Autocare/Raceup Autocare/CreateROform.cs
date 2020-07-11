@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Word;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
@@ -11,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using Font = System.Drawing.Font;
 
 namespace Raceup_Autocare
 {
@@ -20,7 +23,7 @@ namespace Raceup_Autocare
         OleDbDataReader customerReader = null;
         OleDbDataReader partsReader = null;
         string sqlQuery = "";
-
+        String content = "";
         public CreateROform()
         {
             InitializeComponent();
@@ -407,5 +410,211 @@ namespace Raceup_Autocare
         {
 
         }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            CreateDocument();
+           
+            string fileName;
+            /*// Show the dialog and get result.
+            OpenFileDialog ofd = new OpenFileDialog();
+            DialogResult result = ofd.ShowDialog();
+            if (result == DialogResult.OK) // Test result.
+            {
+                fileName = ofd.FileName;
+
+                var application = new Microsoft.Office.Interop.Word.Application();
+                //var document = application.Documents.Open(@"D:\ICT.docx");
+                //read all text into content
+                content = System.IO.File.ReadAllText(fileName);
+                //var document = application.Documents.Open(@fileName);
+            }*/
+
+            PrintDialog printDlg = new PrintDialog();
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.DocumentName = "D:\\Documents\\Work Related\\SIDE HUSTLE\\To be printed\\temp1.doc.x";
+            printDlg.Document = printDoc;
+            printDlg.AllowSelection = true;
+            printDlg.AllowSomePages = true;
+            //Call ShowDialog
+            if (printDlg.ShowDialog() == DialogResult.OK)
+            {
+                printDoc.PrintPage += new PrintPageEventHandler(pd_PrintPage);
+                printDoc.Print();
+            }
+        }
+
+        private void pd_PrintPage(object sender, PrintPageEventArgs ev)
+        {
+            Font printFont = new Font("Arial", 10);
+            ev.Graphics.DrawString(content, printFont, Brushes.Black,
+                            ev.MarginBounds.Left, 0, new StringFormat());
+        }
+
+        //Create document method  
+        private void CreateDocument()
+        {
+            
+            try
+            {
+                CreateROProperties croProperties = setCreateRoProperties();
+                //Create an instance for word app  
+                Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
+
+                //Set animation status for word application  
+                winword.ShowAnimation = false;
+
+                //Set status for word application is to be visible or not.  
+                winword.Visible = false;
+
+                //Create a missing variable for missing value  
+                object missing = System.Reflection.Missing.Value;
+
+                //Create a new document  
+                Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+
+                //Add header into the document  
+                foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
+                {
+                    //Get the header range and add the header details.  
+                    Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                    headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
+                    headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                //    headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
+                    headerRange.Font.Size = 24;
+                    headerRange.Text = "INVOICE";
+                }
+
+                //Add the footers into the document  
+                foreach (Microsoft.Office.Interop.Word.Section wordSection in document.Sections)
+                {
+                    //Get the footer range and add the footer details.  
+                    Microsoft.Office.Interop.Word.Range footerRange = wordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                    footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
+                    footerRange.Font.Size = 10;
+                    footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                    footerRange.Text = "Footer text goes here";
+                }
+
+                //adding text to document  
+                document.Content.SetRange(0, 0);                    
+                document.Content.Text = "" +Environment.NewLine;                 
+
+                //Add paragraph with Heading 2 style  
+                Microsoft.Office.Interop.Word.Paragraph para2 = document.Content.Paragraphs.Add(ref missing);
+                object styleHeading2 = "Heading 2";
+                para2.Range.set_Style(ref styleHeading2);
+              //  para2.Range.Font.Color = Microsoft.Office.Interop.Word.WdColorIndex;
+                para2.Range.Text = "RO Number:" + croProperties.RoNumber + "\t\t\t\t\tCar Brand:" + croProperties.CarBrand;
+                para2.Range.InsertParagraphAfter();
+                para2.Range.Text = "Client Name: " + croProperties.FName + " " + croProperties.LName + "\t\t\t\t\tCar Model:" + croProperties.CardModel; 
+                para2.Range.InsertParagraphAfter();
+                para2.Range.Text = "Contact Number: " + croProperties.ContactNum + "\t\t\t\t\tPlate Number:" + croProperties.PlateNo;
+                para2.Range.InsertParagraphAfter();
+                para2.Range.Text = "Adddress: " + croProperties.Address;
+                para2.Range.InsertParagraphAfter();
+                para2.Range.Text = "Chasis No: " + croProperties.ChasisNo + "Engine No: " + croProperties.EngineNo;
+                para2.Range.InsertParagraphAfter();
+
+                //Add paragraph with Heading 1 style  
+                Microsoft.Office.Interop.Word.Paragraph para1 = document.Content.Paragraphs.Add(ref missing);
+                object styleHeading1 = "Heading 1";
+                para1.Range.set_Style(ref styleHeading1);               
+                para1.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+                para1.Range.Text = "\rService";
+                para1.Range.InsertParagraphAfter();
+
+                //Create a 5X5 table and insert some dummy record  
+                Table firstTable = document.Tables.Add(para2.Range, 4, 4, ref missing, ref missing);
+                firstTable.Borders.Enable = 0;
+                //  firstTable.Borders.InsideLineStyle = WdLineStyle.wdLineStyleSingle;
+
+                var serviceColumns = new[] { "Description", "Hours", "Price/Hour", "Total" };
+                var serviceColumnsData = new[] { croProperties.Description, croProperties.Hours, croProperties.ServicePrice, croProperties.TotalPrice };
+
+                for (int i = 0; i < serviceColumns.Length; i++) {
+                    firstTable.Cell(1, i+1).Range.Borders[WdBorderType.wdBorderBottom].LineStyle = WdLineStyle.wdLineStyleSingle;
+                }
+                                    
+                foreach (Row row in firstTable.Rows)
+                {
+                    foreach (Cell cell in row.Cells)
+                    {
+                        //Header row  
+                        if (cell.RowIndex == 1)
+                        {                           
+                            cell.Range.Text = serviceColumns[cell.ColumnIndex-1];
+                            cell.Range.Font.Bold = 1;
+                            //other format properties goes here  
+                            cell.Range.Font.Name = "verdana";
+                            cell.Range.Font.Size = 10;
+                            //cell.Range.Font.ColorIndex = WdColorIndex.wdGray25;                              
+                            //cell.Shading.BackgroundPatternColor = WdColor.wdColorGray25;
+                            //Center alignment for the Header cells  
+
+                            cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                            cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+
+                        }
+                        //Data row  
+                        else
+                        {
+                            cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                            cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+                            cell.Range.Text = (serviceColumnsData[cell.ColumnIndex - 1]);
+                        }
+                    }
+                }
+
+                //Save the document  
+                object filename = @"D:\Documents\Work Related\SIDE HUSTLE\To be printed\temp1.docx";
+                document.SaveAs2(ref filename);
+                document.Close(ref missing, ref missing, ref missing);
+                document = null;
+                winword.Quit(ref missing, ref missing, ref missing);
+                winword = null;
+                MessageBox.Show("Document created successfully !");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private CreateROProperties setCreateRoProperties() {
+            dbcon = new DBConnection();
+            sqlQuery = "SELECT * FROM CustomerProfile WHERE Plate_Number='"+ croSearchPlateNoTextbox.Text.ToString() +"'";
+            customerReader = dbcon.ConnectToOleDB(sqlQuery);
+            CreateROProperties croProp=null;
+
+            while (customerReader.Read())
+            {
+                if (customerReader["Plate_Number"].ToString().Equals(croSearchPlateNoTextbox.Text.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    croProp = new CreateROProperties
+                    {
+                        FName = customerReader["first_name"].ToString(),
+                        LName = customerReader["last_name"].ToString(),
+                        Address = customerReader["Address"].ToString(),
+                        ContactNum = customerReader["contact_number"].ToString(),
+                        PlateNo = customerReader["Plate_Number"].ToString(),
+                        CarBrand = customerReader["car_brand"].ToString(),
+                        CardModel = customerReader["car_model"].ToString(),
+                        ChasisNo = customerReader["chasis_number"].ToString(),
+                        EngineNo = customerReader["contact_number"].ToString()
+                    };
+                }
+            }
+
+            /*sqlQuery = "SELECT * FROM RepairOrder WHERE RO_Number='" + croRONumberTextbox.Text.ToString() + "'";
+            customerReader = dbcon.ConnectToOleDB(sqlQuery);
+            while (customerReader.Read())
+            {
+                croProp.RoNumber = customerReader["RO_Number"].ToString();
+            }*/
+
+            return croProp;
+        }
+
     }
 }
