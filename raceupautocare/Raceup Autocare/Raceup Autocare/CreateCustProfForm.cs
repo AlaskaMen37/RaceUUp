@@ -22,30 +22,61 @@ namespace Raceup_Autocare
         public static String lname = "";
         public static String password = "";
         string sqlQuery = "";
+        
 
         public CreateCustProfForm()
         {
             InitializeComponent();
+            
         }
-
-        private void Click_SaveButton(object sender, EventArgs e)
+        private DateTime getDateToday()
         {
-            dbcon = new DBConnection();
             DateTime dateTimeToday = DateTime.Today;
-            sqlQuery = "INSERT INTO CustomerProfile (first_name, last_name, Address, contact_number, Plate_Number, created_by, date_created, updated_by, date_updated, car_brand, car_model, chasis_number, engine_number)" +
-                        "VALUES('" + customerFirstNameTxtbox.Text + "','" + customerLastNameTxtbox.Text + "', '" + customerAddressTxtbox.Text + "', '" + customerTelephoneNumTxtbox.Text + "', '" + customerPlateNoTxtbox.Text + "', '" + LoginForm.lname + "', '" + dateTimeToday + "', '" + LoginForm.lname + "', '" + dateTimeToday + "' , '" + customerCarBrand.Text + "' , '" + customerCarModelTxtbox.Text + "' , '" + customerChasisNoTxtbox.Text + "' , '" + customerEngineNumberTxtbox.Text + "'); ";
+            return dateTimeToday;
+        }
+        private void Click_SaveButton(object sender, EventArgs e)
+        { 
+            //DateTime dateTimeToday = DateTime.Today;
+            //sqlQuery = "INSERT INTO CustomerProfile (first_name, last_name, Address, contact_number, Plate_Number, created_by, date_created, updated_by, date_updated, car_brand, car_model, chasis_number, engine_number)" +
+            //            "VALUES('" + customerFirstNameTxtbox.Text + "','" + customerLastNameTxtbox.Text + "', '" + customerAddressTxtbox.Text + "', '" + customerTelephoneNumTxtbox.Text + "', '" + customerPlateNoTxtbox.Text + "', '" + LoginForm.lname + "', '" + dateTimeToday + "', '" + LoginForm.lname + "', '" + dateTimeToday + "' , '" + customerCarBrand.Text + "' , '" + customerCarModelTxtbox.Text + "' , '" + customerChasisNoTxtbox.Text + "' , '" + customerEngineNumberTxtbox.Text + "'); ";
+            
+            dbcon = new DBConnection();
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+
+            cmd.CommandText = @"INSERT INTO CustomerProfile([first_name], [last_name], [Address], [contact_number], [Plate_Number], [created_by], [date_created], [updated_by], [date_updated], [car_brand], [car_model], [chasis_number], [engine_number]) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            cmd.Parameters.Add("@first_name", OleDbType.VarChar).Value = customerFirstNameTxtbox.Text.ToString();
+            cmd.Parameters.Add("@last_name", OleDbType.VarChar).Value = customerLastNameTxtbox.Text.ToString();
+            cmd.Parameters.Add("@Address", OleDbType.VarChar).Value = customerAddressTxtbox.Text.ToString();
+            cmd.Parameters.Add("@contact_number", OleDbType.VarChar).Value = customerTelephoneNumTxtbox.Text.ToString();
+            cmd.Parameters.Add("@Plate_Number", OleDbType.VarChar).Value = customerPlateNoTxtbox.Text.ToString();
+            cmd.Parameters.Add("@created_by", OleDbType.VarChar).Value = LoginForm.lname;
+            cmd.Parameters.Add("@date_created", OleDbType.Date).Value = getDateToday();
+            cmd.Parameters.Add("@updated_by", OleDbType.VarChar).Value = LoginForm.lname;
+            cmd.Parameters.Add("@date_updated", OleDbType.Date).Value = getDateToday();
+            cmd.Parameters.Add("@car_brand", OleDbType.VarChar).Value = customerCarBrand.Text.ToString();
+            cmd.Parameters.Add("@car_model", OleDbType.VarChar).Value = customerCarModelTxtbox.Text.ToString();
+            cmd.Parameters.Add("@chasis_number", OleDbType.VarChar).Value = customerChasisNoTxtbox.Text.ToString();
+            cmd.Parameters.Add("@engine_number", OleDbType.VarChar).Value = customerEngineNumberTxtbox.Text.ToString();
+            cmd.Connection = dbcon.openConnection();
+            
 
             if (!isPlateNumberExist())
             {
                 if (ValidateFields())
                 {
+                    cmd.ExecuteNonQuery();
                     customerReader = dbcon.ConnectToOleDB(sqlQuery);
                     MessageBox.Show("Customer information is successfullyy saved.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearTextBoxes(this.Controls);
+                    customerCarBrand.SelectedItem = "";
                 }
             }
             else
             {
                 MessageBox.Show("Plate number already exists.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ClearTextBoxes(this.Controls);
+                customerCarBrand.SelectedItem = "";
             }
 
         }

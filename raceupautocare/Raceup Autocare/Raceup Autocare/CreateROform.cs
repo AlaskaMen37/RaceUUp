@@ -89,7 +89,7 @@ namespace Raceup_Autocare
         private void AddServiceBuutton_Click(object sender, EventArgs e)
         {          
             FillServiceGrid();
-            ClearTextBoxes(this.Controls);
+           // ClearTextBoxes(this.Controls);
         }
 
         private void croServicePrice_KeyPress(object sender, KeyPressEventArgs e)
@@ -175,7 +175,7 @@ namespace Raceup_Autocare
         private void partsAddButton_Click(object sender, EventArgs e)
         {
             FillPartsGrid();
-            ClearTextBoxes(this.Controls);
+           // ClearTextBoxes(this.Controls);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -187,62 +187,77 @@ namespace Raceup_Autocare
         {
             saveRO();
         }
-        private void saveRO() {
+        private void saveRO() 
+        {
+            DialogResult dialogResult2 = MessageBox.Show("Are you sure you want to save this information about the details of an order?", "Save receipt order", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            dbcon = new DBConnection();
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+
             if (!isCreateRoFieldsValid())
             {
                 MessageBox.Show("Please input all necessary fields.");
             }
-            else {
-                dbcon = new DBConnection();
-                OleDbCommand cmd = new OleDbCommand();
-                cmd.CommandType = CommandType.Text;
-
-                // Insert into RepairOrder Table
-                cmd.CommandText = @"INSERT INTO RepairOrder([RO_Number], [Plate_Number], [Created_By], [Date_Created], [Updated_By], [Date_Updated], [Payment_Method], [Customer_Request], [GrandTotal]) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
-                cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
-                cmd.Parameters.Add("@Plate_Number", OleDbType.VarChar).Value = croPlateNoTextbox.Text.ToString();
-                cmd.Parameters.Add("@Created_By", OleDbType.VarChar).Value = LoginForm.lname;
-                cmd.Parameters.Add("@Date_Created", OleDbType.Date).Value = getDateToday();
-                cmd.Parameters.Add("@Updated_By", OleDbType.VarChar).Value = LoginForm.lname;
-                cmd.Parameters.Add("@Date_Updated", OleDbType.Date).Value = getDateToday();
-                cmd.Parameters.Add("@Payment_Method", OleDbType.VarChar).Value = getPaymentMethod();
-                cmd.Parameters.Add("@Customer_Request", OleDbType.VarChar).Value = customerRequestTextbox.Text.ToString();
-                cmd.Parameters.Add("@GrandTotal", OleDbType.Integer).Value = 25000;
-                cmd.Connection = dbcon.openConnection();
-                cmd.ExecuteNonQuery();
-
-                // Insert into RepairOrderService Table
-                for (int i = 0; i < serviceDataGridView.Rows.Count - 1; i++)
-                {
-                    cmd.Parameters.Clear();
-                    cmd.CommandText = @"INSERT INTO RepairOrderService([RO_Number], [Service_Description], [Service_Quantity], [Service_Price], [Total_Price]) VALUES (?, ?, ?, ?, ?);";
-                    cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
-                    cmd.Parameters.Add("@Service_Description", OleDbType.VarChar).Value = serviceDataGridView.Rows[i].Cells[0].Value;
-                    cmd.Parameters.Add("@Service_Quantity", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[1].Value.ToString());
-                    cmd.Parameters.Add("@Service_Price", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[2].Value.ToString());
-                    cmd.Parameters.Add("@Total_Price", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[3].Value.ToString());
-                    cmd.ExecuteNonQuery();
-
-                }
-
-                // Insert into RepairOrderParts Table
-                for (int i = 0; i < PartsDataGrid.Rows.Count - 1; i++)
-                {
-                    cmd.Parameters.Clear();
-                    cmd.CommandText = @"INSERT INTO RepairOrderParts([RO_Number], [Item_Code], [Item_Name], [Parts_Quantity], [Unit_Price], [Total_Price_Parts]) VALUES (?, ?, ?, ?, ?, ?);";
-                    cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
-                    cmd.Parameters.Add("@Item_Code", OleDbType.VarChar).Value = PartsDataGrid.Rows[i].Cells[0].Value.ToString();
-                    cmd.Parameters.Add("@Item_Name", OleDbType.VarChar).Value = PartsDataGrid.Rows[i].Cells[1].Value.ToString();
-                    cmd.Parameters.Add("@Parts_Quantity", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[2].Value.ToString());
-                    cmd.Parameters.Add("@Unit_Price", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[3].Value.ToString());
-                    cmd.Parameters.Add("@Total_Price_Parts", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[4].Value.ToString());
-                    cmd.ExecuteNonQuery();
-                }
-
-                dbcon.CloseConnection();
-                MessageBox.Show("RO has been successfully saved.");
-            }
             
+            else
+            {
+                if (dialogResult2 == DialogResult.Yes)
+                {
+
+                    // Insert into RepairOrder Table
+                    cmd.CommandText = @"INSERT INTO RepairOrder([RO_Number], [Plate_Number], [Created_By], [Date_Created], [Updated_By], [Date_Updated], [Payment_Method], [Customer_Request], [GrandTotal]) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                    cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
+                    cmd.Parameters.Add("@Plate_Number", OleDbType.VarChar).Value = croPlateNoTextbox.Text.ToString();
+                    cmd.Parameters.Add("@Created_By", OleDbType.VarChar).Value = LoginForm.lname;
+                    cmd.Parameters.Add("@Date_Created", OleDbType.Date).Value = getDateToday();
+                    cmd.Parameters.Add("@Updated_By", OleDbType.VarChar).Value = LoginForm.lname;
+                    cmd.Parameters.Add("@Date_Updated", OleDbType.Date).Value = getDateToday();
+                    cmd.Parameters.Add("@Payment_Method", OleDbType.VarChar).Value = getPaymentMethod();
+                    cmd.Parameters.Add("@Customer_Request", OleDbType.VarChar).Value = customerRequestTextbox.Text.ToString();
+                    cmd.Parameters.Add("@GrandTotal", OleDbType.Integer).Value = 25000;
+                    cmd.Connection = dbcon.openConnection();
+                    cmd.ExecuteNonQuery();
+
+                    // Insert into RepairOrderService Table
+                    for (int i = 0; i < serviceDataGridView.Rows.Count - 1; i++)
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.CommandText = @"INSERT INTO RepairOrderService([RO_Number], [Service_Description], [Service_Quantity], [Service_Price], [Total_Price]) VALUES (?, ?, ?, ?, ?);";
+                        cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
+                        cmd.Parameters.Add("@Service_Description", OleDbType.VarChar).Value = serviceDataGridView.Rows[i].Cells[0].Value;
+                        cmd.Parameters.Add("@Service_Quantity", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[1].Value.ToString());
+                        cmd.Parameters.Add("@Service_Price", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[2].Value.ToString());
+                        cmd.Parameters.Add("@Total_Price", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[3].Value.ToString());
+                        cmd.ExecuteNonQuery();
+
+                    }
+
+                    // Insert into RepairOrderParts Table
+                    for (int i = 0; i < PartsDataGrid.Rows.Count - 1; i++)
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.CommandText = @"INSERT INTO RepairOrderParts([RO_Number], [Item_Code], [Item_Name], [Parts_Quantity], [Unit_Price], [Total_Price_Parts]) VALUES (?, ?, ?, ?, ?, ?);";
+                        cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
+                        cmd.Parameters.Add("@Item_Code", OleDbType.VarChar).Value = PartsDataGrid.Rows[i].Cells[0].Value.ToString();
+                        cmd.Parameters.Add("@Item_Name", OleDbType.VarChar).Value = PartsDataGrid.Rows[i].Cells[1].Value.ToString();
+                        cmd.Parameters.Add("@Parts_Quantity", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[2].Value.ToString());
+                        cmd.Parameters.Add("@Unit_Price", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[3].Value.ToString());
+                        cmd.Parameters.Add("@Total_Price_Parts", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[4].Value.ToString());
+                        cmd.ExecuteNonQuery();
+                        
+                    }
+                    dbcon.CloseConnection();
+                    MessageBox.Show("RO has been successfully saved.");
+                    MenuForm menuform = new MenuForm();
+                    this.Hide();
+                    menuform.ShowDialog();
+                }
+                else if (dialogResult2 == DialogResult.No)
+                {
+                    //Won't remove any item if cancel
+                }
+            }
 
         }
 
@@ -379,11 +394,15 @@ namespace Raceup_Autocare
         private void removeBTN_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove this selected item?", "Remove Item", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            ClearTextBoxes(this.Controls);
+            
             if (dialogResult == DialogResult.Yes)
             {
                 foreach (DataGridViewRow row in PartsDataGrid.SelectedRows)
                     if (!row.IsNewRow) PartsDataGrid.Rows.Remove(row);
+                croPartsNameTextBox.Text = "";
+                croPartsQuantityTextbox.Text = "";
+                croPartsUnitPriceTextbox.Text = "";
+
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -394,15 +413,18 @@ namespace Raceup_Autocare
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove this selected item?", "Remove Item", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            ClearTextBoxes(this.Controls);
+            
             if (dialogResult == DialogResult.Yes)
             {
                 foreach (DataGridViewRow row in serviceDataGridView.SelectedRows)
                     if (!row.IsNewRow) serviceDataGridView.Rows.Remove(row);
+                croServiceDescription.Text = "";
+                croServiceHourTextbox.Text = "";
+                croServicePrice.Text = "";
             }
             else if (dialogResult == DialogResult.No)
             {
-                //Won't remove any item if cancel
+                //Won't remove any item if cance
             }
         }
 
@@ -416,7 +438,7 @@ namespace Raceup_Autocare
             CreateDocument();
            
             string fileName;
-            /*// Show the dialog and get result.
+            // Show the dialog and get result.
             OpenFileDialog ofd = new OpenFileDialog();
             DialogResult result = ofd.ShowDialog();
             if (result == DialogResult.OK) // Test result.
@@ -428,18 +450,18 @@ namespace Raceup_Autocare
                 //read all text into content
                 content = System.IO.File.ReadAllText(fileName);
                 //var document = application.Documents.Open(@fileName);
-            }*/
+            }
 
             PrintDialog printDlg = new PrintDialog();
             PrintDocument printDoc = new PrintDocument();
-            printDoc.DocumentName = "D:\\Documents\\Work Related\\SIDE HUSTLE\\To be printed\\temp1.doc.x";
+            printDoc.DocumentName = @"C:\database\temp1.docx";
             printDlg.Document = printDoc;
             printDlg.AllowSelection = true;
             printDlg.AllowSomePages = true;
             //Call ShowDialog
             if (printDlg.ShowDialog() == DialogResult.OK)
             {
-                printDoc.PrintPage += new PrintPageEventHandler(pd_PrintPage);
+               // printDoc.PrintPage += new PrintPageEventHandler(pd_PrintPage);
                 printDoc.Print();
             }
         }
@@ -567,7 +589,7 @@ namespace Raceup_Autocare
                 }
 
                 //Save the document  
-                object filename = @"D:\Documents\Work Related\SIDE HUSTLE\To be printed\temp1.docx";
+                object filename = @"C:\database\temp1.docx";
                 document.SaveAs2(ref filename);
                 document.Close(ref missing, ref missing, ref missing);
                 document = null;
@@ -616,5 +638,14 @@ namespace Raceup_Autocare
             return croProp;
         }
 
+        private void serviceDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void croPartsUnitPriceTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
