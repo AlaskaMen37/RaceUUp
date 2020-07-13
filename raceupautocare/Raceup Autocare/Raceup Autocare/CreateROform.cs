@@ -7,6 +7,7 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -22,6 +23,7 @@ namespace Raceup_Autocare
         DBConnection dbcon = null;
         OleDbDataReader customerReader = null;
         OleDbDataReader partsReader = null;
+        OleDbDataReader repairOrder = null;
         string sqlQuery = "";
         String content = "";
         public CreateROform()
@@ -194,6 +196,7 @@ namespace Raceup_Autocare
             dbcon = new DBConnection();
             OleDbCommand cmd = new OleDbCommand();
             cmd.CommandType = CommandType.Text;
+            bool isROExist = false;
 
             if (!isCreateRoFieldsValid())
             {
@@ -201,57 +204,74 @@ namespace Raceup_Autocare
             }
             
             else
-            {
+            {           
+                cmd.CommandType = CommandType.Text;
+
+                sqlQuery = "SELECT * FROM RepairOrder";
+                repairOrder = dbcon.ConnectToOleDB(sqlQuery);
+
+                while (repairOrder.Read())
+                {
+                    if (repairOrder["RO_Number"].ToString().Equals(croRONumberTextbox.Text.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        isROExist = true;
+                        break;
+                    }
+                }
+
                 if (dialogResult2 == DialogResult.Yes)
                 {
-
-                    // Insert into RepairOrder Table
-                    cmd.CommandText = @"INSERT INTO RepairOrder([RO_Number], [Plate_Number], [Created_By], [Date_Created], [Updated_By], [Date_Updated], [Payment_Method], [Customer_Request], [GrandTotal]) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
-                    cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
-                    cmd.Parameters.Add("@Plate_Number", OleDbType.VarChar).Value = croPlateNoTextbox.Text.ToString();
-                    cmd.Parameters.Add("@Created_By", OleDbType.VarChar).Value = LoginForm.lname;
-                    cmd.Parameters.Add("@Date_Created", OleDbType.Date).Value = getDateToday();
-                    cmd.Parameters.Add("@Updated_By", OleDbType.VarChar).Value = LoginForm.lname;
-                    cmd.Parameters.Add("@Date_Updated", OleDbType.Date).Value = getDateToday();
-                    cmd.Parameters.Add("@Payment_Method", OleDbType.VarChar).Value = getPaymentMethod();
-                    cmd.Parameters.Add("@Customer_Request", OleDbType.VarChar).Value = customerRequestTextbox.Text.ToString();
-                    cmd.Parameters.Add("@GrandTotal", OleDbType.Integer).Value = 25000;
-                    cmd.Connection = dbcon.openConnection();
-                    cmd.ExecuteNonQuery();
-
-                    // Insert into RepairOrderService Table
-                    for (int i = 0; i < serviceDataGridView.Rows.Count - 1; i++)
+                    if (!isROExist)
                     {
-                        cmd.Parameters.Clear();
-                        cmd.CommandText = @"INSERT INTO RepairOrderService([RO_Number], [Service_Description], [Service_Quantity], [Service_Price], [Total_Price]) VALUES (?, ?, ?, ?, ?);";
+                        // Insert into RepairOrder Table
+                        cmd.CommandText = @"INSERT INTO RepairOrder([RO_Number], [Plate_Number], [Created_By], [Date_Created], [Updated_By], [Date_Updated], [Payment_Method], [Customer_Request], [GrandTotal]) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
                         cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
-                        cmd.Parameters.Add("@Service_Description", OleDbType.VarChar).Value = serviceDataGridView.Rows[i].Cells[0].Value;
-                        cmd.Parameters.Add("@Service_Quantity", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[1].Value.ToString());
-                        cmd.Parameters.Add("@Service_Price", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[2].Value.ToString());
-                        cmd.Parameters.Add("@Total_Price", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[3].Value.ToString());
+                        cmd.Parameters.Add("@Plate_Number", OleDbType.VarChar).Value = croPlateNoTextbox.Text.ToString();
+                        cmd.Parameters.Add("@Created_By", OleDbType.VarChar).Value = LoginForm.lname;
+                        cmd.Parameters.Add("@Date_Created", OleDbType.Date).Value = getDateToday();
+                        cmd.Parameters.Add("@Updated_By", OleDbType.VarChar).Value = LoginForm.lname;
+                        cmd.Parameters.Add("@Date_Updated", OleDbType.Date).Value = getDateToday();
+                        cmd.Parameters.Add("@Payment_Method", OleDbType.VarChar).Value = getPaymentMethod();
+                        cmd.Parameters.Add("@Customer_Request", OleDbType.VarChar).Value = customerRequestTextbox.Text.ToString();
+                        cmd.Parameters.Add("@GrandTotal", OleDbType.Integer).Value = 25000;
+                        cmd.Connection = dbcon.openConnection();
                         cmd.ExecuteNonQuery();
 
-                    }
+                        // Insert into RepairOrderService Table
+                        for (int i = 0; i < serviceDataGridView.Rows.Count - 1; i++)
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.CommandText = @"INSERT INTO RepairOrderService([RO_Number], [Service_Description], [Service_Quantity], [Service_Price], [Total_Price]) VALUES (?, ?, ?, ?, ?);";
+                            cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
+                            cmd.Parameters.Add("@Service_Description", OleDbType.VarChar).Value = serviceDataGridView.Rows[i].Cells[0].Value;
+                            cmd.Parameters.Add("@Service_Quantity", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[1].Value.ToString());
+                            cmd.Parameters.Add("@Service_Price", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[2].Value.ToString());
+                            cmd.Parameters.Add("@Total_Price", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[3].Value.ToString());
+                            cmd.ExecuteNonQuery();
 
-                    // Insert into RepairOrderParts Table
-                    for (int i = 0; i < PartsDataGrid.Rows.Count - 1; i++)
-                    {
-                        cmd.Parameters.Clear();
-                        cmd.CommandText = @"INSERT INTO RepairOrderParts([RO_Number], [Item_Code], [Item_Name], [Parts_Quantity], [Unit_Price], [Total_Price_Parts]) VALUES (?, ?, ?, ?, ?, ?);";
-                        cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
-                        cmd.Parameters.Add("@Item_Code", OleDbType.VarChar).Value = PartsDataGrid.Rows[i].Cells[0].Value.ToString();
-                        cmd.Parameters.Add("@Item_Name", OleDbType.VarChar).Value = PartsDataGrid.Rows[i].Cells[1].Value.ToString();
-                        cmd.Parameters.Add("@Parts_Quantity", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[2].Value.ToString());
-                        cmd.Parameters.Add("@Unit_Price", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[3].Value.ToString());
-                        cmd.Parameters.Add("@Total_Price_Parts", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[4].Value.ToString());
-                        cmd.ExecuteNonQuery();
-                        
+                        }
+
+                        // Insert into RepairOrderParts Table
+                        for (int i = 0; i < PartsDataGrid.Rows.Count - 1; i++)
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.CommandText = @"INSERT INTO RepairOrderParts([RO_Number], [Item_Code], [Item_Name], [Parts_Quantity], [Unit_Price], [Total_Price_Parts]) VALUES (?, ?, ?, ?, ?, ?);";
+                            cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
+                            cmd.Parameters.Add("@Item_Code", OleDbType.VarChar).Value = PartsDataGrid.Rows[i].Cells[0].Value.ToString();
+                            cmd.Parameters.Add("@Item_Name", OleDbType.VarChar).Value = PartsDataGrid.Rows[i].Cells[1].Value.ToString();
+                            cmd.Parameters.Add("@Parts_Quantity", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[2].Value.ToString());
+                            cmd.Parameters.Add("@Unit_Price", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[3].Value.ToString());
+                            cmd.Parameters.Add("@Total_Price_Parts", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[4].Value.ToString());
+                            cmd.ExecuteNonQuery();
+
+                        }
+                        dbcon.CloseConnection();
+                        MessageBox.Show("RO has been successfully saved.");
+                        MenuForm menuform = new MenuForm();
+                        this.Hide();
+                        menuform.ShowDialog();
                     }
-                    dbcon.CloseConnection();
-                    MessageBox.Show("RO has been successfully saved.");
-                    MenuForm menuform = new MenuForm();
-                    this.Hide();
-                    menuform.ShowDialog();
+                     
                 }
                 else if (dialogResult2 == DialogResult.No)
                 {
@@ -436,41 +456,67 @@ namespace Raceup_Autocare
         private void printButton_Click(object sender, EventArgs e)
         {
             CreateDocument();
-           
-            string fileName;
-            // Show the dialog and get result.
-            OpenFileDialog ofd = new OpenFileDialog();
-            DialogResult result = ofd.ShowDialog();
-            if (result == DialogResult.OK) // Test result.
-            {
-                fileName = ofd.FileName;
-
-                var application = new Microsoft.Office.Interop.Word.Application();
-                //var document = application.Documents.Open(@"D:\ICT.docx");
-                //read all text into content
-                content = System.IO.File.ReadAllText(fileName);
-                //var document = application.Documents.Open(@fileName);
-            }
-
-            PrintDialog printDlg = new PrintDialog();
-            PrintDocument printDoc = new PrintDocument();
-            printDoc.DocumentName = @"C:\database\temp1.docx";
-            printDlg.Document = printDoc;
-            printDlg.AllowSelection = true;
-            printDlg.AllowSomePages = true;
-            //Call ShowDialog
-            if (printDlg.ShowDialog() == DialogResult.OK)
-            {
-               // printDoc.PrintPage += new PrintPageEventHandler(pd_PrintPage);
-                printDoc.Print();
-            }
+            Printing();
         }
 
+        private Font printFont;
+        private StreamReader streamToPrint;
+        // private static string filePath = @"D:\Documents\Work Related\SIDE HUSTLE\To be printed";
+
+        // The PrintPage event is raised for each page to be printed.
         private void pd_PrintPage(object sender, PrintPageEventArgs ev)
         {
-            Font printFont = new Font("Arial", 10);
-            ev.Graphics.DrawString(content, printFont, Brushes.Black,
-                            ev.MarginBounds.Left, 0, new StringFormat());
+            float linesPerPage = 0;
+            float yPos = 0;
+            int count = 0;
+            float leftMargin = ev.MarginBounds.Left;
+            float topMargin = ev.MarginBounds.Top;
+            String line = null;
+
+            // Calculate the number of lines per page.
+            linesPerPage = ev.MarginBounds.Height /
+               printFont.GetHeight(ev.Graphics);
+
+            // Iterate over the file, printing each line.
+            while (count < linesPerPage &&
+               ((line = streamToPrint.ReadLine()) != null))
+            {
+                yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
+                ev.Graphics.DrawString(line, printFont, Brushes.Black,
+                   leftMargin, yPos, new StringFormat());
+                count++;
+            }
+
+            // If more lines exist, print another page.
+            if (line != null)
+                ev.HasMorePages = true;
+            else
+                ev.HasMorePages = false;
+        }
+
+        // Print the file.
+        public void Printing()
+        {
+            try
+            {
+                streamToPrint = new StreamReader(@"D:\Documents\Work Related\SIDE HUSTLE\To be printed\temp1.docx");
+                try
+                {
+                    printFont = new Font("Arial", 10);
+                    PrintDocument pd = new PrintDocument();
+                  //  pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
+                    // Print the document.
+                    pd.Print();
+                }
+                finally
+                {
+                    streamToPrint.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         //Create document method  
