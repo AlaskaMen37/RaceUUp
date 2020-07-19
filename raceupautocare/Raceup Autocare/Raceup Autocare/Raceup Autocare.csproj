@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\D A N\Desktop\Setup file for Raceup Autocare\</PublishUrl>
+    <PublishUrl>C:\Users\D A N\Desktop\Setup file for Raceup Autocare\newfolder\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -95,11 +95,23 @@
     <Compile Include="Inquiry.Designer.cs">
       <DependentUpon>Inquiry.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListRoNumber.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListRoNumber.Designer.cs">
+      <DependentUpon>ListRoNumber.cs</DependentUpon>
+    </Compile>
     <Compile Include="Message Reset.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Message Reset.Designer.cs">
       <DependentUpon>Message Reset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PartsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PartsForm.Designer.cs">
+      <DependentUpon>PartsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PleaseCreateNewCustProf.cs">
       <SubType>Form</SubType>
@@ -107,6 +119,7 @@
     <Compile Include="PleaseCreateNewCustProf.Designer.cs">
       <DependentUpon>PleaseCreateNewCustProf.cs</DependentUpon>
     </Compile>
+    <Compile Include="propfull.cs" />
     <Compile Include="reset Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +152,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchItemForm.Designer.cs">
+      <DependentUpon>SearchItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowListofOrderPartsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowListofOrderPartsForm.Designer.cs">
+      <DependentUpon>ShowListofOrderPartsForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ShowListofOrderPartsForm.resx">
+      <DependentUpon>ShowListofOrderPartsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Resources\data_pending_64px.png" />
+    <None Include="Resources\pending.bmp" />
+    <EmbeddedResource Include="ListRoNumber.resx">
+      <DependentUpon>ListRoNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchItemForm.resx">
+      <DependentUpon>SearchItemForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Resources\logo255.png" />
     <None Include="Resources\paaaaaawe.png" />
     <None Include="Resources\pawer1.png" />
@@ -167,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Message Reset.resx">
       <DependentUpon>Message Reset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartsForm.resx">
+      <DependentUpon>PartsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PleaseCreateNewCustProf.resx">
       <DependentUpon>PleaseCreateNewCustProf.cs</DependentUpon>

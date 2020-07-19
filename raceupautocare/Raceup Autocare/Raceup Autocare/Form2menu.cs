@@ -287,10 +287,12 @@ namespace Raceup_Autocare
             SidePanel.Top = PartsBtn.Top;
             SidePanel.Visible = true;
             SidePanel2.Visible = false;
-            if (currentChildForm != null)
-            {
-                currentChildForm.Close();
-            }
+            OpenChildForm(new PartsForm());
+
+            //if (currentChildForm != null)
+            //{
+            //    currentChildForm.Close();
+            //}
         }
 
         private void CreateROBtn_Click_1(object sender, EventArgs e)

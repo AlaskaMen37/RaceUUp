@@ -63,6 +63,16 @@ namespace Raceup_Autocare.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap data_pending_64px {
+            get {
+                object obj = ResourceManager.GetObject("data_pending_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo1___Copy {
             get {
                 object obj = ResourceManager.GetObject("logo1 - Copy", resourceCulture);

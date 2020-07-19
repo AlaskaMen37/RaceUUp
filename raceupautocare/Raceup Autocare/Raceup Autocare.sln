@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raceup Autocare", "Raceup Autocare\Raceup Autocare.csproj", "{EA41AD90-929F-47CE-93D5-C5F26248BE2C}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RaceUP prototype", "RaceUP prototype\RaceUP prototype.vdproj", "{F85E95DF-7FE1-4602-9486-A27A3B29230A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,8 +17,13 @@ Global
 		{EA41AD90-929F-47CE-93D5-C5F26248BE2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA41AD90-929F-47CE-93D5-C5F26248BE2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA41AD90-929F-47CE-93D5-C5F26248BE2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F85E95DF-7FE1-4602-9486-A27A3B29230A}.Debug|Any CPU.ActiveCfg = Debug
+		{F85E95DF-7FE1-4602-9486-A27A3B29230A}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9868FA0-B279-4FFF-80FB-AF64DC332CE2}
 	EndGlobalSection
 EndGlobal

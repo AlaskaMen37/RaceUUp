@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Globalization;
@@ -89,9 +90,9 @@ namespace Raceup_Autocare
         }
 
         private void AddServiceBuutton_Click(object sender, EventArgs e)
-        {          
+        {
             FillServiceGrid();
-           // ClearTextBoxes(this.Controls);
+            // ClearTextBoxes(this.Controls);
         }
 
         private void croServicePrice_KeyPress(object sender, KeyPressEventArgs e)
@@ -132,7 +133,7 @@ namespace Raceup_Autocare
                 }
 
                 serviceDataGridView.Rows.Add(list);
-            }      
+            }
 
         }
 
@@ -159,17 +160,18 @@ namespace Raceup_Autocare
                 var list = new[] { itemCode, itemDesc, itemQuantity, itemPrice, totalPrice.ToString() };
                 PartsDataGrid.Rows.Add(list);
             }
-            
+
         }
 
-        private string getItemCode() {
+        private string getItemCode() 
+        {
             dbcon = new DBConnection();
-            sqlQuery = "SELECT Item_Code FROM Parts WHERE Item_Description='"+ croPartsNameTextBox.Text + "'";
+            sqlQuery = "SELECT Item_Code FROM Parts WHERE Item_Description='" + croPartsNameTextBox.Text + "'";
             partsReader = dbcon.ConnectToOleDB(sqlQuery);
             String itemCode = "";
             while (partsReader.Read())
             {
-               itemCode = partsReader["Item_Code"].ToString();
+                itemCode = partsReader["Item_Code"].ToString();
             }
             return itemCode;
         }
@@ -177,7 +179,7 @@ namespace Raceup_Autocare
         private void partsAddButton_Click(object sender, EventArgs e)
         {
             FillPartsGrid();
-           // ClearTextBoxes(this.Controls);
+            // ClearTextBoxes(this.Controls);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -189,7 +191,7 @@ namespace Raceup_Autocare
         {
             saveRO();
         }
-        private void saveRO() 
+        private void saveRO()
         {
             DialogResult dialogResult2 = MessageBox.Show("Are you sure you want to save this information about the details of an order?", "Save receipt order", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
@@ -202,9 +204,9 @@ namespace Raceup_Autocare
             {
                 MessageBox.Show("Please input all necessary fields.");
             }
-            
+
             else
-            {           
+            {
                 cmd.CommandType = CommandType.Text;
 
                 sqlQuery = "SELECT * FROM RepairOrder";
@@ -224,7 +226,7 @@ namespace Raceup_Autocare
                     if (!isROExist)
                     {
                         // Insert into RepairOrder Table
-                        cmd.CommandText = @"INSERT INTO RepairOrder([RO_Number], [Plate_Number], [Created_By], [Date_Created], [Updated_By], [Date_Updated], [Payment_Method], [Customer_Request], [GrandTotal]) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                        cmd.CommandText = @"INSERT INTO RepairOrder([RO_Number], [Plate_Number], [Created_By], [Date_Created], [Updated_By], [Date_Updated], [Payment_Method], [Customer_Request], [GrandTotal], [Status]) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
                         cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
                         cmd.Parameters.Add("@Plate_Number", OleDbType.VarChar).Value = croPlateNoTextbox.Text.ToString();
                         cmd.Parameters.Add("@Created_By", OleDbType.VarChar).Value = LoginForm.lname;
@@ -234,6 +236,7 @@ namespace Raceup_Autocare
                         cmd.Parameters.Add("@Payment_Method", OleDbType.VarChar).Value = getPaymentMethod();
                         cmd.Parameters.Add("@Customer_Request", OleDbType.VarChar).Value = customerRequestTextbox.Text.ToString();
                         cmd.Parameters.Add("@GrandTotal", OleDbType.Integer).Value = 25000;
+                        cmd.Parameters.Add("@Status", OleDbType.VarChar).Value = "Pending";
                         cmd.Connection = dbcon.openConnection();
                         cmd.ExecuteNonQuery();
 
@@ -248,30 +251,32 @@ namespace Raceup_Autocare
                             cmd.Parameters.Add("@Service_Price", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[2].Value.ToString());
                             cmd.Parameters.Add("@Total_Price", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[3].Value.ToString());
                             cmd.ExecuteNonQuery();
-
                         }
 
                         // Insert into RepairOrderParts Table
-                        for (int i = 0; i < PartsDataGrid.Rows.Count - 1; i++)
+                        for (int j = 0; j < PartsDataGrid.Rows.Count - 1; j++)
                         {
                             cmd.Parameters.Clear();
-                            cmd.CommandText = @"INSERT INTO RepairOrderParts([RO_Number], [Item_Code], [Item_Name], [Parts_Quantity], [Unit_Price], [Total_Price_Parts]) VALUES (?, ?, ?, ?, ?, ?);";
+                            cmd.CommandText = @"INSERT INTO RepairOrderParts([RO_Number], [Item_Code], [Item_Name], [Parts_Quantity], [Unit_Price], [Total_Price_Parts], [Status]) VALUES (?, ?, ?, ?, ?, ?, ?);";
                             cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
-                            cmd.Parameters.Add("@Item_Code", OleDbType.VarChar).Value = PartsDataGrid.Rows[i].Cells[0].Value.ToString();
-                            cmd.Parameters.Add("@Item_Name", OleDbType.VarChar).Value = PartsDataGrid.Rows[i].Cells[1].Value.ToString();
-                            cmd.Parameters.Add("@Parts_Quantity", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[2].Value.ToString());
-                            cmd.Parameters.Add("@Unit_Price", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[3].Value.ToString());
-                            cmd.Parameters.Add("@Total_Price_Parts", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[i].Cells[4].Value.ToString());
+                            cmd.Parameters.Add("@Item_Code", OleDbType.VarChar).Value = PartsDataGrid.Rows[j].Cells[0].Value.ToString();
+                            cmd.Parameters.Add("@Item_Name", OleDbType.VarChar).Value = PartsDataGrid.Rows[j].Cells[1].Value.ToString();
+                            cmd.Parameters.Add("@Parts_Quantity", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[j].Cells[2].Value.ToString());
+                            cmd.Parameters.Add("@Unit_Price", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[j].Cells[3].Value.ToString());
+                            cmd.Parameters.Add("@Total_Price_Parts", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[j].Cells[4].Value.ToString());
+                            cmd.Parameters.Add("@Status", OleDbType.VarChar).Value = "Pending";
                             cmd.ExecuteNonQuery();
-
+                            
                         }
+
                         dbcon.CloseConnection();
                         MessageBox.Show("RO has been successfully saved.");
+
                         MenuForm menuform = new MenuForm();
                         this.Hide();
                         menuform.ShowDialog();
                     }
-                     
+
                 }
                 else if (dialogResult2 == DialogResult.No)
                 {
@@ -287,12 +292,12 @@ namespace Raceup_Autocare
         }
 
         private String getPaymentMethod() {
-            var radioButtonList = new[] { cashRadioButton, gcashRadioButton,creditCardRadioButton, masterCardRadioButton};
+            var radioButtonList = new[] { cashRadioButton, gcashRadioButton, creditCardRadioButton, masterCardRadioButton };
             String paymentMethod = "";
-         
+
             foreach (RadioButton rb in radioButtonList) {
                 if (rb.Checked == true) {
-                   paymentMethod = rb.Text;
+                    paymentMethod = rb.Text;
                 }
             }
 
@@ -414,7 +419,7 @@ namespace Raceup_Autocare
         private void removeBTN_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove this selected item?", "Remove Item", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            
+
             if (dialogResult == DialogResult.Yes)
             {
                 foreach (DataGridViewRow row in PartsDataGrid.SelectedRows)
@@ -433,7 +438,7 @@ namespace Raceup_Autocare
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove this selected item?", "Remove Item", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            
+
             if (dialogResult == DialogResult.Yes)
             {
                 foreach (DataGridViewRow row in serviceDataGridView.SelectedRows)
@@ -456,67 +461,52 @@ namespace Raceup_Autocare
         private void printButton_Click(object sender, EventArgs e)
         {
             CreateDocument();
-            Printing();
+            print();
         }
 
-        private Font printFont;
-        private StreamReader streamToPrint;
-        // private static string filePath = @"D:\Documents\Work Related\SIDE HUSTLE\To be printed";
-
-        // The PrintPage event is raised for each page to be printed.
-        private void pd_PrintPage(object sender, PrintPageEventArgs ev)
-        {
-            float linesPerPage = 0;
-            float yPos = 0;
-            int count = 0;
-            float leftMargin = ev.MarginBounds.Left;
-            float topMargin = ev.MarginBounds.Top;
-            String line = null;
-
-            // Calculate the number of lines per page.
-            linesPerPage = ev.MarginBounds.Height /
-               printFont.GetHeight(ev.Graphics);
-
-            // Iterate over the file, printing each line.
-            while (count < linesPerPage &&
-               ((line = streamToPrint.ReadLine()) != null))
-            {
-                yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
-                ev.Graphics.DrawString(line, printFont, Brushes.Black,
-                   leftMargin, yPos, new StringFormat());
-                count++;
+        public void print() {
+            PrintDialog pd = new PrintDialog();
+            PrintDialog pDialog = new PrintDialog();
+            PrintPreviewDialog printPrvDlg = new PrintPreviewDialog();
+            if (pDialog.ShowDialog() == DialogResult.OK)
+            {               
+                ProcessStartInfo info = new ProcessStartInfo(@"C:\database\temp1.docx");
+                info.Verb = "PrintTo";
+                info.Arguments = pd.PrinterSettings.PrinterName;
+                info.CreateNoWindow = true;
+                info.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(info);
             }
 
-            // If more lines exist, print another page.
-            if (line != null)
-                ev.HasMorePages = true;
-            else
-                ev.HasMorePages = false;
         }
-
-        // Print the file.
         public void Printing()
         {
-            try
+
+            Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+            wordApp.Visible = false;
+
+            PrintDialog pDialog = new PrintDialog();
+            PrintPreviewDialog printPrvDlg = new PrintPreviewDialog();
+
+
+            if (pDialog.ShowDialog() == DialogResult.OK)
             {
-                streamToPrint = new StreamReader(@"D:\Documents\Work Related\SIDE HUSTLE\To be printed\temp1.docx");
-                try
-                {
-                    printFont = new Font("Arial", 10);
-                    PrintDocument pd = new PrintDocument();
-                  //  pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
-                    // Print the document.
-                    pd.Print();
-                }
-                finally
-                {
-                    streamToPrint.Close();
-                }
+                Microsoft.Office.Interop.Word.Document doc = wordApp.Documents.Add(@"C:\database\temp1.docx");
+                var dialogResult = wordApp.Dialogs[WdWordDialog.wdDialogFilePrint].Show();
+                wordApp.ActivePrinter = pDialog.PrinterSettings.PrinterName;
+                wordApp.ActiveDocument.PrintOut(); //this will also work: doc.PrintOut();
+                doc.Close(SaveChanges: false);
+                doc = null;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
+ // <EDIT to include Jason's suggestion>
+ ((Microsoft.Office.Interop.Word._Application)wordApp).Quit(SaveChanges: false);
+            // </EDIT>
+
+            // Original: wordApp.Quit(SaveChanges: false);
+            wordApp = null;
+
+
         }
 
         //Create document method  
@@ -635,7 +625,7 @@ namespace Raceup_Autocare
                 }
 
                 //Save the document  
-                object filename = @"C:\database\temp1.docx";
+                object filename = @"\\192.168.1.201\c$\database\temp1.docx";
                 document.SaveAs2(ref filename);
                 document.Close(ref missing, ref missing, ref missing);
                 document = null;
