@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Font = System.Drawing.Font;
+using Spire.Doc;
 
 namespace Raceup_Autocare
 {
@@ -25,8 +26,15 @@ namespace Raceup_Autocare
         OleDbDataReader customerReader = null;
         OleDbDataReader partsReader = null;
         OleDbDataReader repairOrder = null;
+        OleDbDataReader repairOrderService = null;
         string sqlQuery = "";
-        String content = "";
+        private static String filenamePath;
+        CreateROProperties croProperties;
+        List<String> serviceData = new List<String>();
+        List<List<String>> serviceDataList = new List<List<String>>();
+        List<String> partsData = new List<String>();
+        List<List<String>> partsDataList = new List<List<String>>();
+
         public CreateROform()
         {
             InitializeComponent();
@@ -461,61 +469,43 @@ namespace Raceup_Autocare
         private void printButton_Click(object sender, EventArgs e)
         {
             CreateDocument();
-            print();
+           // print();
         }
 
-        public void print() {
-            PrintDialog pd = new PrintDialog();
-            PrintDialog pDialog = new PrintDialog();
-            PrintPreviewDialog printPrvDlg = new PrintPreviewDialog();
-            if (pDialog.ShowDialog() == DialogResult.OK)
-            {               
-                ProcessStartInfo info = new ProcessStartInfo(@"C:\database\temp1.docx");
-                info.Verb = "PrintTo";
-                info.Arguments = pd.PrinterSettings.PrinterName;
-                info.CreateNoWindow = true;
-                info.WindowStyle = ProcessWindowStyle.Hidden;
-                Process.Start(info);
-            }
-
-        }
-        public void Printing()
+        public void print()
         {
 
-            Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
-            wordApp.Visible = false;
+            // Instantiated an object of Spire.Doc.Document
+            Spire.Doc.Document doc = new Spire.Doc.Document();
 
-            PrintDialog pDialog = new PrintDialog();
-            PrintPreviewDialog printPrvDlg = new PrintPreviewDialog();
+            //Load word document 
+            doc.LoadFromFile(filenamePath);
 
+            // Instantiated System.Windows.Forms.PrintDialog object .
+            PrintDialog dialog = new PrintDialog();
+            dialog.AllowPrintToFile = true;
+            dialog.AllowCurrentPage = true;
+            dialog.AllowSomePages = true;
+            dialog.UseEXDialog = true;
 
-            if (pDialog.ShowDialog() == DialogResult.OK)
-            {
-                Microsoft.Office.Interop.Word.Document doc = wordApp.Documents.Add(@"C:\database\temp1.docx");
-                var dialogResult = wordApp.Dialogs[WdWordDialog.wdDialogFilePrint].Show();
-                wordApp.ActivePrinter = pDialog.PrinterSettings.PrinterName;
-                wordApp.ActiveDocument.PrintOut(); //this will also work: doc.PrintOut();
-                doc.Close(SaveChanges: false);
-                doc = null;
-            }
+            // associate System.Windows.Forms.PrintDialog object with Spire.Doc.Document  
+            doc.PrintDialog = dialog;
 
- // <EDIT to include Jason's suggestion>
- ((Microsoft.Office.Interop.Word._Application)wordApp).Quit(SaveChanges: false);
-            // </EDIT>
-
-            // Original: wordApp.Quit(SaveChanges: false);
-            wordApp = null;
-
+            PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+            printPreviewDialog.Document = doc.PrintDocument;
+            printPreviewDialog.ClientSize = new Size(600, 800);
+            printPreviewDialog.ShowDialog();
 
         }
+
 
         //Create document method  
         private void CreateDocument()
         {
-            
+
             try
             {
-                CreateROProperties croProperties = setCreateRoProperties();
+                croProperties = setCreateRoProperties();
                 //Create an instance for word app  
                 Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
 
@@ -530,6 +520,7 @@ namespace Raceup_Autocare
 
                 //Create a new document  
                 Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+                (document.Styles[WdBuiltinStyle.wdStyleHeading2]).Font.ColorIndex = WdColorIndex.wdBlack;
 
                 //Add header into the document  
                 foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
@@ -538,7 +529,6 @@ namespace Raceup_Autocare
                     Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
                     headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
                     headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
-                //    headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
                     headerRange.Font.Size = 24;
                     headerRange.Text = "INVOICE";
                 }
@@ -548,60 +538,61 @@ namespace Raceup_Autocare
                 {
                     //Get the footer range and add the footer details.  
                     Microsoft.Office.Interop.Word.Range footerRange = wordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
-                    footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
+                    footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlack;
                     footerRange.Font.Size = 10;
                     footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
-                    footerRange.Text = "Footer text goes here";
+                    footerRange.Text = "Customer's Signature over Printed Name \t\t  Prepared By:" + LoginForm.lname;
                 }
 
                 //adding text to document  
-                document.Content.SetRange(0, 0);                    
-                document.Content.Text = "" +Environment.NewLine;                 
+                document.Content.SetRange(0, 0);
+                document.Content.Text = "" + Environment.NewLine;
 
                 //Add paragraph with Heading 2 style  
                 Microsoft.Office.Interop.Word.Paragraph para2 = document.Content.Paragraphs.Add(ref missing);
                 object styleHeading2 = "Heading 2";
                 para2.Range.set_Style(ref styleHeading2);
-              //  para2.Range.Font.Color = Microsoft.Office.Interop.Word.WdColorIndex;
-                para2.Range.Text = "RO Number:" + croProperties.RoNumber + "\t\t\t\t\tCar Brand:" + croProperties.CarBrand;
+                para2.Range.Text = "RO Number: " + croProperties.RoNumber + "\t\t\t\t\tCar Brand: " + croProperties.CarBrand;
                 para2.Range.InsertParagraphAfter();
-                para2.Range.Text = "Client Name: " + croProperties.FName + " " + croProperties.LName + "\t\t\t\t\tCar Model:" + croProperties.CardModel; 
+                para2.Range.Text = "Client Name: " + croProperties.FName + " " + croProperties.LName + "\t\t\t\t\tCar Model: " + croProperties.CardModel;
                 para2.Range.InsertParagraphAfter();
-                para2.Range.Text = "Contact Number: " + croProperties.ContactNum + "\t\t\t\t\tPlate Number:" + croProperties.PlateNo;
+                para2.Range.Text = "Contact Number: " + croProperties.ContactNum + "\t\t\t\t\tPlate Number: " + croProperties.PlateNo;
                 para2.Range.InsertParagraphAfter();
-                para2.Range.Text = "Adddress: " + croProperties.Address;
+                para2.Range.Text = "Chasis No: " + croProperties.ChasisNo + "\t\t\t\t\t\tEngine No: " + croProperties.EngineNo;
                 para2.Range.InsertParagraphAfter();
-                para2.Range.Text = "Chasis No: " + croProperties.ChasisNo + "Engine No: " + croProperties.EngineNo;
+                para2.Range.Text = "Adddress: " + croProperties.Address + "\r";
                 para2.Range.InsertParagraphAfter();
 
-                //Add paragraph with Heading 1 style  
-                Microsoft.Office.Interop.Word.Paragraph para1 = document.Content.Paragraphs.Add(ref missing);
-                object styleHeading1 = "Heading 1";
-                para1.Range.set_Style(ref styleHeading1);               
-                para1.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
-                para1.Range.Text = "\rService";
-                para1.Range.InsertParagraphAfter();
+                // p2 is going to be center aligned
+                var p2 = document.Paragraphs.Add(System.Reflection.Missing.Value);
+                p2.Range.Font.Name = "verdana";
+                p2.Range.Font.Size = 16;
+                p2.Range.Text = "Service";
+                p2.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+                p2.Range.InsertParagraphAfter();
 
                 //Create a 5X5 table and insert some dummy record  
-                Table firstTable = document.Tables.Add(para2.Range, 4, 4, ref missing, ref missing);
-                firstTable.Borders.Enable = 0;
+                int serviceTotalTableRow = serviceDataGridView.Rows.Count;
+                Microsoft.Office.Interop.Word.Table serviceTable = document.Tables.Add(para2.Range, serviceTotalTableRow, 4, ref missing, ref missing);
+                serviceTable.Borders.Enable = 1;
                 //  firstTable.Borders.InsideLineStyle = WdLineStyle.wdLineStyleSingle;
 
-                var serviceColumns = new[] { "Description", "Hours", "Price/Hour", "Total" };
+                var serviceColumns = new[] { "Description \t\t\t\t\t\t\t", "Hours", "Price/Hour", "Total\t" };
                 var serviceColumnsData = new[] { croProperties.Description, croProperties.Hours, croProperties.ServicePrice, croProperties.TotalPrice };
 
-                for (int i = 0; i < serviceColumns.Length; i++) {
-                    firstTable.Cell(1, i+1).Range.Borders[WdBorderType.wdBorderBottom].LineStyle = WdLineStyle.wdLineStyleSingle;
+                //Create Service table
+                for (int i = 0; i < serviceColumns.Length; i++)
+                {
+                    serviceTable.Cell(1, i + 1).Range.Borders[WdBorderType.wdBorderBottom].LineStyle = WdLineStyle.wdLineStyleSingle;
                 }
-                                    
-                foreach (Row row in firstTable.Rows)
+                foreach (Row row in serviceTable.Rows)
                 {
                     foreach (Cell cell in row.Cells)
                     {
                         //Header row  
                         if (cell.RowIndex == 1)
-                        {                           
-                            cell.Range.Text = serviceColumns[cell.ColumnIndex-1];
+                        {
+                            cell.Range.Text = serviceColumns[cell.ColumnIndex - 1];
                             cell.Range.Font.Bold = 1;
                             //other format properties goes here  
                             cell.Range.Font.Name = "verdana";
@@ -619,18 +610,81 @@ namespace Raceup_Autocare
                         {
                             cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
                             cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
-                            cell.Range.Text = (serviceColumnsData[cell.ColumnIndex - 1]);
+                            // cell.Range.Text = croProperties.Description[cell.ColumnIndex - 1].ToString();     
+                            // MessageBox.Show("ROW:" + (cell.RowIndex - 2));
+                            cell.Range.Text = serviceDataList[cell.RowIndex - 2].ElementAt(cell.ColumnIndex - 1);
                         }
+
                     }
                 }
 
+                // Auto fit Service Table
+                serviceTable.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
+
+                p2.Range.Font.Name = "verdana";
+                p2.Range.Font.Size = 16;
+                p2 = document.Paragraphs.Add(System.Reflection.Missing.Value);
+                p2.Range.Text = "\rParts";
+                p2.Range.InsertParagraphAfter();
+
+                // Create Parts Table               
+                Microsoft.Office.Interop.Word.Table partsTable = document.Tables.Add(para2.Range, PartsDataGrid.Rows.Count, 5, ref missing, ref missing);
+                partsTable.Borders.Enable = 1;
+
+                var partsColumns = new[] { "  Item Code  ", "\t\tItem Name\t\t", " Quantity ", " Unit Price ", "  Total  " };
+                for (int i = 0; i < partsColumns.Length; i++)
+                {
+                    partsTable.Cell(1, i + 1).Range.Borders[WdBorderType.wdBorderBottom].LineStyle = WdLineStyle.wdLineStyleSingle;
+                }
+                foreach (Row row in partsTable.Rows)
+                {
+                    foreach (Cell cell in row.Cells)
+                    {
+                        //Header row  
+                        if (cell.RowIndex == 1)
+                        {
+                            cell.Range.Text = partsColumns[cell.ColumnIndex - 1];
+                            cell.Range.Font.Bold = 1;
+                            //other format properties goes here  
+                            cell.Range.Font.Name = "verdana";
+                            cell.Range.Font.Size = 10;
+                            cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                            cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+
+                        }
+                        //Data row  
+                        else
+                        {
+                            cell.Range.Font.Name = "verdana";
+                            cell.Range.Font.Size = 10;
+                            cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                            cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+                            cell.Range.Text = partsDataList[cell.RowIndex - 2].ElementAt(cell.ColumnIndex - 1);
+                        }
+
+                    }
+                }
+
+                // Auto fit Service Table
+                partsTable.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
+
+                // Create customer request
+                p2.Range.Font.Name = "verdana";
+                p2.Range.Font.Size = 11;
+                p2 = document.Paragraphs.Add(System.Reflection.Missing.Value);
+                p2.Range.Text = "\rCustomer Request: Please take care of my car.";
+                p2.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphLeft;
+                p2.Range.InsertParagraphAfter();
+
                 //Save the document  
-                object filename = @"\\192.168.1.201\c$\database\temp1.docx";
+                object filename = filenamePath;
                 document.SaveAs2(ref filename);
                 document.Close(ref missing, ref missing, ref missing);
+
                 document = null;
                 winword.Quit(ref missing, ref missing, ref missing);
                 winword = null;
+
                 MessageBox.Show("Document created successfully !");
             }
             catch (Exception ex)
@@ -639,37 +693,82 @@ namespace Raceup_Autocare
             }
         }
 
-        private CreateROProperties setCreateRoProperties() {
+        private CreateROProperties setCreateRoProperties()
+        {
             dbcon = new DBConnection();
-            sqlQuery = "SELECT * FROM CustomerProfile WHERE Plate_Number='"+ croSearchPlateNoTextbox.Text.ToString() +"'";
+            sqlQuery = "SELECT * FROM CustomerProfile WHERE Plate_Number='" + croSearchPlateNoTextbox.Text.ToString() + "'";
             customerReader = dbcon.ConnectToOleDB(sqlQuery);
-            CreateROProperties croProp=null;
+            CreateROProperties croProp = new CreateROProperties();
 
             while (customerReader.Read())
             {
                 if (customerReader["Plate_Number"].ToString().Equals(croSearchPlateNoTextbox.Text.ToString(), StringComparison.InvariantCultureIgnoreCase))
                 {
-                    croProp = new CreateROProperties
-                    {
-                        FName = customerReader["first_name"].ToString(),
-                        LName = customerReader["last_name"].ToString(),
-                        Address = customerReader["Address"].ToString(),
-                        ContactNum = customerReader["contact_number"].ToString(),
-                        PlateNo = customerReader["Plate_Number"].ToString(),
-                        CarBrand = customerReader["car_brand"].ToString(),
-                        CardModel = customerReader["car_model"].ToString(),
-                        ChasisNo = customerReader["chasis_number"].ToString(),
-                        EngineNo = customerReader["contact_number"].ToString()
-                    };
+
+                    croProp.FName = customerReader["first_name"].ToString();
+                    croProp.LName = customerReader["last_name"].ToString();
+                    croProp.Address = customerReader["Address"].ToString();
+                    croProp.ContactNum = customerReader["contact_number"].ToString();
+                    croProp.PlateNo = customerReader["Plate_Number"].ToString();
+                    croProp.CarBrand = customerReader["car_brand"].ToString();
+                    croProp.CardModel = customerReader["car_model"].ToString();
+                    croProp.ChasisNo = customerReader["chasis_number"].ToString();
+                    croProp.EngineNo = customerReader["contact_number"].ToString();
+
                 }
             }
 
-            /*sqlQuery = "SELECT * FROM RepairOrder WHERE RO_Number='" + croRONumberTextbox.Text.ToString() + "'";
-            customerReader = dbcon.ConnectToOleDB(sqlQuery);
-            while (customerReader.Read())
+            croProp.RoNumber = croRONumberTextbox.Text.ToString();
+            String description = "";
+            String serviceHours = "";
+            String servicePrice = "";
+            String TotalPrice = "";
+
+            // Store service information.
+            for (int i = 0; i < serviceDataGridView.Rows.Count - 1; i++)
             {
-                croProp.RoNumber = customerReader["RO_Number"].ToString();
-            }*/
+                description = serviceDataGridView.Rows[i].Cells[0].Value.ToString();
+                serviceData.Add(description);
+
+                serviceHours = serviceDataGridView.Rows[i].Cells[1].Value.ToString();
+                serviceData.Add(serviceHours);
+
+                servicePrice = serviceDataGridView.Rows[i].Cells[2].Value.ToString();
+                serviceData.Add(servicePrice);
+
+                TotalPrice = serviceDataGridView.Rows[i].Cells[3].Value.ToString();
+                serviceData.Add(TotalPrice);
+                serviceDataList.Add(serviceData);
+                serviceData = new List<string>();
+            }
+
+            String itemCode = "";
+            String itemName = "";
+            String quantity = "";
+            String unitPrice = "";
+            String total = "";
+
+            // Store parts information
+            for (int i = 0; i < PartsDataGrid.Rows.Count - 1; i++)
+            {
+                itemCode = PartsDataGrid.Rows[i].Cells[0].Value.ToString();
+                partsData.Add(itemCode);
+
+                itemName = PartsDataGrid.Rows[i].Cells[1].Value.ToString();
+                partsData.Add(itemName);
+
+                quantity = PartsDataGrid.Rows[i].Cells[2].Value.ToString();
+                partsData.Add(quantity);
+
+                unitPrice = PartsDataGrid.Rows[i].Cells[3].Value.ToString();
+                partsData.Add(unitPrice);
+
+                total = PartsDataGrid.Rows[i].Cells[4].Value.ToString();
+                partsData.Add(total);
+
+                partsDataList.Add(partsData);
+                partsData = new List<string>();
+            }
 
             return croProp;
         }
