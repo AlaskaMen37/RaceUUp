@@ -38,6 +38,7 @@ namespace Raceup_Autocare
         public CreateROform()
         {
             InitializeComponent();
+            filenamePath = @"C:\database\" + LoginForm.lname + "RepairOrder.docx";
         }
 
         private void CreateROform_Load(object sender, EventArgs e)
@@ -666,15 +667,7 @@ namespace Raceup_Autocare
                 }
 
                 // Auto fit Service Table
-                partsTable.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);
-
-                // Create customer request
-                p2.Range.Font.Name = "verdana";
-                p2.Range.Font.Size = 11;
-                p2 = document.Paragraphs.Add(System.Reflection.Missing.Value);
-                p2.Range.Text = "\rCustomer Request: Please take care of my car.";
-                p2.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphLeft;
-                p2.Range.InsertParagraphAfter();
+                partsTable.AutoFitBehavior(Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitContent);               
 
                 //Save the document  
                 object filename = filenamePath;
