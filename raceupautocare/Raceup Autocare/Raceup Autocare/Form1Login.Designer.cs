@@ -39,6 +39,8 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -52,7 +54,7 @@
             this.UserTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserTxt.Font = new System.Drawing.Font("Century Gothic", 13.8F);
             this.UserTxt.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.UserTxt.Location = new System.Drawing.Point(201, 184);
+            this.UserTxt.Location = new System.Drawing.Point(199, 184);
             this.UserTxt.Name = "UserTxt";
             this.UserTxt.Size = new System.Drawing.Size(200, 30);
             this.UserTxt.TabIndex = 0;
@@ -71,7 +73,7 @@
             this.PassTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PassTxt.Font = new System.Drawing.Font("Century Gothic", 13.8F);
             this.PassTxt.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.PassTxt.Location = new System.Drawing.Point(201, 222);
+            this.PassTxt.Location = new System.Drawing.Point(199, 222);
             this.PassTxt.Name = "PassTxt";
             this.PassTxt.PasswordChar = '*';
             this.PassTxt.Size = new System.Drawing.Size(200, 30);
@@ -83,12 +85,12 @@
             // 
             // LoginBtn
             // 
-            this.LoginBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.LoginBtn.BackColor = System.Drawing.Color.Maroon;
             this.LoginBtn.FlatAppearance.BorderSize = 0;
             this.LoginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoginBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginBtn.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.LoginBtn.Location = new System.Drawing.Point(243, 270);
+            this.LoginBtn.Location = new System.Drawing.Point(245, 270);
             this.LoginBtn.Name = "LoginBtn";
             this.LoginBtn.Size = new System.Drawing.Size(103, 38);
             this.LoginBtn.TabIndex = 2;
@@ -98,13 +100,13 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(53)))), ((int)(((byte)(45)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(598, 58);
+            this.panel1.Size = new System.Drawing.Size(598, 67);
             this.panel1.TabIndex = 35;
             // 
             // btnExit
@@ -117,11 +119,11 @@
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageRotate = 0F;
             this.btnExit.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnExit.Location = new System.Drawing.Point(566, 6);
+            this.btnExit.Location = new System.Drawing.Point(555, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.PressedState.ImageSize = new System.Drawing.Size(40, 40);
             this.btnExit.PressedState.Parent = this.btnExit;
-            this.btnExit.Size = new System.Drawing.Size(26, 22);
+            this.btnExit.Size = new System.Drawing.Size(43, 35);
             this.btnExit.TabIndex = 59;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click_1);
             // 
@@ -132,7 +134,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(189, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(228, 60);
+            this.pictureBox1.Size = new System.Drawing.Size(228, 67);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 39;
             this.pictureBox1.TabStop = false;
@@ -141,9 +143,9 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 58);
+            this.panel2.Location = new System.Drawing.Point(0, 67);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(598, 8);
+            this.panel2.Size = new System.Drawing.Size(598, 5);
             this.panel2.TabIndex = 39;
             // 
             // pictureBox6
@@ -159,7 +161,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(160, 222);
+            this.pictureBox3.Location = new System.Drawing.Point(158, 222);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(34, 30);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -169,12 +171,30 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(160, 184);
+            this.pictureBox2.Location = new System.Drawing.Point(158, 184);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(34, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 36;
             this.pictureBox2.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(55)))), ((int)(((byte)(43)))));
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 72);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(598, 5);
+            this.panel3.TabIndex = 40;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(55)))), ((int)(((byte)(43)))));
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 329);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(598, 5);
+            this.panel4.TabIndex = 41;
             // 
             // LoginForm
             // 
@@ -182,6 +202,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.ClientSize = new System.Drawing.Size(598, 334);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox3);
@@ -217,6 +239,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         private Guna.UI2.WinForms.Guna2ImageButton btnExit;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
     }
 }
 

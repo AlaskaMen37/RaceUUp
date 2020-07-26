@@ -17,6 +17,8 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Font = System.Drawing.Font;
 using Spire.Doc;
+using Application = Microsoft.Office.Interop.Word.Application;
+using Document = Microsoft.Office.Interop.Word.Document;
 
 namespace Raceup_Autocare
 {
@@ -26,7 +28,7 @@ namespace Raceup_Autocare
         OleDbDataReader customerReader = null;
         OleDbDataReader partsReader = null;
         OleDbDataReader repairOrder = null;
-        OleDbDataReader repairOrderService = null;
+        OleDbDataReader quotationReader = null;
         string sqlQuery = "";
         private static String filenamePath;
         CreateROProperties croProperties;
@@ -34,11 +36,21 @@ namespace Raceup_Autocare
         List<List<String>> serviceDataList = new List<List<String>>();
         List<String> partsData = new List<String>();
         List<List<String>> partsDataList = new List<List<String>>();
-
+        QuotationProperties quoProperties;
         public CreateROform()
         {
             InitializeComponent();
             filenamePath = @"C:\database\" + LoginForm.lname + "RepairOrder.docx";
+            quoProperties = new QuotationProperties();
+            quoProperties.ServiceDescription = new List<string>();
+            quoProperties.ServiceHours = new List<int>();
+            quoProperties.ServicePrice = new List<double>();
+            quoProperties.ServiceTotalPrice = new List<double>();
+            quoProperties.ItemCode = new List<String>();
+            quoProperties.ItemName = new List<String>();
+            quoProperties.ItemPrice = new List<double>();
+            quoProperties.ItemQuantity = new List<int>(); ;
+            quoProperties.ItemTotalPrice = new List<double>();
         }
 
         private void CreateROform_Load(object sender, EventArgs e)
@@ -48,7 +60,14 @@ namespace Raceup_Autocare
 
         private void CroSearchButton_Click(object sender, EventArgs e)
         {
-            SearchPlateNo();
+            if (croSearchPlateNoTextbox.Text.Contains("QN"))
+            {
+                SearchQuotation();
+            }
+            else
+            {
+                SearchPlateNo();
+            }
         }
 
         public void SearchPlateNo()
@@ -88,7 +107,14 @@ namespace Raceup_Autocare
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                SearchPlateNo();
+                if (croSearchPlateNoTextbox.Text.Contains("QN"))
+                {
+                    SearchQuotation();
+                }
+                else
+                {
+                    SearchPlateNo();
+                }
             }
         }
 
@@ -469,8 +495,104 @@ namespace Raceup_Autocare
 
         private void printButton_Click(object sender, EventArgs e)
         {
-            CreateDocument();
-           // print();
+           
+            SaveQuotation();
+        }
+
+        private void SaveQuotation()
+        {
+            DialogResult dialogResult2 = MessageBox.Show("Are you sure you want to save this information about the details of an order?", "Save receipt order", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            dbcon = new DBConnection();
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            bool isROExist = false;
+
+            if (!isCreateRoFieldsValid())
+            {
+                MessageBox.Show("Please input all necessary fields.");
+            }
+
+            else
+            {
+                cmd.CommandType = CommandType.Text;
+
+                sqlQuery = "SELECT * FROM Quotation";
+                repairOrder = dbcon.ConnectToOleDB(sqlQuery);
+
+                while (repairOrder.Read())
+                {
+                    if (repairOrder["Quotation_Number"].ToString().Equals(croRONumberTextbox.Text.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        isROExist = true;
+                        break;
+                    }
+                }
+
+                if (dialogResult2 == DialogResult.Yes)
+                {
+                    if (!isROExist)
+                    {
+                        // Insert into RepairOrder Table
+                        cmd.CommandText = @"INSERT INTO Quotation([Quotation_Number], [First_Name], [Last_Name], [Address], [Contact_Number], [Plate_Number], [Car_Brand], [Car_Model], [Chasis_Number], [Engine_Number], [Payment_Method], [Customer_Request], [Grand_Total]) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                        cmd.Parameters.Add("@Quotation_Number", OleDbType.VarChar).Value = "QN" + croRONumberTextbox.Text.ToString();
+                        cmd.Parameters.Add("@First_Name", OleDbType.VarChar).Value = LoginForm.lname;
+                        cmd.Parameters.Add("@Last_Name", OleDbType.VarChar).Value = LoginForm.lname;
+                        cmd.Parameters.Add("@Address", OleDbType.VarChar).Value = croAddressTextbox.Text;
+                        cmd.Parameters.Add("@Contact_Number", OleDbType.Integer).Value = int.Parse(croContactNumberTextbox.Text.ToString());
+                        cmd.Parameters.Add("@Plate_Number", OleDbType.VarChar).Value = croPlateNoTextbox.Text.ToString();
+                        cmd.Parameters.Add("@Car_Brand", OleDbType.VarChar).Value = croCarBrandTextBox.Text.ToString();
+                        cmd.Parameters.Add("@Car_Model", OleDbType.VarChar).Value = croCarModelTextbox.Text.ToString();
+                        cmd.Parameters.Add("@Chasis_Number", OleDbType.VarChar).Value = croChasisNo.Text.ToString();
+                        cmd.Parameters.Add("@Engine_Number", OleDbType.VarChar).Value = croEngineNo.Text.ToString();
+                        cmd.Parameters.Add("@Payment_Method", OleDbType.VarChar).Value = getPaymentMethod();
+                        cmd.Parameters.Add("@Customer_Request", OleDbType.VarChar).Value = customerRequestTextbox.Text.ToString();
+                        cmd.Parameters.Add("@Grand_Total", OleDbType.Integer).Value = int.Parse(GrandTotalTextbox.Text.ToString());
+                        cmd.Connection = dbcon.openConnection();
+                        cmd.ExecuteNonQuery();
+
+                        // Insert into RepairOrderService Table
+                        for (int i = 0; i < serviceDataGridView.Rows.Count - 1; i++)
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.CommandText = @"INSERT INTO QuotationService([Quotation_Number], [Quo_Service_Desc], [Quo_Service_Hrs], [Quo_Service_Price], [Quo_Service_Total_Price]) VALUES(?, ?, ?, ?, ?);";
+                            cmd.Parameters.Add("@Quotation_Number", OleDbType.VarChar).Value = "QN" + croRONumberTextbox.Text.ToString();
+                            cmd.Parameters.Add("@Quo_Service_Desc", OleDbType.VarChar).Value = serviceDataGridView.Rows[i].Cells[0].Value;
+                            cmd.Parameters.Add("@Quo_Service_Hrs", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[1].Value.ToString());
+                            cmd.Parameters.Add("@Quo_Service_Price", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[2].Value.ToString());
+                            cmd.Parameters.Add("@Quo_Service_Total_Price", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[3].Value.ToString());
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // Insert into RepairOrderParts Table
+                        for (int j = 0; j < PartsDataGrid.Rows.Count - 1; j++)
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.CommandText = @"INSERT INTO QuotationParts([Quotation_Number], [Quotation_Item_Code], [Quotation_Item_Name], [Quotation_Item_Quantity], [Quotation_Item_Price], [Quotation_Item_Total_Price]) VALUES (?, ?, ?, ?, ?, ?);";
+                            cmd.Parameters.Add("@Quotation_Number", OleDbType.VarChar).Value = "QN" + croRONumberTextbox.Text.ToString();
+                            cmd.Parameters.Add("@Quotation_Item_Code", OleDbType.VarChar).Value = PartsDataGrid.Rows[j].Cells[0].Value.ToString();
+                            cmd.Parameters.Add("@Quotation_Item_Name", OleDbType.VarChar).Value = PartsDataGrid.Rows[j].Cells[1].Value.ToString();
+                            cmd.Parameters.Add("@Quotation_Item_Quantity", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[j].Cells[2].Value.ToString());
+                            cmd.Parameters.Add("@Quotation_Item_Price", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[j].Cells[3].Value.ToString());
+                            cmd.Parameters.Add("@Quotation_Item_Total_Price", OleDbType.Integer).Value = int.Parse(PartsDataGrid.Rows[j].Cells[4].Value.ToString());
+                            cmd.ExecuteNonQuery();
+
+                        }
+
+                        dbcon.CloseConnection();
+                        MessageBox.Show("RO has been successfully saved.");
+
+                        MenuForm menuform = new MenuForm();
+                        this.Hide();
+                        menuform.ShowDialog();
+                    }
+
+                }
+                else if (dialogResult2 == DialogResult.No)
+                {
+                    //Won't remove any item if cancel
+                }
+            }
         }
 
         public void print()
@@ -503,7 +625,6 @@ namespace Raceup_Autocare
         //Create document method  
         private void CreateDocument()
         {
-
             try
             {
                 croProperties = setCreateRoProperties();
@@ -526,7 +647,6 @@ namespace Raceup_Autocare
                 //Add header into the document  
                 foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
                 {
-                    //Get the header range and add the header details.  
                     Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
                     headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
                     headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
@@ -774,6 +894,106 @@ namespace Raceup_Autocare
         private void croPartsUnitPriceTextbox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void SearchQuotation()
+        {
+            dbcon = new DBConnection();
+            sqlQuery = "SELECT * FROM Quotation WHERE Quotation_Number='" + croSearchPlateNoTextbox.Text.ToString() + "'";
+            quotationReader = dbcon.ConnectToOleDB(sqlQuery);
+
+            while (quotationReader.Read())
+            {
+                if (quotationReader["Quotation_Number"].ToString().Equals(croSearchPlateNoTextbox.Text.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
+
+                    quoProperties.FName = quotationReader["First_Name"].ToString();
+                    quoProperties.LName = quotationReader["Last_Name"].ToString();
+                    quoProperties.Address = quotationReader["Address"].ToString();
+                    quoProperties.ContactNum = quotationReader["Contact_Number"].ToString();
+                    quoProperties.PlateNo = quotationReader["Plate_Number"].ToString();
+                    quoProperties.CarBrand = quotationReader["Car_Brand"].ToString();
+                    quoProperties.CardModel = quotationReader["Car_Model"].ToString();
+                    quoProperties.ChasisNo = quotationReader["Chasis_Number"].ToString();
+                    quoProperties.EngineNo = quotationReader["Engine_Number"].ToString();
+                    quoProperties.PaymentMethod = quotationReader["Payment_Method"].ToString();
+                    quoProperties.CustomerRequest = quotationReader["Customer_Request"].ToString();
+                    quoProperties.GrandTotal = quotationReader["Grand_Total"].ToString();
+
+                }
+            }
+
+            //Get data from service
+            sqlQuery = "SELECT * FROM QuotationService WHERE Quotation_Number='" + croSearchPlateNoTextbox.Text.ToString() + "'";
+            quotationReader = dbcon.ConnectToOleDB(sqlQuery);
+
+            while (quotationReader.Read())
+            {
+                if (quotationReader["Quotation_Number"].ToString().Equals(croSearchPlateNoTextbox.Text.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    quoProperties.ServiceDescription.Add(quotationReader["Quo_Service_Desc"].ToString());
+                    quoProperties.ServiceHours.Add(int.Parse(quotationReader["Quo_Service_Hrs"].ToString()));
+                    quoProperties.ServicePrice.Add(int.Parse(quotationReader["Quo_Service_Price"].ToString()));
+                    quoProperties.ServiceTotalPrice.Add(int.Parse(quotationReader["Quo_Service_Total_Price"].ToString()));
+                }
+            }
+
+            //Get data from parts 
+            sqlQuery = "SELECT * FROM QuotationParts WHERE Quotation_Number='" + croSearchPlateNoTextbox.Text.ToString() + "'";
+            quotationReader = dbcon.ConnectToOleDB(sqlQuery);
+
+            while (quotationReader.Read())
+            {
+                if (quotationReader["Quotation_Number"].ToString().Equals(croSearchPlateNoTextbox.Text.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    quoProperties.ItemCode.Add(quotationReader["Quotation_Item_Code"].ToString());
+                    quoProperties.ItemName.Add(quotationReader["Quotation_Item_Name"].ToString());
+                    quoProperties.ItemPrice.Add(int.Parse(quotationReader["Quotation_Item_Price"].ToString()));
+                    quoProperties.ItemQuantity.Add(int.Parse(quotationReader["Quotation_Item_Quantity"].ToString()));
+                    quoProperties.ItemTotalPrice.Add(int.Parse(quotationReader["Quotation_Item_Total_Price"].ToString()));
+                }
+            }
+
+            populateROFields();
+        }
+
+        public void populateROFields()
+        {
+            croNameTextbox.Text = quoProperties.FName + " " + quoProperties.LName;
+            croContactNumberTextbox.Text = quoProperties.ContactNum;
+            croAddressTextbox.Text = quoProperties.Address;
+            croPlateNoTextbox.Text = quoProperties.PlateNo;
+            croCarBrandTextBox.Text = quoProperties.CarBrand;
+            croCarModelTextbox.Text = quoProperties.CardModel;
+            croChasisNo.Text = quoProperties.ChasisNo;
+            croEngineNo.Text = quoProperties.EngineNo;
+            customerRequestTextbox.Text = quoProperties.CustomerRequest;           
+
+            string[] paymentMethods = { "Cash", "Gcash", "Master Card", "Credit Card" };
+            RadioButton[] paymentRadioButton = { cashRadioButton, gcashRadioButton, masterCardRadioButton, creditCardRadioButton };
+
+            for (int i = 0; i < paymentMethods.Length; i++)
+            {
+                if (quoProperties.PaymentMethod.Equals(paymentMethods[i]))
+                {
+                    paymentRadioButton[i].Checked = true;
+                }
+            }
+
+            for (int i = 0; i < quoProperties.ServiceDescription.Count; i++)
+            {
+                //Populate Service datagird                     
+                var serviceList = new[] { quoProperties.ServiceDescription[i], quoProperties.ServiceHours[i].ToString(), quoProperties.ServicePrice[i].ToString(), quoProperties.ServiceTotalPrice[i].ToString() };
+                serviceDataGridView.Rows.Add(serviceList);
+            }
+
+
+            //Populate Parts datagird
+            for (int i = 0; i < quoProperties.ItemCode.Count; i++)
+            {
+                var partsList = new[] { quoProperties.ItemCode[i], quoProperties.ItemName[i], quoProperties.ItemQuantity[i].ToString(), quoProperties.ItemPrice[i].ToString(), quoProperties.ItemTotalPrice[i].ToString() };
+                PartsDataGrid.Rows.Add(partsList);
+            }
         }
     }
 }

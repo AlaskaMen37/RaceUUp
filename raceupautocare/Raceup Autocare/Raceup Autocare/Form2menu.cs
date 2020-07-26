@@ -34,7 +34,6 @@ namespace Raceup_Autocare
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
 
-
             dbcon = new DBConnection();
             Boolean found = false;
             string userSql = "SELECT * FROM Employee";
@@ -330,6 +329,23 @@ namespace Raceup_Autocare
         private void panelDesktop_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void SearchItemBTN_Click(object sender, EventArgs e)
+        {
+            SidePanel2.Height = SearchItemBTN.Height;
+            SidePanel2.Top = SearchItemBTN.Top;
+            SidePanel2.Visible = true;
+            OpenChildForm(new SearchItemForm());
+        }
+
+        private void guna2Button1_Click_1(object sender, EventArgs e)
+        {
+            SidePanel2.Height = ServiceROBTN.Height;
+            SidePanel2.Top = ServiceROBTN.Top;
+            SidePanel2.Visible = true;
+            SidePanel2.BringToFront();
+            OpenChildForm(new ShowOrderServiceForm());
         }
     }
 }

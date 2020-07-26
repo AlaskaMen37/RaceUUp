@@ -636,6 +636,7 @@
             this.Name = "CreateCustProfForm";
             this.ShowIcon = false;
             this.Text = "CreateCustProfForm";
+            this.Load += new System.EventHandler(this.CreateCustProfForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.guna2GroupBox1.ResumeLayout(false);

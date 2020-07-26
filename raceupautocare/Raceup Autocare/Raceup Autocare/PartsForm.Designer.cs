@@ -64,25 +64,25 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1053, 100);
+            this.panel2.Size = new System.Drawing.Size(1053, 125);
             this.panel2.TabIndex = 114;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 100);
+            this.panel3.Location = new System.Drawing.Point(0, 125);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(120, 494);
+            this.panel3.Size = new System.Drawing.Size(120, 469);
             this.panel3.TabIndex = 115;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(177, 100);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(120, 125);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(876, 494);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(867, 469);
             this.flowLayoutPanel1.TabIndex = 116;
             // 
             // PartsForm

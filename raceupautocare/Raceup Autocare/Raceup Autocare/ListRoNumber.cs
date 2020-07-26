@@ -16,7 +16,6 @@ namespace Raceup_Autocare
     {
         DBConnection dbcon = null;
         OleDbDataReader partsReader = null;
-        string sqlQuery = "";
         public ListRoNumber()
         {
             InitializeComponent();
@@ -27,7 +26,6 @@ namespace Raceup_Autocare
         private Image _icon;
         private Color _imagebackground;
         private string _DateCreatedLabel;
-        private Form currentChildForm;
 
 
         [Category("Custom Props")]
@@ -120,9 +118,8 @@ namespace Raceup_Autocare
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
-        {
+        { 
             ShowListofOrderPartsForm showListofOrderParts = new ShowListofOrderPartsForm(this);
-
             showListofOrderParts.ShowDialog();
 
 
@@ -130,6 +127,11 @@ namespace Raceup_Autocare
         private void ListRoNumber_MouseClick(object sender, MouseEventArgs e)
         {
             
+        }
+
+        private void ListRoNumber_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

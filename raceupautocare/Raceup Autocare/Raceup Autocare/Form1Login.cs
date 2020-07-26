@@ -27,9 +27,11 @@ namespace Raceup_Autocare
         string userSql = "";
         Boolean userExist = false;
 
+
         public LoginForm()
         {
             InitializeComponent();
+            pictureBox1.BringToFront();
         }
 
         private void UserTxt_KeyPress(object sender, KeyPressEventArgs e)

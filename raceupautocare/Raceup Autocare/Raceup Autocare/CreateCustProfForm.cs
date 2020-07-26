@@ -260,6 +260,11 @@ namespace Raceup_Autocare
 
             return plateNoExist;
         }
+
+        private void CreateCustProfForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

@@ -29,7 +29,7 @@ namespace Raceup_Autocare
         private void populateRoList() 
         {
             dbcon = new DBConnection();
-            sqlQuery = "SELECT DISTINCT RepairOrder.RO_Number, RepairOrderParts.RO_Number, RepairOrder.Plate_Number, RepairOrder.Created_By, RepairOrder.Date_Created FROM RepairOrder INNER JOIN RepairOrderParts ON RepairOrder.RO_Number = RepairOrderParts.RO_Number WHERE RepairOrder.Status = 'Pending' AND RepairOrderParts.Status = 'Pending' Order by RepairOrder.Date_Created ASC";
+            sqlQuery = "SELECT DISTINCT RepairOrder.RO_Number, RepairOrderParts.RO_Number, RepairOrder.Plate_Number, RepairOrder.Created_By, RepairOrder.Date_Created FROM RepairOrder INNER JOIN RepairOrderParts ON RepairOrder.RO_Number = RepairOrderParts.RO_Number WHERE RepairOrderParts.Status = 'Pending' Order by RepairOrder.Date_Created ASC";
             //sqlQuery = "SELECT RepairOrder.RO_Number AS RepairOrder_RO_Number, RepairOrderParts.RO_Number AS RepairOrderParts_RO_Number, RepairOrderService.RO_Number AS RepairOrderService_RO_Number FROM(RepairOrder INNER JOIN RepairOrderService ON RepairOrder.[RO_Number] = RepairOrderService.[RO_Number]) INNER JOIN RepairOrderParts ON RepairOrder.[RO_Number] = RepairOrderParts.[RO_Number];";
             partsReader = dbcon.ConnectToOleDB(sqlQuery);
 

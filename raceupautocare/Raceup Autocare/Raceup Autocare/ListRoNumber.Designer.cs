@@ -195,6 +195,7 @@
             this.Controls.Add(this.plateNoLabel);
             this.Name = "ListRoNumber";
             this.Size = new System.Drawing.Size(827, 111);
+            this.Load += new System.EventHandler(this.ListRoNumber_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ListRoNumber_MouseClick);
             this.MouseEnter += new System.EventHandler(this.ListRoNumber_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.ListRoNumber_MouseLeave);

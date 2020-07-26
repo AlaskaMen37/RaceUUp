@@ -34,12 +34,15 @@
             this.btnMinimize = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnExit = new Guna.UI2.WinForms.Guna2ImageButton();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.SearchItemBTN = new Guna.UI2.WinForms.Guna2Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.SidePanel = new System.Windows.Forms.Panel();
             this.logout = new Guna.UI2.WinForms.Guna2Button();
             this.resetPassword = new Guna.UI2.WinForms.Guna2Button();
             this.PartsBtn = new Guna.UI2.WinForms.Guna2Button();
             this.SubMenuORPanel = new System.Windows.Forms.Panel();
+            this.ServiceROBTN = new Guna.UI2.WinForms.Guna2Button();
             this.CreateCustProfileBtn = new Guna.UI2.WinForms.Guna2Button();
             this.SidePanel2 = new System.Windows.Forms.Panel();
             this.CreateROBtn = new Guna.UI2.WinForms.Guna2Button();
@@ -52,6 +55,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.PanelTitleBar.SuspendLayout();
             this.panelMenu.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SubMenuORPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -117,6 +121,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.panelMenu.Controls.Add(this.panel6);
             this.panelMenu.Controls.Add(this.panel2);
             this.panelMenu.Controls.Add(this.SidePanel);
             this.panelMenu.Controls.Add(this.logout);
@@ -128,6 +133,36 @@
             resources.ApplyResources(this.panelMenu, "panelMenu");
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.panel6.Controls.Add(this.SearchItemBTN);
+            resources.ApplyResources(this.panel6, "panel6");
+            this.panel6.Name = "panel6";
+            // 
+            // SearchItemBTN
+            // 
+            this.SearchItemBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.SearchItemBTN.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.SearchItemBTN.CheckedState.Parent = this.SearchItemBTN;
+            this.SearchItemBTN.CustomImages.Parent = this.SearchItemBTN;
+            resources.ApplyResources(this.SearchItemBTN, "SearchItemBTN");
+            this.SearchItemBTN.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.SearchItemBTN.ForeColor = System.Drawing.Color.Gray;
+            this.SearchItemBTN.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.SearchItemBTN.HoverState.ForeColor = System.Drawing.Color.LightGray;
+            this.SearchItemBTN.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("SearchItemBTN.HoverState.Image")));
+            this.SearchItemBTN.HoverState.Parent = this.SearchItemBTN;
+            this.SearchItemBTN.Image = ((System.Drawing.Image)(resources.GetObject("SearchItemBTN.Image")));
+            this.SearchItemBTN.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.SearchItemBTN.ImageOffset = new System.Drawing.Point(11, 0);
+            this.SearchItemBTN.ImageSize = new System.Drawing.Size(32, 32);
+            this.SearchItemBTN.Name = "SearchItemBTN";
+            this.SearchItemBTN.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.SearchItemBTN.ShadowDecoration.Parent = this.SearchItemBTN;
+            this.SearchItemBTN.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.SearchItemBTN.Click += new System.EventHandler(this.SearchItemBTN_Click);
             // 
             // panel2
             // 
@@ -217,12 +252,35 @@
             // SubMenuORPanel
             // 
             this.SubMenuORPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.SubMenuORPanel.Controls.Add(this.ServiceROBTN);
             this.SubMenuORPanel.Controls.Add(this.CreateCustProfileBtn);
             this.SubMenuORPanel.Controls.Add(this.SidePanel2);
             this.SubMenuORPanel.Controls.Add(this.CreateROBtn);
             resources.ApplyResources(this.SubMenuORPanel, "SubMenuORPanel");
             this.SubMenuORPanel.Name = "SubMenuORPanel";
             this.SubMenuORPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // ServiceROBTN
+            // 
+            this.ServiceROBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.ServiceROBTN.CheckedState.Parent = this.ServiceROBTN;
+            this.ServiceROBTN.CustomImages.Parent = this.ServiceROBTN;
+            resources.ApplyResources(this.ServiceROBTN, "ServiceROBTN");
+            this.ServiceROBTN.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.ServiceROBTN.ForeColor = System.Drawing.Color.Gray;
+            this.ServiceROBTN.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.ServiceROBTN.HoverState.ForeColor = System.Drawing.Color.LightGray;
+            this.ServiceROBTN.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("ServiceROBTN.HoverState.Image")));
+            this.ServiceROBTN.HoverState.Parent = this.ServiceROBTN;
+            this.ServiceROBTN.Image = ((System.Drawing.Image)(resources.GetObject("ServiceROBTN.Image")));
+            this.ServiceROBTN.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.ServiceROBTN.ImageOffset = new System.Drawing.Point(9, 0);
+            this.ServiceROBTN.ImageSize = new System.Drawing.Size(32, 32);
+            this.ServiceROBTN.Name = "ServiceROBTN";
+            this.ServiceROBTN.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.ServiceROBTN.ShadowDecoration.Parent = this.ServiceROBTN;
+            this.ServiceROBTN.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.ServiceROBTN.Click += new System.EventHandler(this.guna2Button1_Click_1);
             // 
             // CreateCustProfileBtn
             // 
@@ -360,6 +418,7 @@
             this.Load += new System.EventHandler(this.MenuForm_Load);
             this.PanelTitleBar.ResumeLayout(false);
             this.panelMenu.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.SubMenuORPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -391,5 +450,8 @@
         private Guna.UI2.WinForms.Guna2ImageButton btnMaximize;
         private Guna.UI2.WinForms.Guna2ImageButton btnMinimize;
         private Guna.UI2.WinForms.Guna2ImageButton btnExit;
+        private System.Windows.Forms.Panel panel6;
+        private Guna.UI2.WinForms.Guna2Button SearchItemBTN;
+        private Guna.UI2.WinForms.Guna2Button ServiceROBTN;
     }
 }
