@@ -33,5 +33,16 @@ namespace Raceup_Autocare.Properties {
                 return ((string)(this["raceup_db_new3ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\\\192.168.1.201\\c$\\database\\raceup_" +
+            "db_new3.accdb")]
+        public string raceup_db_new3ConnectionString1 {
+            get {
+                return ((string)(this["raceup_db_new3ConnectionString1"]));
+            }
+        }
     }
 }

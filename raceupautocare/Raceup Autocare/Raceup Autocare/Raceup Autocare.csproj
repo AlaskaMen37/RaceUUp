@@ -183,6 +183,19 @@
       <DependentUpon>CreateROform.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateROProperties.cs" />
+    <Compile Include="DataSetCustomerProfile.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetCustomerProfile.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetROParts.cs">
+      <DependentUpon>DataSetROParts.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetROParts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetROParts.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DBConnection.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Inquiry.cs">
@@ -223,16 +236,13 @@
     </Compile>
     <Compile Include="PrintForm.cs">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="PrintForm.Designer.cs">
       <DependentUpon>PrintForm.cs</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="QuotationProperties.cs" />
-    <Compile Include="raceup_db_new3DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>raceup_db_new3DataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="reset Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,7 +297,7 @@
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Content Include="raceup_db_new3.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
@@ -307,6 +317,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PrintForm.resx">
       <DependentUpon>PrintForm.cs</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ReportOrderParts.rdlc" />
@@ -317,16 +328,27 @@
     <EmbeddedResource Include="ShowOrderServiceForm.resx">
       <DependentUpon>ShowOrderServiceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="raceup_db_new3DataSet.xsc">
-      <DependentUpon>raceup_db_new3DataSet.xsd</DependentUpon>
+    <None Include="DataSetCustomerProfile.xsc">
+      <DependentUpon>DataSetCustomerProfile.xsd</DependentUpon>
     </None>
-    <None Include="raceup_db_new3DataSet.xsd">
+    <None Include="DataSetCustomerProfile.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>raceup_db_new3DataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSetCustomerProfile.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="raceup_db_new3DataSet.xss">
-      <DependentUpon>raceup_db_new3DataSet.xsd</DependentUpon>
+    <None Include="DataSetCustomerProfile.xss">
+      <DependentUpon>DataSetCustomerProfile.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetROParts.xsc">
+      <DependentUpon>DataSetROParts.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetROParts.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetROParts.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetROParts.xss">
+      <DependentUpon>DataSetROParts.xsd</DependentUpon>
     </None>
     <None Include="Resources\data_pending_64px.png" />
     <None Include="Resources\pending.bmp" />
@@ -445,12 +467,12 @@
   <ItemGroup>
     <PublishFile Include="raceup_db_new2.accdb">
       <Visible>False</Visible>
-      <PublishState>DataFile</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>DataFile</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>

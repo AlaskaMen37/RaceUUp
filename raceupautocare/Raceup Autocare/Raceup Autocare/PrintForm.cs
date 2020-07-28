@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Raceup_Autocare
 {
     public partial class PrintForm : Form
     {
+        string DatabaseLocation = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\192.168.1.201\c$\database\raceup_db_new3.accdb";
         ShowListofOrderPartsForm LR2;
         public PrintForm(ShowListofOrderPartsForm showListofOrder)
         {
@@ -25,21 +27,8 @@ namespace Raceup_Autocare
             ROnumberLabel.Text = LR2.ROnumberLabel.Text;
             ROnumberLabel.Visible = false;
 
-            // TODO: This line of code loads data into the 'raceup_db_new3DataSet.RepairOrder_Query1' table. You can move, or remove it, as needed.
-
-            this.reportViewer1.RefreshReport();
-        }
-
-        private void reportViewer1_Load(object sender, EventArgs e)
-        {
-            ////List<ReportParameter> paraList = new List<ReportParameter>();
-
-            ////paraList.Add(new ReportParameter("ReportParameter_RO_Number", LR2.ROnumberLabel.Text));
-            ////paraList.Add(new ReportParameter("ReportParameter_CustomerNumber", LR2.croAddressTextbox.Text));
-
-            ////// Pass Parameters for Local Report
-            ////this.reportViewer1.LocalReport.SetParameters(paraList.ToArray());
-
+            ShowCustInfo();
+            ShowROParts();
             
         }
 
@@ -48,12 +37,38 @@ namespace Raceup_Autocare
 
         }
 
-        private void reportViewer1_Load_1(object sender, EventArgs e)
+        private void ShowROParts()
+        {
+            //DataSetROParts ROParts = new DataSetROParts();
+            //OleDbConnection connection = new OleDbConnection(DatabaseLocation);
+            //OleDbDataAdapter dataAdapter = new OleDbDataAdapter("Select Item_Code,Item_Name,Parts_Quantity,Unit_Price,Total_Price_Parts from RepairOrderParts Where CStr(RO_Number)  = '" + ROnumberLabel.Text + "'", connection);
+            //dataAdapter.Fill(ROParts, ROParts.Tables[0].TableName);
+
+            //ReportDataSource reportData = new ReportDataSource("OrderParts", ROParts.Tables[0]);
+            //this.reportViewer1.LocalReport.DataSources.Clear();
+            //this.reportViewer1.LocalReport.DataSources.Add(reportData);
+            //this.reportViewer1.LocalReport.Refresh();
+            //this.reportViewer1.RefreshReport();
+        }
+
+        private void ShowCustInfo()
+        {
+            DataSetCustomerProfile customerProfile = new DataSetCustomerProfile();
+            OleDbConnection connection2 = new OleDbConnection(DatabaseLocation);
+            OleDbDataAdapter dataAdapter2 = new OleDbDataAdapter("SELECT CustomerProfile.customer_id, CustomerProfile.first_name, CustomerProfile.last_name, CustomerProfile.Address, CustomerProfile.contact_number, CustomerProfile.Plate_Number, CustomerProfile.engine_number, CustomerProfile.chasis_number, CustomerProfile.car_model, CustomerProfile.car_brand, RepairOrder.Plate_Number AS Expr1, RepairOrder.Date_Created, RepairOrder.Payment_Method, RepairOrder.Customer_Request, RepairOrderParts.Item_Code, RepairOrderParts.Item_Name, RepairOrderParts.Parts_Quantity, RepairOrderParts.Unit_Price, RepairOrderParts.Total_Price_Parts, RepairOrder.RO_Number FROM((CustomerProfile INNER JOIN RepairOrder ON CustomerProfile.Plate_Number = RepairOrder.Plate_Number) INNER JOIN RepairOrderParts ON RepairOrder.RO_Number = RepairOrderParts.RO_Number) Where CStr(RepairOrder.RO_Number)  = '" + ROnumberLabel.Text + "'", connection2);
+            dataAdapter2.Fill(customerProfile, customerProfile.Tables[0].TableName);
+
+            ReportDataSource reportData2 = new ReportDataSource("AllInfo", customerProfile.Tables[0]);
+            this.reportViewer1.LocalReport.DataSources.Clear();
+            this.reportViewer1.LocalReport.DataSources.Add(reportData2);
+            this.reportViewer1.LocalReport.Refresh();
+            this.reportViewer1.RefreshReport();
+        }
+
+        private void reportViewer1_Load(object sender, EventArgs e)
         {
             ReportParameterCollection reportParameters = new ReportParameterCollection();
             reportParameters.Add(new ReportParameter("ReportParameter_RO_Number", LR2.ROnumberLabel.Text));
-            reportParameters.Add(new ReportParameter("ReportParameter_CustomerNumber", LR2.croAddressTextbox.Text));
-
 
             this.reportViewer1.LocalReport.SetParameters(reportParameters);
             this.reportViewer1.RefreshReport();
