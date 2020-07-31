@@ -44,7 +44,7 @@ namespace Raceup_Autocare
             OleDbCommand cmd = new OleDbCommand();
             cmd.CommandType = CommandType.Text;
 
-            cmd.CommandText = @"INSERT INTO CustomerProfile([first_name], [last_name], [Address], [contact_number], [Plate_Number], [created_by], [date_created], [updated_by], [date_updated], [car_brand], [car_model], [chasis_number], [engine_number]) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            cmd.CommandText = @"INSERT INTO CustomerProfile([first_name], [last_name], [Address], [contact_number], [Plate_Number], [created_by], [date_created], [updated_by], [date_updated], [car_brand], [car_model], [chasis_number], [engine_number], [Mileage]) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             cmd.Parameters.Add("@first_name", OleDbType.VarChar).Value = customerFirstNameTxtbox.Text.ToString();
             cmd.Parameters.Add("@last_name", OleDbType.VarChar).Value = customerLastNameTxtbox.Text.ToString();
             cmd.Parameters.Add("@Address", OleDbType.VarChar).Value = customerAddressTxtbox.Text.ToString();
@@ -58,6 +58,7 @@ namespace Raceup_Autocare
             cmd.Parameters.Add("@car_model", OleDbType.VarChar).Value = customerCarModelTxtbox.Text.ToString();
             cmd.Parameters.Add("@chasis_number", OleDbType.VarChar).Value = customerChasisNoTxtbox.Text.ToString();
             cmd.Parameters.Add("@engine_number", OleDbType.VarChar).Value = customerEngineNumberTxtbox.Text.ToString();
+            cmd.Parameters.Add("@Mileage", OleDbType.VarChar).Value = customerMileageTextbox.Text.ToString();
             cmd.Connection = dbcon.openConnection();
             
 
@@ -160,6 +161,7 @@ namespace Raceup_Autocare
                     customerCarModelTxtbox.Text = customerReader["car_model"].ToString();
                     customerChasisNoTxtbox.Text = customerReader["chasis_number"].ToString();
                     customerEngineNumberTxtbox.Text = customerReader["engine_number"].ToString();
+                    customerMileageTextbox.Text = customerReader["Mileage"].ToString();
                     plateNoExist = true;
                     updateButton.Enabled = true;
                 }
@@ -181,7 +183,7 @@ namespace Raceup_Autocare
             sqlQuery = "UPDATE CustomerProfile SET first_name = '"+ customerFirstNameTxtbox.Text + "',last_name = '" + customerLastNameTxtbox.Text + "', Address = '" + customerAddressTxtbox.Text + 
                 "', Plate_Number ='" + customerPlateNoTxtbox.Text + "', updated_by='"+ LoginForm.lname  + "', date_updated='"+ dateTimeToday + 
                 "', car_brand = '"+ customerCarBrand.Text  + "', car_model = '"+ customerCarModelTxtbox.Text  + "', chasis_number='" + 
-                customerChasisNoTxtbox.Text  + "', engine_number='"+ customerEngineNumberTxtbox.Text + "' WHERE Plate_Number = '" + 
+                customerChasisNoTxtbox.Text  + "', engine_number='"+ customerEngineNumberTxtbox.Text + "', Mileage='" + customerMileageTextbox.Text + "' WHERE Plate_Number = '" + 
                 searchPlateNoTxtbox.Text.ToString() + "';";
 
             if (ValidateFields())

@@ -210,10 +210,10 @@ namespace Raceup_Autocare
             }
             return itemCode;
         }
-
         private void partsAddButton_Click(object sender, EventArgs e)
         {
             FillPartsGrid();
+            GrandTotalTextbox.Text = "P" + computeTotal() + ".00";            
             // ClearTextBoxes(this.Controls);
         }
 
@@ -224,7 +224,18 @@ namespace Raceup_Autocare
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            Boolean flag = true;
             saveRO();
+
+            if (flag)
+            {
+                PrintROForm prtform = new PrintROForm(this);
+                prtform.ShowDialog();
+            }
+
+            MenuForm menuform = new MenuForm();
+            this.Hide();
+            menuform.ShowDialog();
         }
         private void saveRO()
         {
@@ -260,9 +271,9 @@ namespace Raceup_Autocare
                 {
                     if (!isROExist)
                     {
-                        // Insert into RepairOrder Table
+                        // Insert into RepairOrder Table 
                         cmd.CommandText = @"INSERT INTO RepairOrder([RO_Number], [Plate_Number], [Created_By], [Date_Created], [Updated_By], [Date_Updated], [Payment_Method], [Customer_Request], [GrandTotal], [Status]) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-                        cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
+                        cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = "RO" + croRONumberTextbox.Text.ToString();
                         cmd.Parameters.Add("@Plate_Number", OleDbType.VarChar).Value = croPlateNoTextbox.Text.ToString();
                         cmd.Parameters.Add("@Created_By", OleDbType.VarChar).Value = LoginForm.lname;
                         cmd.Parameters.Add("@Date_Created", OleDbType.Date).Value = getDateToday();
@@ -270,7 +281,7 @@ namespace Raceup_Autocare
                         cmd.Parameters.Add("@Date_Updated", OleDbType.Date).Value = getDateToday();
                         cmd.Parameters.Add("@Payment_Method", OleDbType.VarChar).Value = getPaymentMethod();
                         cmd.Parameters.Add("@Customer_Request", OleDbType.VarChar).Value = customerRequestTextbox.Text.ToString();
-                        cmd.Parameters.Add("@GrandTotal", OleDbType.Integer).Value = 25000;
+                        cmd.Parameters.Add("@GrandTotal", OleDbType.Double).Value = computeTotal();
                         cmd.Parameters.Add("@Status", OleDbType.VarChar).Value = "Pending";
                         cmd.Connection = dbcon.openConnection();
                         cmd.ExecuteNonQuery();
@@ -279,12 +290,13 @@ namespace Raceup_Autocare
                         for (int i = 0; i < serviceDataGridView.Rows.Count - 1; i++)
                         {
                             cmd.Parameters.Clear();
-                            cmd.CommandText = @"INSERT INTO RepairOrderService([RO_Number], [Service_Description], [Service_Quantity], [Service_Price], [Total_Price]) VALUES (?, ?, ?, ?, ?);";
+                            cmd.CommandText = @"INSERT INTO RepairOrderService([RO_Number], [Service_Description], [Service_Quantity], [Service_Price], [Total_Price], [Status]) VALUES (?, ?, ?, ?, ?, ?);";
                             cmd.Parameters.Add("@RO_Number", OleDbType.VarChar).Value = croRONumberTextbox.Text.ToString();
                             cmd.Parameters.Add("@Service_Description", OleDbType.VarChar).Value = serviceDataGridView.Rows[i].Cells[0].Value;
                             cmd.Parameters.Add("@Service_Quantity", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[1].Value.ToString());
                             cmd.Parameters.Add("@Service_Price", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[2].Value.ToString());
                             cmd.Parameters.Add("@Total_Price", OleDbType.Integer).Value = int.Parse(serviceDataGridView.Rows[i].Cells[3].Value.ToString());
+                            cmd.Parameters.Add("@Status", OleDbType.VarChar).Value = "Pending";
                             cmd.ExecuteNonQuery();
                         }
 
@@ -307,9 +319,9 @@ namespace Raceup_Autocare
                         dbcon.CloseConnection();
                         MessageBox.Show("RO has been successfully saved.");
 
-                        MenuForm menuform = new MenuForm();
-                        this.Hide();
-                        menuform.ShowDialog();
+                        //MenuForm menuform = new MenuForm();
+                        //this.Hide();
+                        //menuform.ShowDialog();
                     }
 
                 }
@@ -319,6 +331,26 @@ namespace Raceup_Autocare
                 }
             }
 
+        }
+
+        private double computeTotal()
+        {
+            double totalParts = 0.0;
+            double totalService = 0.0;
+            
+                for (int i = 0; i < PartsDataGrid.Rows.Count - 1; i++)
+                {
+                    totalParts += double.Parse(PartsDataGrid.Rows[i].Cells[4].Value.ToString());
+                }
+
+                for (int i = 0; i < serviceDataGridView.Rows.Count - 1; i++)
+                {
+                    totalService += double.Parse(serviceDataGridView.Rows[i].Cells[3].Value.ToString());
+                }
+            
+            
+           
+            return totalParts + totalService;
         }
 
         private DateTime getDateToday() {
@@ -959,6 +991,10 @@ namespace Raceup_Autocare
 
         public void populateROFields()
         {
+
+            serviceDataGridView.Rows.Clear();
+            PartsDataGrid.Rows.Clear();
+
             croNameTextbox.Text = quoProperties.FName + " " + quoProperties.LName;
             croContactNumberTextbox.Text = quoProperties.ContactNum;
             croAddressTextbox.Text = quoProperties.Address;
@@ -967,7 +1003,8 @@ namespace Raceup_Autocare
             croCarModelTextbox.Text = quoProperties.CardModel;
             croChasisNo.Text = quoProperties.ChasisNo;
             croEngineNo.Text = quoProperties.EngineNo;
-            customerRequestTextbox.Text = quoProperties.CustomerRequest;           
+            customerRequestTextbox.Text = quoProperties.CustomerRequest;
+            croRONumberTextbox.Text = "RO" + CreateRONumber().ToString();
 
             string[] paymentMethods = { "Cash", "Gcash", "Master Card", "Credit Card" };
             RadioButton[] paymentRadioButton = { cashRadioButton, gcashRadioButton, masterCardRadioButton, creditCardRadioButton };
@@ -994,6 +1031,106 @@ namespace Raceup_Autocare
                 var partsList = new[] { quoProperties.ItemCode[i], quoProperties.ItemName[i], quoProperties.ItemQuantity[i].ToString(), quoProperties.ItemPrice[i].ToString(), quoProperties.ItemTotalPrice[i].ToString() };
                 PartsDataGrid.Rows.Add(partsList);
             }
+
+            //Clear Parts and service list.
+            clearQuoPropertiesList();
+        }
+
+        private void croServiceDescription_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                PopulateServicePackages();
+            }
+        }
+
+        private void clearQuoPropertiesList()
+        {
+            //Clear list of Parts
+            quoProperties.ItemCode.Clear();
+            quoProperties.ItemName.Clear();
+            quoProperties.ItemPrice.Clear();
+            quoProperties.ItemQuantity.Clear();
+            quoProperties.ItemTotalPrice.Clear();
+
+            //Clear list of service.
+            quoProperties.ServiceDescription.Clear();
+            quoProperties.ServiceHours.Clear();
+            quoProperties.ServicePrice.Clear();
+            quoProperties.ServiceTotalPrice.Clear();
+        }
+
+        private void PopulateServicePackages()
+        {
+            serviceDataGridView.Rows.Clear();
+            dbcon = new DBConnection();
+            sqlQuery = "SELECT * FROM Service WHERE Package_Name='" + croServiceDescription.Text.ToString() + "'";
+            partsReader = dbcon.ConnectToOleDB(sqlQuery);
+            CreateROProperties croProp = new CreateROProperties();
+            double totalPartsPrice = 0.0;
+            Random rnd = new Random();
+            int hours = 0;
+            bool packageFound = false;
+
+            while (partsReader.Read())
+            {
+                if (partsReader["Package_Name"].ToString().Equals(croServiceDescription.Text.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    hours = rnd.Next(1, 5);
+                    var partsList = new[] { partsReader["Service_Name"].ToString(), hours.ToString(), partsReader["Service_Price"].ToString(), partsReader["Service_Price"].ToString() };
+                    serviceDataGridView.Rows.Add(partsList);
+                    packageFound = true;
+                }
+            }
+
+            if (!packageFound)
+            {
+                MessageBox.Show("Package does not exists!");
+            }
+
+        }
+
+        private void croPartsNameTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (croPartsNameTextBox.Text.StartsWith("Package"))
+                {
+                    PopulatePartsPackages();
+                    croPartsNameTextBox.Select(croPartsNameTextBox.Text.Length, croPartsNameTextBox.Text.Length);
+                }
+            }
+        }
+
+        private void PopulatePartsPackages()
+        {
+            PartsDataGrid.Rows.Clear();
+            dbcon = new DBConnection();
+            sqlQuery = "SELECT * FROM Parts WHERE Package_Name='" + croPartsNameTextBox.Text.ToString() + "'";
+            partsReader = dbcon.ConnectToOleDB(sqlQuery);
+            CreateROProperties croProp = new CreateROProperties();
+            double totalPartsPrice = 0.0;
+            Random rnd = new Random();
+            int quantity = 0;
+            bool packageFound = false;
+
+            while (partsReader.Read())
+            {
+                if (partsReader["Package_Name"].ToString().Equals(croPartsNameTextBox.Text.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    quantity = rnd.Next(1, 5);
+                    totalPartsPrice = double.Parse(partsReader["Quantity"].ToString()) * double.Parse(partsReader["Unit_Price"].ToString());
+                    var partsList = new[] { partsReader["Item_Code"].ToString(), partsReader["Item_Description"].ToString(), quantity.ToString(), partsReader["Unit_Price"].ToString(), totalPartsPrice.ToString() };
+                    PartsDataGrid.Rows.Add(partsList);
+                    packageFound = true;
+                }
+            }
+            
+            if (!packageFound)
+            {
+                MessageBox.Show("Package does not exists!");
+            }
+
         }
     }
 }

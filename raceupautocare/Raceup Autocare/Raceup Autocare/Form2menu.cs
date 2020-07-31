@@ -47,6 +47,7 @@ namespace Raceup_Autocare
                     emp = new Employee(userReader["Username"].ToString(), userReader["emp_pass"].ToString(), userReader["Employee_ID"].ToString(),
                        (bool)userReader["Active"], userReader["First_Name"].ToString(), userReader["Last_Name"].ToString(), userReader["Empoyee_Email"].ToString(),
                        userReader["Role"].ToString(), (DateTime)userReader["Date_Updated"], userReader["Updated_By"].ToString(), (DateTime)userReader["Date_Created"], userReader["Created_By"].ToString());
+                    manageRole();
                     break;
                 }
 
@@ -60,6 +61,32 @@ namespace Raceup_Autocare
 
 
         }
+
+        private void manageRole()
+        {
+            if (emp.Role.ToString().Equals("Admin"))
+            {
+                PartsBtn.Visible = true;
+                SearchItemBTN.Visible = true;
+                OrderBtn.Visible = true;
+                CreateROBtn.Visible = true;
+                CreateCustProfileBtn.Visible = true;
+                ServiceROBTN.Visible = true;
+            }
+            else if (emp.Role.ToString().Equals("ServiceAdvisor")) 
+            {
+                PartsBtn.Visible = false;
+                SearchItemBTN.Visible = false;
+            }
+            else if (emp.Role.ToString().Equals("PartsAdvisor"))
+            {
+                OrderBtn.Visible = false;
+                CreateROBtn.Visible = false;
+                CreateCustProfileBtn.Visible = false;
+                ServiceROBTN.Visible = false;
+            }
+        }
+
         private void OpenChildForm(Form childForm)
         {
             //open only form

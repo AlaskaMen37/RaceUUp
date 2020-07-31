@@ -37,10 +37,10 @@ namespace Raceup_Autocare
 
             while (partsReader.Read())
             {
-                ListRoNumber[] listitems = new ListRoNumber[1];
+                ListRoParts[] listitems = new ListRoParts[1];
                 for (int i = 0; i < listitems.Length; i++)
                 {
-                        listitems[i] = new ListRoNumber();
+                        listitems[i] = new ListRoParts();
                         //listitems[i].Width = flowLayoutPanel1.Width;
                         listitems[i].Icon = Resources.data_pending_64px;
                         listitems[i].imageBackground = Color.Silver;

@@ -256,7 +256,6 @@ C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\ja\DevExpress.Diagram.v20.1.Core.resources.dll
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\ru\DevExpress.Diagram.v20.1.Core.resources.dll
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\obj\Debug\Raceup_Autocare.ShowListofOrderPartsForm.resources
-C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\obj\Debug\Raceup_Autocare.ListRoNumber.resources
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\obj\Debug\Raceup_Autocare.SearchItemForm.resources
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\obj\Debug\Raceup_Autocare.CreateCustProfForm.resources
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\obj\Debug\Raceup_Autocare.CreateROform.resources
@@ -287,7 +286,6 @@ C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\MaterialDesignColors.pdb
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\MaterialDesignThemes.Wpf.xml
-C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\obj\Debug\Raceup_Autocare.PrintForm.resources
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\obj\Debug\RdlCompile.cache
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\obj\Debug\RdlCompile.compiled
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\SqlServerTypes\x64\msvcr120.dll
@@ -356,7 +354,9 @@ C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\ShowListofOrderPartsForm.resx
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\ShowListofOrderPartsForm.cs
 C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\ShowListofOrderPartsForm.Designer.cs
-C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\PrintForm.resx
-C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\PrintForm.cs
-C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\PrintForm.Designer.cs
-C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\obj\Debug\Raceup Autocare.csprojAssemblyReference.cache
+C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\obj\Debug\Raceup_Autocare.PrintPartsForm.resources
+C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\PrintPartsForm.resx
+C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\PrintPartsForm.cs
+C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\bin\Debug\PrintPartsForm.Designer.cs
+C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\obj\Debug\Raceup_Autocare.PrintROForm.resources
+C:\Users\D A N\Desktop\New Project\RaceUUp\raceupautocare\Raceup Autocare\Raceup Autocare\obj\Debug\Raceup_Autocare.ListRoParts.resources

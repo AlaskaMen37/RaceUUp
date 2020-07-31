@@ -64,6 +64,8 @@
             this.EnginerErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.CarBrandErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.ClearBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2HtmlLabel11 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.customerMileageTextbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nameErrorProvider)).BeginInit();
@@ -160,6 +162,8 @@
             this.guna2GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2GroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.guna2GroupBox1.BorderThickness = 2;
+            this.guna2GroupBox1.Controls.Add(this.customerMileageTextbox);
+            this.guna2GroupBox1.Controls.Add(this.guna2HtmlLabel11);
             this.guna2GroupBox1.Controls.Add(this.guna2HtmlLabel10);
             this.guna2GroupBox1.Controls.Add(this.customerLastNameTxtbox);
             this.guna2GroupBox1.Controls.Add(this.customerChasisNoTxtbox);
@@ -617,6 +621,43 @@
             this.ClearBtn.Text = "Clear";
             this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
             // 
+            // guna2HtmlLabel11
+            // 
+            this.guna2HtmlLabel11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2HtmlLabel11.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel11.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel11.ForeColor = System.Drawing.Color.White;
+            this.guna2HtmlLabel11.Location = new System.Drawing.Point(481, 273);
+            this.guna2HtmlLabel11.Name = "guna2HtmlLabel11";
+            this.guna2HtmlLabel11.Size = new System.Drawing.Size(80, 25);
+            this.guna2HtmlLabel11.TabIndex = 15;
+            this.guna2HtmlLabel11.Text = "Mileage";
+            // 
+            // customerMileageTextbox
+            // 
+            this.customerMileageTextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.customerMileageTextbox.DefaultText = "";
+            this.customerMileageTextbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.customerMileageTextbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.customerMileageTextbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.customerMileageTextbox.DisabledState.Parent = this.customerMileageTextbox;
+            this.customerMileageTextbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.customerMileageTextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.customerMileageTextbox.FocusedState.Parent = this.customerMileageTextbox;
+            this.customerMileageTextbox.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customerMileageTextbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(37)))));
+            this.customerMileageTextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.customerMileageTextbox.HoverState.Parent = this.customerMileageTextbox;
+            this.customerMileageTextbox.Location = new System.Drawing.Point(628, 263);
+            this.customerMileageTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.customerMileageTextbox.Name = "customerMileageTextbox";
+            this.customerMileageTextbox.PasswordChar = '\0';
+            this.customerMileageTextbox.PlaceholderText = "";
+            this.customerMileageTextbox.SelectedText = "";
+            this.customerMileageTextbox.ShadowDecoration.Parent = this.customerMileageTextbox;
+            this.customerMileageTextbox.Size = new System.Drawing.Size(212, 35);
+            this.customerMileageTextbox.TabIndex = 16;
+            // 
             // CreateCustProfForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -691,5 +732,7 @@
         private Guna.UI2.WinForms.Guna2Button ClearBtn;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel10;
         private Guna.UI2.WinForms.Guna2TextBox customerLastNameTxtbox;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel11;
+        private Guna.UI2.WinForms.Guna2TextBox customerMileageTextbox;
     }
 }

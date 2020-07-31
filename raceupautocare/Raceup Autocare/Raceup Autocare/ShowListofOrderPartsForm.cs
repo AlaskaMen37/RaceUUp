@@ -21,12 +21,12 @@ namespace Raceup_Autocare
         DBConnection dbcon = null;
 
 
-        ListRoNumber LR1;
+        ListRoParts LR1;
 
 
 
         //XtraReportOrderParts reportorder;
-        public ShowListofOrderPartsForm(ListRoNumber listRo)
+        public ShowListofOrderPartsForm(ListRoParts listRo)
         {
             InitializeComponent();
             //this.reportorder = reportorderparts;
@@ -94,7 +94,7 @@ namespace Raceup_Autocare
 
         private void printButton_Click_1(object sender, EventArgs e)
         {
-            PrintForm prtform = new PrintForm(this);
+            PrintPartsForm prtform = new PrintPartsForm(this);
 
             prtform.ShowDialog();
         }

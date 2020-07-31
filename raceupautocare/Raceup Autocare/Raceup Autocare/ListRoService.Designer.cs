@@ -41,6 +41,7 @@
             this.plateNoLabel = new System.Windows.Forms.Label();
             this.CloseServiceBTN = new Guna.UI2.WinForms.Guna2Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ViewBTN = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -173,14 +174,14 @@
             this.CloseServiceBTN.BorderRadius = 13;
             this.CloseServiceBTN.CheckedState.Parent = this.CloseServiceBTN;
             this.CloseServiceBTN.CustomImages.Parent = this.CloseServiceBTN;
-            this.CloseServiceBTN.FillColor = System.Drawing.Color.DimGray;
+            this.CloseServiceBTN.FillColor = System.Drawing.Color.IndianRed;
             this.CloseServiceBTN.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseServiceBTN.ForeColor = System.Drawing.Color.White;
             this.CloseServiceBTN.HoverState.Parent = this.CloseServiceBTN;
-            this.CloseServiceBTN.Location = new System.Drawing.Point(653, 23);
+            this.CloseServiceBTN.Location = new System.Drawing.Point(592, 25);
             this.CloseServiceBTN.Name = "CloseServiceBTN";
             this.CloseServiceBTN.ShadowDecoration.Parent = this.CloseServiceBTN;
-            this.CloseServiceBTN.Size = new System.Drawing.Size(132, 90);
+            this.CloseServiceBTN.Size = new System.Drawing.Size(88, 65);
             this.CloseServiceBTN.TabIndex = 23;
             this.CloseServiceBTN.Text = "Close";
             this.CloseServiceBTN.Click += new System.EventHandler(this.guna2Button1_Click);
@@ -190,13 +191,30 @@
             this.panel3.BackColor = System.Drawing.Color.Silver;
             this.panel3.Location = new System.Drawing.Point(141, 124);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(487, 1);
+            this.panel3.Size = new System.Drawing.Size(450, 1);
             this.panel3.TabIndex = 24;
+            // 
+            // ViewBTN
+            // 
+            this.ViewBTN.BorderRadius = 13;
+            this.ViewBTN.CheckedState.Parent = this.ViewBTN;
+            this.ViewBTN.CustomImages.Parent = this.ViewBTN;
+            this.ViewBTN.FillColor = System.Drawing.Color.DarkGreen;
+            this.ViewBTN.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewBTN.ForeColor = System.Drawing.Color.White;
+            this.ViewBTN.HoverState.Parent = this.ViewBTN;
+            this.ViewBTN.Location = new System.Drawing.Point(686, 25);
+            this.ViewBTN.Name = "ViewBTN";
+            this.ViewBTN.ShadowDecoration.Parent = this.ViewBTN;
+            this.ViewBTN.Size = new System.Drawing.Size(88, 65);
+            this.ViewBTN.TabIndex = 25;
+            this.ViewBTN.Text = "View";
             // 
             // ListRoService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ViewBTN);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.CloseServiceBTN);
             this.Controls.Add(this.label2);
@@ -210,6 +228,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "ListRoService";
             this.Size = new System.Drawing.Size(790, 125);
+            this.Load += new System.EventHandler(this.ListRoService_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -232,5 +251,6 @@
         private System.Windows.Forms.Panel panel2;
         private Guna.UI2.WinForms.Guna2Button CloseServiceBTN;
         private System.Windows.Forms.Panel panel3;
+        private Guna.UI2.WinForms.Guna2Button ViewBTN;
     }
 }

@@ -151,7 +151,9 @@
     <Reference Include="Spire.XLS, Version=9.2.16.19040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
       <HintPath>..\packages\FreeSpire.Office.4.3.1\lib\net40\Spire.XLS.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
@@ -183,11 +185,6 @@
       <DependentUpon>CreateROform.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateROProperties.cs" />
-    <Compile Include="DataSetCustomerProfile.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetCustomerProfile.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DataSetROParts.cs">
       <DependentUpon>DataSetROParts.xsd</DependentUpon>
     </Compile>
@@ -204,11 +201,11 @@
     <Compile Include="Inquiry.Designer.cs">
       <DependentUpon>Inquiry.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListRoNumber.cs">
+    <Compile Include="ListRoParts.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ListRoNumber.Designer.cs">
-      <DependentUpon>ListRoNumber.cs</DependentUpon>
+    <Compile Include="ListRoParts.Designer.cs">
+      <DependentUpon>ListRoParts.cs</DependentUpon>
     </Compile>
     <Compile Include="ListRoService.cs">
       <SubType>UserControl</SubType>
@@ -234,15 +231,34 @@
     <Compile Include="PleaseCreateNewCustProf.Designer.cs">
       <DependentUpon>PleaseCreateNewCustProf.cs</DependentUpon>
     </Compile>
-    <Compile Include="PrintForm.cs">
+    <Compile Include="PrintPartsForm.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="PrintForm.Designer.cs">
-      <DependentUpon>PrintForm.cs</DependentUpon>
+    <Compile Include="PrintPartsForm.Designer.cs">
+      <DependentUpon>PrintPartsForm.cs</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="PrintROForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintROForm.Designer.cs">
+      <DependentUpon>PrintROForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QTNRODataSet.cs">
+      <DependentUpon>QTNRODataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QTNRODataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QTNRODataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="QuotationProperties.cs" />
+    <Compile Include="raceup_db_new3DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>raceup_db_new3DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="reset Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +291,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RODataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RODataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SearchItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,12 +336,16 @@
     <EmbeddedResource Include="ListRoService.resx">
       <DependentUpon>ListRoService.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PrintForm.resx">
-      <DependentUpon>PrintForm.cs</DependentUpon>
+    <EmbeddedResource Include="PrintPartsForm.resx">
+      <DependentUpon>PrintPartsForm.cs</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintROForm.resx">
+      <DependentUpon>PrintROForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ReportOrderParts.rdlc" />
+    <EmbeddedResource Include="ReportRO.rdlc" />
     <EmbeddedResource Include="ShowListofOrderPartsForm.resx">
       <DependentUpon>ShowListofOrderPartsForm.cs</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -328,17 +353,6 @@
     <EmbeddedResource Include="ShowOrderServiceForm.resx">
       <DependentUpon>ShowOrderServiceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DataSetCustomerProfile.xsc">
-      <DependentUpon>DataSetCustomerProfile.xsd</DependentUpon>
-    </None>
-    <None Include="DataSetCustomerProfile.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetCustomerProfile.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataSetCustomerProfile.xss">
-      <DependentUpon>DataSetCustomerProfile.xsd</DependentUpon>
-    </None>
     <None Include="DataSetROParts.xsc">
       <DependentUpon>DataSetROParts.xsd</DependentUpon>
     </None>
@@ -350,10 +364,32 @@
     <None Include="DataSetROParts.xss">
       <DependentUpon>DataSetROParts.xsd</DependentUpon>
     </None>
+    <None Include="QTNRODataSet.xsc">
+      <DependentUpon>QTNRODataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QTNRODataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QTNRODataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QTNRODataSet.xss">
+      <DependentUpon>QTNRODataSet.xsd</DependentUpon>
+    </None>
+    <None Include="raceup_db_new3DataSet1.xsc">
+      <DependentUpon>raceup_db_new3DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="raceup_db_new3DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>raceup_db_new3DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="raceup_db_new3DataSet1.xss">
+      <DependentUpon>raceup_db_new3DataSet1.xsd</DependentUpon>
+    </None>
     <None Include="Resources\data_pending_64px.png" />
     <None Include="Resources\pending.bmp" />
-    <EmbeddedResource Include="ListRoNumber.resx">
-      <DependentUpon>ListRoNumber.cs</DependentUpon>
+    <EmbeddedResource Include="ListRoParts.resx">
+      <DependentUpon>ListRoParts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchItemForm.resx">
       <DependentUpon>SearchItemForm.cs</DependentUpon>
@@ -433,6 +469,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="RODataSet.xsc">
+      <DependentUpon>RODataSet.xsd</DependentUpon>
+    </None>
+    <None Include="RODataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RODataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="RODataSet.xss">
+      <DependentUpon>RODataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Raceup_Autocare
 {
@@ -104,7 +105,21 @@ namespace Raceup_Autocare
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            ShowOrderServiceForm showinfo = new ShowOrderServiceForm();
+
             //Code For closing and completing the RO Service
+            //dbcon = new DBConnection();
+            //sqlQuery = "Select RepairOrderService Set Status='Pending' Where='"+ RoNo.ToString()+ "'";
+
+            //TO DO:
+            //Refresh Winform to show close/latest ROservice
+            //Closed by serviceAdvisor
+
+        }
+
+        private void ListRoService_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
